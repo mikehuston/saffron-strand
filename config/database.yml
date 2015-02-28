@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: saffron_development
+  pool: 5
+  username: saffron
+  password: password1
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: saffron_test
+  pool: 5
+  username: saffron
+  password: password1
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: d6fjqspctqjajs
+  pool: 5
+  username: raitvckoqlekfi
+  password: cj4LCEJuuAKEGQ4hoDigae8FSK
