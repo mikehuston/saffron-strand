@@ -3154,3 +3154,8 @@ ActionController::RoutingError (No route matches [GET] "/users/starter-template.
 
 
   Rendered /Users/satinderalag/.rvm/gems/ruby-1.9.3-p551@rails-3.2.16/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20150228014330)
+Migrating to AddDetailsToUsers (20150228112510)
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
