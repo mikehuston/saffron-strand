@@ -24,6 +24,8 @@ gem 'devise'
 
 group :development,:test do  
   gem 'database_cleaner'
+  gem 'sqlite3'
+  gem 'ruby-debug19'
   gem 'cucumber-rails', :require => false
 end
 
