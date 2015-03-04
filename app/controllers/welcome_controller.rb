@@ -3,3 +3,4 @@ class WelcomeController < ApplicationController
   	@admin = current_user.admin
   end
 end
+ 
