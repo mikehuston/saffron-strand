@@ -17,3 +17,5 @@ production:
   pool: 5
   username: raitvckoqlekfi
   password: cj4LCEJuuAKEGQ4hoDigae8FSK
+cucumber:
+  <<: *test
