@@ -166,6 +166,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 3.2.16)
+  rake
   ruby-debug19
   sass-rails (~> 3.2.3)
   sqlite3
