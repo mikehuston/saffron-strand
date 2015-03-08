@@ -1,0 +1,16 @@
+%h2 Details about #{@item.name}
+
+%ul
+	%li
+		Description:
+		= @item.desc
+	%li
+		Price:
+		= @item.price
+	%li
+		Category:
+		= @item.category
+
+= link_to 'Edit', '/admin/items/edit/' + @item.id
+= button_to 'Delete', 'admin/items/delete/' + @item.id
+= link_to 'Back to items', 'admin/items/index'

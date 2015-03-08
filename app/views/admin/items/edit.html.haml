@@ -1,0 +1,17 @@
+%h1= 'Edit "' + @item.name + '" Item'
+
+= form_tag '/admin/items/edit/' + @item.id
+
+	= label :item, :name, 'Name'
+	= text_field :item, 'name'
+
+	= label :item, :desc, 'Description'
+	= text_field :item, 'desc'
+
+	= label :item, :price, 'Description'
+	= number_field :item, 'price', :step => 0.01
+
+	= label :item, :category, 'Category'
+	= select :item, :category, ['Breakfast', 'Lunch', 'Dinner']
+
+	= submit_tag 'Update Item Info'
