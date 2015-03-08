@@ -1,9 +1,14 @@
 Saffron::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
-  resources :items
+  get "/items/lunch", to: "items#lunch"
+  get "/items/breakfast", to: "items#breakfast"
+  get "/items/dinner", to: "items#dinner"
+  resources :items, :except => :show
+
 
   get "welcome/index"
   match '/home' => 'welcome#index'
+  match '/menu' => 'items#index'
 
 
   # The priority is based upon order of creation:

@@ -33,8 +33,8 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li ><%= link_to 'Home', '/home'%></li>
-            <li  class="active"><%= link_to 'Order', '/menu'%></li>
+            <li   class="active"><%= link_to 'Home', '/home'%></li>
+            <li><%= link_to 'Order', '/menu'%></li>
             <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
             <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>  </li>
           </ul>
@@ -47,14 +47,10 @@
       <div class="starter-template"> 
 
 
-        <h1> Menu </h1>
+        <h1> Breakfast Items: </h1>
 
         <h3>
-          <ul>
-            <li> <%= link_to('Breakfast', items_breakfast_path, :method => :get) %> </li>
-            <li> <%= link_to('Lunch', items_lunch_path, :method => :get) %> </li>
-            <li> <%= link_to('Dinner', items_dinner_path, :method => :get) %> </li>
-          </ul>
+          
         </h3>
 
 
