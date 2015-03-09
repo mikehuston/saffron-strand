@@ -1,10 +1,10 @@
 Feature: admin can edit existing food items on menu
 
   Given the following movies exist:
-  | name                   | description |
-  | Tomato Soup            | organic     |
+  | name                   | description | category 	| price
+  | Tomato Soup            | organic     | lunch		| 4
 
-Scenario: edit 
+Scenario: edit as an admin
 	Given that I am on the details page for "Tomato Soup"
 	When I press "Edit"
 	Then I should be on the edit page for "Tomato Soup"
