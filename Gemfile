@@ -30,7 +30,7 @@ group :development,:test do
 end
 
 gem 'rake'
-
+gem 'haml'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

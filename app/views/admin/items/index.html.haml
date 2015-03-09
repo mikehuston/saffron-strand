@@ -1,2 +1,23 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+%h1 All Recipes
+%table#items
+  %thead
+    %tr
+      %th Title
+      %th Price
+      %th Category
+      %th Description
+      %th More Info
+      %th 
+      %th
+  %tbody
+    - @items.each do |item|
+      %tr
+        %td= item.name 
+        %td= item.price
+        %td= item.category
+        %td= item.desc
+        %td= link_to "Show", admin_item_path(item)
+        %td= link_to "Edit", edit_admin_item_path(item)
+        %td= button_to "Delete", admin_item_path(item), :method => :delete, :confirm => 'Are you sure?'
+
+= link_to 'Add new item', new_admin_item_path
