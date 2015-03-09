@@ -1,6 +1,6 @@
 %h1= 'Edit "' + @item.name + '" Item'
 
-= form_tag '/admin/items/edit/' + @item.id
+= form_tag admin_item_path(@item), :method => :put do
 
 	= label :item, :name, 'Name'
 	= text_field :item, 'name'
@@ -8,7 +8,7 @@
 	= label :item, :desc, 'Description'
 	= text_field :item, 'desc'
 
-	= label :item, :price, 'Description'
+	= label :item, :price, 'Price'
 	= number_field :item, 'price', :step => 0.01
 
 	= label :item, :category, 'Category'
