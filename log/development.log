@@ -18885,3 +18885,1277 @@ Served asset /application.js - 304 Not Modified (5ms)
 
 Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:43:18 -0300
 Served asset /welcome.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36m (19.6ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (324.2ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "desc" text, "price" decimal, "category" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (20.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "name" varchar(255), "phone" decimal, "address" text, "admin" boolean, "key" varchar(255)) [0m
+  [1m[35m (12.5ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (7.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (11.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (5.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (8.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150308031006')[0m
+  [1m[35m (8.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150228112510')
+  [1m[36m (6.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150228014330')[0m
+  [1m[35m (31.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+  [1m[36m (1.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20150228014330)
+Migrating to AddDetailsToUsers (20150228112510)
+Migrating to CreateItems (20150308031006)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+Completed 401 Unauthorized in 11.7ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 46.0ms (Views: 29.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Served asset /items.js - 304 Not Modified (10ms)
+
+
+Started GET "/users/starter-template.css" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+
+ActionController::RoutingError (No route matches [GET] "/users/starter-template.css"):
+  actionpack (3.2.16) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.16) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.16) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.16) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.16) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.16) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.16) lib/rails/engine.rb:484:in `call'
+  railties (3.2.16) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.16) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:48:56 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 12.6ms (Views: 11.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/starter-template.css" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+
+ActionController::RoutingError (No route matches [GET] "/users/starter-template.css"):
+  actionpack (3.2.16) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.16) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.16) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.16) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.16) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.16) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.16) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.16) lib/rails/engine.rb:484:in `call'
+  railties (3.2.16) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.16) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.3ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:01 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RqmxrHD3NUVt5v1qwtmc0rBtjdW5uHBrEdCynaT925U=", "user"=>{"name"=>"admin", "email"=>"admin@email.com", "phone"=>"", "address"=>"", "key"=>"saffron", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'admin@email.com' LIMIT 1
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "users" ("address", "admin", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "key", "last_sign_in_at", "last_sign_in_ip", "name", "phone", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["address", ""], ["admin", true], ["created_at", Mon, 09 Mar 2015 02:49:17 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "admin@email.com"], ["encrypted_password", "$2a$10$VbRwiES5bT3yZ.34wgq5N.l/S./AvVGTuqHeKd04fZ./H3owaO7BS"], ["key", "saffron"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["name", "admin"], ["phone", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Mon, 09 Mar 2015 02:49:17 UTC +00:00]]
+  [1m[35m (24.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2015-03-09 02:49:17.447258', "current_sign_in_at" = '2015-03-09 02:49:17.447258', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2015-03-09 02:49:17.447627' WHERE "users"."id" = 1
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 140.2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Redirected to http://localhost:3000/admin/items
+Completed 302 Found in 3.5ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/items" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Processing by Admin::ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast', 'Lunch', 'Dinner')
+  Rendered admin/items/index.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 10.2ms (Views: 8.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Served asset /items.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:17 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items/new" for 127.0.0.1 at 2015-03-08 23:49:21 -0300
+Processing by Admin::ItemsController#new as HTML
+  [1m[36mUser Load (3.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  Rendered admin/items/new.html.haml within layouts/application (5.6ms)
+Completed 200 OK in 43.0ms (Views: 38.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:21 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:21 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:21 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:21 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:21 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:21 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:21 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:21 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:21 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:21 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items/new" for 127.0.0.1 at 2015-03-08 23:49:53 -0300
+Processing by Admin::ItemsController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered admin/items/new.html.haml within layouts/application (8.9ms)
+Completed 200 OK in 28.5ms (Views: 26.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:54 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:54 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:54 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:54 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:49:54 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:54 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:54 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:54 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:54 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:49:54 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started POST "/admin/items" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Processing by Admin::ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RqmxrHD3NUVt5v1qwtmc0rBtjdW5uHBrEdCynaT925U=", "item"=>{"name"=>"breakfast 1", "desc"=>"delciious", "price"=>"14.42", "category"=>"Breakfast"}, "commit"=>"Update Item Info"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("category", "created_at", "desc", "name", "price", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["category", "Breakfast"], ["created_at", Mon, 09 Mar 2015 02:50:08 UTC +00:00], ["desc", "delciious"], ["name", "breakfast 1"], ["price", #<BigDecimal:b5acdf54,'0.1442E2',18(18)>], ["updated_at", Mon, 09 Mar 2015 02:50:08 UTC +00:00]]
+  [1m[35m (53.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/admin/items
+Completed 302 Found in 75.5ms (ActiveRecord: 54.4ms)
+
+
+Started GET "/admin/items" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Processing by Admin::ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast', 'Lunch', 'Dinner')
+  Rendered admin/items/index.html.haml within layouts/application (4.3ms)
+Completed 200 OK in 18.1ms (Views: 11.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:08 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items/new" for 127.0.0.1 at 2015-03-08 23:50:11 -0300
+Processing by Admin::ItemsController#new as HTML
+  [1m[36mUser Load (7.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  Rendered admin/items/new.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 71.1ms (Views: 62.1ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:11 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:11 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:11 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:11 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:11 -0300
+Served asset /welcome.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:11 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:11 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:11 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:11 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:11 -0300
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started POST "/admin/items" for 127.0.0.1 at 2015-03-08 23:50:32 -0300
+Processing by Admin::ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RqmxrHD3NUVt5v1qwtmc0rBtjdW5uHBrEdCynaT925U=", "item"=>{"name"=>"sunnyside up", "desc"=>"lotsa cholesterol", "price"=>"4.40", "category"=>"Breakfast"}, "commit"=>"Update Item Info"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "items" ("category", "created_at", "desc", "name", "price", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["category", "Breakfast"], ["created_at", Mon, 09 Mar 2015 02:50:32 UTC +00:00], ["desc", "lotsa cholesterol"], ["name", "sunnyside up"], ["price", #<BigDecimal:98de54c,'0.44E1',18(18)>], ["updated_at", Mon, 09 Mar 2015 02:50:32 UTC +00:00]]
+  [1m[36m (50.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/admin/items
+Completed 302 Found in 58.2ms (ActiveRecord: 52.1ms)
+
+
+Started GET "/admin/items" for 127.0.0.1 at 2015-03-08 23:50:32 -0300
+Processing by Admin::ItemsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast', 'Lunch', 'Dinner')[0m
+  Rendered admin/items/index.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 14.3ms (Views: 12.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:32 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:32 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:32 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:32 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:33 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:33 -0300
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:33 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:33 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:33 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:33 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items/new" for 127.0.0.1 at 2015-03-08 23:50:34 -0300
+Processing by Admin::ItemsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered admin/items/new.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 11.0ms (Views: 10.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:34 -0300
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:34 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:34 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:34 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:34 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:34 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:34 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:34 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:34 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:34 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/admin/items" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Processing by Admin::ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RqmxrHD3NUVt5v1qwtmc0rBtjdW5uHBrEdCynaT925U=", "item"=>{"name"=>"bacon", "desc"=>"overpriced", "price"=>"20.20", "category"=>"Breakfast"}, "commit"=>"Update Item Info"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("category", "created_at", "desc", "name", "price", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["category", "Breakfast"], ["created_at", Mon, 09 Mar 2015 02:50:45 UTC +00:00], ["desc", "overpriced"], ["name", "bacon"], ["price", #<BigDecimal:b55cec38,'0.202E2',18(18)>], ["updated_at", Mon, 09 Mar 2015 02:50:45 UTC +00:00]]
+  [1m[35m (23.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/admin/items
+Completed 302 Found in 26.3ms (ActiveRecord: 23.6ms)
+
+
+Started GET "/admin/items" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Processing by Admin::ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast', 'Lunch', 'Dinner')
+  Rendered admin/items/index.html.haml within layouts/application (4.7ms)
+Completed 200 OK in 10.6ms (Views: 8.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:45 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items/new" for 127.0.0.1 at 2015-03-08 23:50:47 -0300
+Processing by Admin::ItemsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  Rendered admin/items/new.html.haml within layouts/application (6.5ms)
+Completed 200 OK in 21.8ms (Views: 20.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:48 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:48 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:48 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:48 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:50:48 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:48 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:48 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:48 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:48 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:50:48 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/admin/items" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Processing by Admin::ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RqmxrHD3NUVt5v1qwtmc0rBtjdW5uHBrEdCynaT925U=", "item"=>{"name"=>"lunch test", "desc"=>"best meal of the day", "price"=>"6.49", "category"=>"Lunch"}, "commit"=>"Update Item Info"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.4ms)[0m  INSERT INTO "items" ("category", "created_at", "desc", "name", "price", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["category", "Lunch"], ["created_at", Mon, 09 Mar 2015 02:51:04 UTC +00:00], ["desc", "best meal of the day"], ["name", "lunch test"], ["price", #<BigDecimal:b5b098c4,'0.649E1',18(18)>], ["updated_at", Mon, 09 Mar 2015 02:51:04 UTC +00:00]]
+  [1m[36m (44.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/admin/items
+Completed 302 Found in 53.2ms (ActiveRecord: 48.2ms)
+
+
+Started GET "/admin/items" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Processing by Admin::ItemsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast', 'Lunch', 'Dinner')[0m
+  Rendered admin/items/index.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 11.8ms (Views: 10.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:04 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items/new" for 127.0.0.1 at 2015-03-08 23:51:06 -0300
+Processing by Admin::ItemsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered admin/items/new.html.haml within layouts/application (4.7ms)
+Completed 200 OK in 22.4ms (Views: 20.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:06 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:06 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:06 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:06 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:06 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:06 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:06 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:06 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:06 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:06 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/admin/items" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Processing by Admin::ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RqmxrHD3NUVt5v1qwtmc0rBtjdW5uHBrEdCynaT925U=", "item"=>{"name"=>"fancy dinner number 1", "desc"=>"good for dates", "price"=>"15.00", "category"=>"Dinner"}, "commit"=>"Update Item Info"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("category", "created_at", "desc", "name", "price", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["category", "Dinner"], ["created_at", Mon, 09 Mar 2015 02:51:26 UTC +00:00], ["desc", "good for dates"], ["name", "fancy dinner number 1"], ["price", #<BigDecimal:b5829014,'0.15E2',9(18)>], ["updated_at", Mon, 09 Mar 2015 02:51:26 UTC +00:00]]
+  [1m[35m (128.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/admin/items
+Completed 302 Found in 136.5ms (ActiveRecord: 128.8ms)
+
+
+Started GET "/admin/items" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Processing by Admin::ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast', 'Lunch', 'Dinner')
+  Rendered admin/items/index.html.haml within layouts/application (7.3ms)
+Completed 200 OK in 57.2ms (Views: 48.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Served asset /items.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:51:26 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items/new" for 127.0.0.1 at 2015-03-08 23:52:43 -0300
+Processing by Admin::ItemsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  Rendered admin/items/new.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 20.2ms (Views: 19.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:52:43 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:52:43 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:52:43 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:52:43 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:52:43 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:52:43 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:52:43 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:52:43 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:52:43 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:52:43 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/admin/items" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Processing by Admin::ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RqmxrHD3NUVt5v1qwtmc0rBtjdW5uHBrEdCynaT925U=", "item"=>{"name"=>"chicken", "desc"=>"wallet killer", "price"=>"100.00", "category"=>"Breakfast"}, "commit"=>"Update Item Info"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.4ms)[0m  INSERT INTO "items" ("category", "created_at", "desc", "name", "price", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["category", "Breakfast"], ["created_at", Mon, 09 Mar 2015 02:53:18 UTC +00:00], ["desc", "wallet killer"], ["name", "chicken"], ["price", #<BigDecimal:b59da020,'0.1E3',9(18)>], ["updated_at", Mon, 09 Mar 2015 02:53:18 UTC +00:00]]
+  [1m[36m (44.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/admin/items
+Completed 302 Found in 59.1ms (ActiveRecord: 48.4ms)
+
+
+Started GET "/admin/items" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Processing by Admin::ItemsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast', 'Lunch', 'Dinner')[0m
+  Rendered admin/items/index.html.haml within layouts/application (11.8ms)
+Completed 200 OK in 27.0ms (Views: 24.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:18 -0300
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/admin/items?utf8=%E2%9C%93&category%5BBreakfast%5D=1&commit=Refresh" for 127.0.0.1 at 2015-03-08 23:53:47 -0300
+Processing by Admin::ItemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "category"=>{"Breakfast"=>"1"}, "commit"=>"Refresh"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast')[0m
+  Rendered admin/items/index.html.haml within layouts/application (12.5ms)
+Completed 200 OK in 36.8ms (Views: 34.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:47 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:47 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:47 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:47 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:47 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:47 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:47 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:47 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:47 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:47 -0300
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/admin/items?utf8=%E2%9C%93&category%5BLunch%5D=1&commit=Refresh" for 127.0.0.1 at 2015-03-08 23:53:53 -0300
+Processing by Admin::ItemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "category"=>{"Lunch"=>"1"}, "commit"=>"Refresh"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."category" IN ('Lunch')[0m
+  Rendered admin/items/index.html.haml within layouts/application (6.3ms)
+Completed 200 OK in 27.5ms (Views: 21.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:53 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:53 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:53 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:53 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:53 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:53 -0300
+Served asset /jquery.js - 304 Not Modified (13ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:53 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:53 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:53 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:53 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items?utf8=%E2%9C%93&category%5BDinner%5D=1&commit=Refresh" for 127.0.0.1 at 2015-03-08 23:53:54 -0300
+Processing by Admin::ItemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "category"=>{"Dinner"=>"1"}, "commit"=>"Refresh"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."category" IN ('Dinner')[0m
+  Rendered admin/items/index.html.haml within layouts/application (5.1ms)
+Completed 200 OK in 18.5ms (Views: 15.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:54 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:54 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:54 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:54 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:54 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:54 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:54 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:54 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:54 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:54 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items?utf8=%E2%9C%93&category%5BBreakfast%5D=1&category%5BLunch%5D=1&category%5BDinner%5D=1&commit=Refresh" for 127.0.0.1 at 2015-03-08 23:53:58 -0300
+Processing by Admin::ItemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "category"=>{"Breakfast"=>"1", "Lunch"=>"1", "Dinner"=>"1"}, "commit"=>"Refresh"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast', 'Lunch', 'Dinner')[0m
+  Rendered admin/items/index.html.haml within layouts/application (13.4ms)
+Completed 200 OK in 37.3ms (Views: 34.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:58 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:58 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:58 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:58 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:53:58 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:58 -0300
+Served asset /jquery.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:58 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:58 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:58 -0300
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:53:58 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items?utf8=%E2%9C%93&commit=Refresh" for 127.0.0.1 at 2015-03-08 23:54:01 -0300
+Processing by Admin::ItemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Refresh"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast', 'Lunch', 'Dinner')[0m
+  Rendered admin/items/index.html.haml within layouts/application (11.8ms)
+Completed 200 OK in 57.1ms (Views: 54.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:01 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:01 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:01 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:01 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:01 -0300
+Served asset /welcome.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:01 -0300
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:01 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:01 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:01 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:01 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items?utf8=%E2%9C%93&commit=Refresh" for 127.0.0.1 at 2015-03-08 23:54:03 -0300
+Processing by Admin::ItemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Refresh"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast', 'Lunch', 'Dinner')[0m
+  Rendered admin/items/index.html.haml within layouts/application (8.9ms)
+Completed 200 OK in 15.9ms (Views: 14.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:03 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:03 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:03 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:03 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:03 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:03 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:03 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:03 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:03 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:03 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/items?utf8=%E2%9C%93&commit=Refresh" for 127.0.0.1 at 2015-03-08 23:54:04 -0300
+Processing by Admin::ItemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Refresh"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."category" IN ('Breakfast', 'Lunch', 'Dinner')[0m
+  Rendered admin/items/index.html.haml within layouts/application (20.4ms)
+Completed 200 OK in 34.0ms (Views: 28.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:04 -0300
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:04 -0300
+Served asset /admin/items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:04 -0300
+Served asset /admin/menu.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:04 -0300
+Served asset /items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-08 23:54:04 -0300
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:04 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:04 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:04 -0300
+Served asset /items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:04 -0300
+Served asset /application.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-08 23:54:04 -0300
+Served asset /welcome.js - 304 Not Modified (0ms)
