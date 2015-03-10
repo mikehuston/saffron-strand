@@ -4,7 +4,6 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.create!(params[:item])
-    flash[:notice] = "Item '#{@item.name}' was successfully created."
     redirect_to admin_items_path
   end
 
