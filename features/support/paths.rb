@@ -15,9 +15,6 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-    when /^the details page for "(.*)"/
-      @movie = Movie.find_by_title($1)
-      "/admin/items/#{$1}/edit"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -25,17 +22,21 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
 
-  when /^the Sign In page/
-    '/users/sign_in'
+    when /^the Sign In page/
+      '/users/sign_in'
 
-  when /^the Menu page/
-    '/menu'
+    when /^the Menu page/
+      '/menu'
 
-  when /^the Admin Items Index page/
-    '/admin/items'
+    when /^the Admin Items Index page/
+      '/admin/items'
 
-  when /^the Admin New Item page/
-    '/admin/items/new'
+    when /^the Admin New Item page/
+      '/admin/items/new'
+
+    when /^the details page for "(.*)"/
+      @item = Item.find_by_name($1)
+      admin_items_path(@item)
 
     else
       begin

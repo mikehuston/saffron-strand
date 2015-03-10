@@ -12,5 +12,5 @@
 		= @item.category
 
 = link_to 'Edit', edit_admin_item_path(@item.id)
-= button_to 'Delete', admin_item_path(@item.id), :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Delete', admin_item_path(@item.id), :method => :delete, :confirm => 'Are you sure?'
 = link_to 'Back to items', admin_items_path
