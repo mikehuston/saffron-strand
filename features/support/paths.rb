@@ -36,7 +36,11 @@ module NavigationHelpers
 
     when /^the details page for "(.*)"/
       @item = Item.find_by_name($1)
-      admin_items_path(@item)
+      admin_item_path(@item)
+
+    when /^the edit page for "(.*)"/
+      @item = Item.find_by_name($1)
+      edit_admin_item_path(@item)
 
     else
       begin
