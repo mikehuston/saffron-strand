@@ -31,6 +31,12 @@ module NavigationHelpers
   when /^the Menu page/
     '/menu'
 
+  when /^the Admin Items Index page/
+    '/admin/items'
+
+  when /^the Admin New Item page/
+    '/admin/items/new'
+
     else
       begin
         page_name =~ /^the (.*) page$/

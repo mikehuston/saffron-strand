@@ -33,6 +33,7 @@ group :test do
   gem 'database_cleaner' 
   gem 'capybara'
   gem 'launchy'
+  gem 'spork'
 end
 
 gem 'rake'
