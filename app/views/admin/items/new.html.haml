@@ -1,0 +1,17 @@
+%h1 Add new item
+
+= form_tag admin_items_path, :method => :post do
+
+	= label :item, :name, 'Name'
+	= text_field :item, 'name'
+
+	= label :item, :desc, 'Description'
+	= text_field :item, 'desc'
+
+	= label :item, :price, 'Price'
+	= number_field :item, 'price', :step => 0.01
+
+	= label :item, :category, 'Category'
+	= select :item, :category, ['Breakfast', 'Lunch', 'Dinner']
+
+	= submit_tag 'Create Item'

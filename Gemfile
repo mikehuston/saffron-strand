@@ -23,10 +23,18 @@ gem 'jquery-rails'
 gem 'devise'
 
 group :development,:test do  
-  gem 'database_cleaner'
   gem 'sqlite3'
   gem 'debugger'
+end
+
+group :test do
   gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
+  gem 'database_cleaner' 
+  gem 'capybara'
+  gem 'launchy'
+  gem 'spork'
+  gem 'simplecov', :require => false, :group => :test
 end
 
 gem 'rake'
