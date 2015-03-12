@@ -34,6 +34,8 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'spork'
+  gem 'simplecov', :require => false, :group => :test
+  gem 'rspec'
 end
 
 gem 'rake'

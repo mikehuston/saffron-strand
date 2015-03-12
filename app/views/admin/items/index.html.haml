@@ -1,4 +1,10 @@
 %h1 All Recipes
+= form_tag admin_items_path, :method => :get do
+  Include: 
+  - @all_categories.each do |category|
+    = category
+    = check_box_tag "category[#{category}]"
+  = submit_tag 'Refresh'
 %table#items
   %thead
     %tr
