@@ -450,3 +450,60 @@ Served asset /welcome.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 14:44:28 -0700
 Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-12 16:18:45 -0700
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Redirected to http://localhost:3000/admin/items
+Completed 302 Found in 78.6ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/admin/items" for 127.0.0.1 at 2015-03-12 16:18:45 -0700
+Processing by Admin::ItemsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" [0m
+  Rendered admin/items/index.html.haml within layouts/application (27.5ms)
+Completed 200 OK in 89.0ms (Views: 79.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/admin/items.css?body=1" for 127.0.0.1 at 2015-03-12 16:18:45 -0700
+Served asset /admin/items.css - 200 OK (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-12 16:18:45 -0700
+Served asset /application.css - 304 Not Modified (51ms)
+
+
+Started GET "/assets/admin/menu.css?body=1" for 127.0.0.1 at 2015-03-12 16:18:46 -0700
+Served asset /admin/menu.css - 200 OK (2ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-03-12 16:18:46 -0700
+Served asset /items.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-03-12 16:18:46 -0700
+Served asset /welcome.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-12 16:18:46 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-12 16:18:46 -0700
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-03-12 16:18:46 -0700
+Served asset /items.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-03-12 16:18:46 -0700
+Served asset /welcome.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-12 16:18:46 -0700
+Served asset /application.js - 304 Not Modified (10ms)
