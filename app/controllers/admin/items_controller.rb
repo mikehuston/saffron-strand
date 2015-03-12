@@ -24,12 +24,16 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
+<<<<<<< HEAD
+    @items = Item.all
+=======
     @checked_categories = @all_categories = %w{Breakfast Lunch Dinner}
     if params[:category]
       @checked_categories = params[:category].keys
     end
     @items = Item.where(:category => @checked_categories)
 
+>>>>>>> adminstuff
   end
 
   def show 
