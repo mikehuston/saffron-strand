@@ -17,7 +17,6 @@ Given /^I am a new, authenticated user$/ do
   fill_in "user_email", :with => email
   fill_in "user_password", :with => password
   click_button "Log in"
->>>>>>> adminstuff
 
 end
 
