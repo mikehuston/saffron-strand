@@ -110,15 +110,15 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
   end
 end
 
-Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
+# Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
+#   regexp = Regexp.new(regexp)
 
-  if page.respond_to? :should
-    page.should have_xpath('//*', :text => regexp)
-  else
-    assert page.has_xpath?('//*', :text => regexp)
-  end
-end
+#   if page.respond_to? :should
+#     page.should have_xpath('//*', :text => regexp)
+#   else
+#     assert page.has_xpath?('//*', :text => regexp)
+#   end
+# end
 
 Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   if page.respond_to? :should
@@ -128,82 +128,82 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   end
 end
 
-Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
+# Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
+#   regexp = Regexp.new(regexp)
 
-  if page.respond_to? :should
-    page.should have_no_xpath('//*', :text => regexp)
-  else
-    assert page.has_no_xpath?('//*', :text => regexp)
-  end
-end
+#   if page.respond_to? :should
+#     page.should have_no_xpath('//*', :text => regexp)
+#   else
+#     assert page.has_no_xpath?('//*', :text => regexp)
+#   end
+# end
 
-Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
-  with_scope(parent) do
-    field = find_field(field)
-    field_value = (field.tag_name == 'textarea') ? field.text : field.value
-    if field_value.respond_to? :should
-      field_value.should =~ /#{value}/
-    else
-      assert_match(/#{value}/, field_value)
-    end
-  end
-end
+# Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
+#   with_scope(parent) do
+#     field = find_field(field)
+#     field_value = (field.tag_name == 'textarea') ? field.text : field.value
+#     if field_value.respond_to? :should
+#       field_value.should =~ /#{value}/
+#     else
+#       assert_match(/#{value}/, field_value)
+#     end
+#   end
+# end
 
-Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |field, parent, value|
-  with_scope(parent) do
-    field = find_field(field)
-    field_value = (field.tag_name == 'textarea') ? field.text : field.value
-    if field_value.respond_to? :should_not
-      field_value.should_not =~ /#{value}/
-    else
-      assert_no_match(/#{value}/, field_value)
-    end
-  end
-end
+# Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |field, parent, value|
+#   with_scope(parent) do
+#     field = find_field(field)
+#     field_value = (field.tag_name == 'textarea') ? field.text : field.value
+#     if field_value.respond_to? :should_not
+#       field_value.should_not =~ /#{value}/
+#     else
+#       assert_no_match(/#{value}/, field_value)
+#     end
+#   end
+# end
 
-Then /^the "([^"]*)" field should have the error "([^"]*)"$/ do |field, error_message|
-  element = find_field(field)
-  classes = element.find(:xpath, '..')[:class].split(' ')
+# Then /^the "([^"]*)" field should have the error "([^"]*)"$/ do |field, error_message|
+#   element = find_field(field)
+#   classes = element.find(:xpath, '..')[:class].split(' ')
 
-  form_for_input = element.find(:xpath, 'ancestor::form[1]')
-  using_formtastic = form_for_input[:class].include?('formtastic')
-  error_class = using_formtastic ? 'error' : 'field_with_errors'
+#   form_for_input = element.find(:xpath, 'ancestor::form[1]')
+#   using_formtastic = form_for_input[:class].include?('formtastic')
+#   error_class = using_formtastic ? 'error' : 'field_with_errors'
 
-  if classes.respond_to? :should
-    classes.should include(error_class)
-  else
-    assert classes.include?(error_class)
-  end
+#   if classes.respond_to? :should
+#     classes.should include(error_class)
+#   else
+#     assert classes.include?(error_class)
+#   end
 
-  if page.respond_to?(:should)
-    if using_formtastic
-      error_paragraph = element.find(:xpath, '../*[@class="inline-errors"][1]')
-      error_paragraph.should have_content(error_message)
-    else
-      page.should have_content("#{field.titlecase} #{error_message}")
-    end
-  else
-    if using_formtastic
-      error_paragraph = element.find(:xpath, '../*[@class="inline-errors"][1]')
-      assert error_paragraph.has_content?(error_message)
-    else
-      assert page.has_content?("#{field.titlecase} #{error_message}")
-    end
-  end
-end
+#   if page.respond_to?(:should)
+#     if using_formtastic
+#       error_paragraph = element.find(:xpath, '../*[@class="inline-errors"][1]')
+#       error_paragraph.should have_content(error_message)
+#     else
+#       page.should have_content("#{field.titlecase} #{error_message}")
+#     end
+#   else
+#     if using_formtastic
+#       error_paragraph = element.find(:xpath, '../*[@class="inline-errors"][1]')
+#       assert error_paragraph.has_content?(error_message)
+#     else
+#       assert page.has_content?("#{field.titlecase} #{error_message}")
+#     end
+#   end
+# end
 
-Then /^the "([^"]*)" field should have no error$/ do |field|
-  element = find_field(field)
-  classes = element.find(:xpath, '..')[:class].split(' ')
-  if classes.respond_to? :should
-    classes.should_not include('field_with_errors')
-    classes.should_not include('error')
-  else
-    assert !classes.include?('field_with_errors')
-    assert !classes.include?('error')
-  end
-end
+# Then /^the "([^"]*)" field should have no error$/ do |field|
+#   element = find_field(field)
+#   classes = element.find(:xpath, '..')[:class].split(' ')
+#   if classes.respond_to? :should
+#     classes.should_not include('field_with_errors')
+#     classes.should_not include('error')
+#   else
+#     assert !classes.include?('field_with_errors')
+#     assert !classes.include?('error')
+#   end
+# end
 
 Then /^the "([^"]*)" checkbox(?: within (.*))? should be checked$/ do |label, parent|
   with_scope(parent) do
