@@ -13,10 +13,10 @@ test: &test
 production:
   adapter: postgresql
   encoding: unicode
-  database: d6fjqspctqjajs
+  database: d98g2qgiqr536r
   pool: 5
-  username: raitvckoqlekfi
-  password: cj4LCEJuuAKEGQ4hoDigae8FSK
+  username: ygphlyeiqokjzo
+  password: f31xsN0hGRMtNwp6k2YsY4JLYu
 
 cucumber:
   <<: *test
