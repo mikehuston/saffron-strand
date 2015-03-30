@@ -43,7 +43,9 @@ end
 gem 'rake'
 gem 'haml'
 gem 'factory_girl_rails'
-gem 'paperclip-dropbox'
+gem 'paperclip'
+gem 'dropbox'
+gem "paperclip-dropbox", ">= 1.1.7"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
