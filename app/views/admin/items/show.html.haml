@@ -10,6 +10,9 @@
 	%li
 		Category:
 		= @item.category
+	%li
+		Image:
+		= image_tag @item.image.url
 
 = link_to 'Edit', edit_admin_item_path(@item)
 = button_to 'Delete', admin_item_path(@item), :method => :delete, :confirm => 'Are you sure?'
