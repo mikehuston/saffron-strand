@@ -1,6 +1,6 @@
 %h1= 'Edit "' + @item.name + '" Item'
 
-= form_tag admin_item_path(@item), :method => :put do
+= form_tag admin_item_path(@item), :method => :put, :multipart => true do
 
 	= label :item, :name, 'Name'
 	= text_field :item, 'name'
@@ -13,5 +13,8 @@
 
 	= label :item, :category, 'Category'
 	= select :item, :category, ['Breakfast', 'Lunch', 'Dinner']
+
+	= label :item, :image, 'Image'
+	= file_field :item, 'image'
 
 	= submit_tag 'Update Item Info'
