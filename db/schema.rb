@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20150401004041) do
     t.string  "name"
     t.integer "head_count"
     t.integer "user_id"
+    t.integer "menu_id"
   end
 
   create_table "items", :force => true do |t|
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20150401004041) do
   create_table "menus", :force => true do |t|
     t.string  "name"
     t.integer "budget_per_person"
+    t.integer "event_id"
   end
 
   create_table "users", :force => true do |t|
