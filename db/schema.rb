@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150330213558) do
+ActiveRecord::Schema.define(:version => 20150401004041) do
+
+  create_table "events", :force => true do |t|
+    t.string  "name"
+    t.integer "head_count"
+    t.integer "user_id"
+  end
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -24,6 +30,12 @@ ActiveRecord::Schema.define(:version => 20150330213558) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "food_type"
+  end
+
+  create_table "menus", :force => true do |t|
+    t.string  "name"
+    t.integer "budget_per_person"
   end
 
   create_table "users", :force => true do |t|
