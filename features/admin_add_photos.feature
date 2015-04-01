@@ -5,10 +5,20 @@ I want to be able to upload and associate images with a food item
 So that I can show customers my delicious catering offerings
 
 Scenario: Admin can add image to food item
-	As an admin of the site
-	When I am on the edit page for an item
-	Then I should see "Upload Picture"
-	When I upload a picture
-	And I click "Save"
-	Then I click "Show" for that item
-	Then I should see the picture
+
+	Given I am a new, authenticated admin user
+	And I am on the Admin New Item page
+	When I fill in "Name" with "Turkey Sandwich"
+	And I upload an image file
+	And I press "Create Item"
+	Then I should be on the Admin Items Index page
+	And the "Turkey Sandwich" item should have an image
+
+Scenario: Admin cannot add non image file to food item image
+
+	Given I am a new, authenticated admin user
+	And I am on the Admin New Item page
+	When I fill in "Name" with "Tomato Soup"
+	And I upload a file that is not an image
+	And I press "Create Item"
+	Then I should be on the Admin New Item page

@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :category, :desc, :name, :price, :image
+  attr_accessible :category, :desc, :name, :price, :image, :food_type
   has_attached_file :image,
     :storage => :dropbox,
     :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
