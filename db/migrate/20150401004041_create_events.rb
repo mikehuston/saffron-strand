@@ -4,7 +4,6 @@ class CreateEvents < ActiveRecord::Migration
 			t.string :name
 			t.integer :head_count
 			t.references :user
-			t.references :menu
 		end
 	end
 end
