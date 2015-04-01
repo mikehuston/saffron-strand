@@ -1,5 +1,13 @@
 Saffron::Application.routes.draw do
 
+  get "events/create"
+
+  get "events/new"
+
+  get "events/edit"
+
+  get "events/show"
+
 namespace :admin do
   resources :items
 end
@@ -9,7 +17,7 @@ end
   get "/items/breakfast", to: "items#breakfast"
   get "/items/dinner", to: "items#dinner"
   resources :items, :except => :show
-
+  resources :events
 
   get "welcome/index"
   match '/home' => 'welcome#index'

@@ -3,11 +3,7 @@ class CreateMenus < ActiveRecord::Migration
 		create_table :menus do |t|
 			t.string :name
 			t.integer :budget_per_person
+			t.belongs_to :event
 		end
 	end
-  def up
-  end
-
-  def down
-  end
 end
