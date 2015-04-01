@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :phone, :address, :admin, :key
   # attr_accessible :title, :body
+
+  has_one :event
 end
