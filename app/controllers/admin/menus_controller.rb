@@ -1,18 +1,17 @@
 class Admin::MenusController < ApplicationController
-  before_filter :authenticate_user!
+  # before_filter :authenticate_user!
 
   def new
   end
 
   def create
-    @menu = Menu.new(params[:menu])
-    if @menu.valid?
-      @menu.save
-      flash[:notice] = 'Item created'
-      redirect_to admin_menus_path
-    else
-      redirect_to new_admin_menus_path
+    # @menu = Menu.new
+    items = params[:items].select {|k,v| v == '1'}.map {|k,v| k}
+    @menu = Menu.create(params[:menu])
+    items.each do |item|
+      @menu.items << Item.find(item)
     end
+    redirect_to admin_menus_path
   end
 
   def edit

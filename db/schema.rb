@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(:version => 20150402004952) do
     t.string  "name"
     t.integer "head_count"
     t.integer "user_id"
-    t.integer "menu_id"
   end
 
   create_table "items", :force => true do |t|
@@ -34,19 +33,19 @@ ActiveRecord::Schema.define(:version => 20150402004952) do
     t.string   "food_type"
   end
 
+  create_table "items_menus", :id => false, :force => true do |t|
+    t.integer "menu_id"
+    t.integer "item_id"
+  end
+
+  add_index "items_menus", ["item_id"], :name => "index_items_menus_on_item_id"
+  add_index "items_menus", ["menu_id", "item_id"], :name => "index_items_menus_on_menu_id_and_item_id"
+
   create_table "menus", :force => true do |t|
     t.string  "name"
     t.integer "budget_per_person"
     t.integer "event_id"
   end
-
-  create_table "menus_items", :id => false, :force => true do |t|
-    t.integer "menu_id"
-    t.integer "item_id"
-  end
-
-  add_index "menus_items", ["item_id"], :name => "index_menus_items_on_item_id"
-  add_index "menus_items", ["menu_id", "item_id"], :name => "index_menus_items_on_menu_id_and_item_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

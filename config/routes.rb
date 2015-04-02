@@ -6,7 +6,6 @@ namespace :admin do
   resources :menus
 end
 
-
   devise_for :users
   get "/items/lunch", to: "items#lunch"
   get "/items/breakfast", to: "items#breakfast"

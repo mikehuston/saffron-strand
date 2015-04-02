@@ -1,0 +1,18 @@
+%h1 Add new item
+
+= form_tag admin_menus_path, :method => :post, :multipart => true do	
+	
+	%p
+		= label :menu, :name, 'Name'
+		= text_field :menu, 'name'
+
+	%p
+		= label :menu, :budget_per_person, 'Budget Per Person'
+		= select :menu, :budget_per_person, ['8', '10', '15']
+
+	- Item.all.each do |item|
+		%p
+			= item
+			= check_box_tag "items[#{item.id}]"
+
+	= submit_tag 'Create Menu'

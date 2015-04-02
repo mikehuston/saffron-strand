@@ -16,4 +16,3 @@ Scenario: I can see the items of the $8 preset menu
   Then I should be on the 'Sample Menu' page
   Then I should see 'Mac and Cheese' within the table
   And I should see 'Deli Sandwich' within the table
-
