@@ -4,18 +4,18 @@ Feature: Add food type field to Items
   There should be a field that denotes the 'type' of food, such as meats, starches, sides, etc.
 
 Background: items have been added to the database
-  Given the following recipes exist:
-  | name                   | desc        | category   | price | type |
-  | Mac and Cheese         | organic     | Lunch    | 4     | side |
-  | Deli Sandwich        | turkey    | Lunch    | 7     | meat |
-  | Steak          | medium    | Dinner     | 11    | meat |
+  Given the following items exist:
+  | name           | desc    | category | price | food_type |
+  | Mac and Cheese | organic | Lunch    | 4     | side      |
+  | Deli Sandwich  | turkey  | Lunch    | 7     | Meat      |
+  | Steak          | medium  | Dinner   | 11    | Meat      |
 
 Scenario: Should be able to see food type field 
   Given I am a new, authenticated admin user
-  And I am on the edit page for "Tomato Soup"
-  Then I should see the form field 'food type'
+  And I am on the edit page for "Mac and Cheese"
+  Then I should see a field for "Type"
 
 Scenario: Should be able to see food type field in food table
   Given I am a new, authenticated admin user
   And I am on the Admin Items Index page
-  Then I should see 'type' within the items table
+  Then I should see "Type" inside the items table

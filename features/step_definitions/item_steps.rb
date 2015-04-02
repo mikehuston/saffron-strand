@@ -29,3 +29,12 @@ Then /^the "(.*)" item should not be valid$/ do |item_name|
 	item = Item.where(name: item_name)[0]
 	assert(item.valid? == false)
 end
+
+Then /^I should see a field for "(.*)"$/ do |field_name|
+	field = find_field(field_name)
+	field.should be_present
+end
+
+Then /^I should see "(.*)" inside the items table$/ do |text|
+	page.should have_css("table#items", :text => text)
+end
