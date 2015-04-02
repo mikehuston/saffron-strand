@@ -1,0 +1,13 @@
+- if not @sample_menus.nil?
+	= @sample_menus.each do |m|
+
+		%h3= "#{m.name} Menu"
+		%table.table
+			%tr
+				%th Item Name
+			-if not m.items.empty?
+				- m.items.each do |i|
+					%tr
+						%td= i.name
+
+= link_to "Get Started", new_event_path

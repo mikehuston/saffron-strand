@@ -11,3 +11,11 @@ Scenario:
 	When I follow "Get Started"
 	Then I should be on the New Event page
 	And I should see "Please Enter your Event Details"
+
+Scenario:
+	Given I am a new, authenticated user
+	And I am on the sample menu page
+	Then I should see "Get Started"
+	When I follow "Get Started"
+	Then I should be on the New Event page
+	And I should see "Please Enter your Event Details"

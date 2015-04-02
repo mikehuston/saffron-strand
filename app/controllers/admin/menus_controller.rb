@@ -1,5 +1,5 @@
 class Admin::MenusController < ApplicationController
-  # before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :save]
 
   def new
   end
@@ -47,4 +47,5 @@ class Admin::MenusController < ApplicationController
   def show 
     @menu = Menu.find(params[:id])
   end
+
 end
