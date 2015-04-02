@@ -6,12 +6,17 @@ class Admin::MenusController < ApplicationController
 
   def create
     # @menu = Menu.new
-    items = params[:items].select {|k,v| v == '1'}.map {|k,v| k}
-    @menu = Menu.create(params[:menu])
-    items.each do |item|
-      @menu.items << Item.find(item)
+    if params[:items].nil?
+      flash[:message] = "You must choose at least one item!"
+      redirect_to new_admin_menu_path
+    else 
+      items = params[:items].select {|k,v| v == '1'}.map {|k,v| k}
+      @menu = Menu.create(params[:menu])
+      items.each do |item|
+        @menu.items << Item.find(item)
+      end
+      redirect_to admin_menus_path
     end
-    redirect_to admin_menus_path
   end
 
   def edit
