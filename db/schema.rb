@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150401004041) do
+ActiveRecord::Schema.define(:version => 20150402004952) do
 
   create_table "events", :force => true do |t|
     t.string  "name"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(:version => 20150401004041) do
     t.integer "budget_per_person"
     t.integer "event_id"
   end
+
+  create_table "menus_items", :id => false, :force => true do |t|
+    t.integer "menu_id"
+    t.integer "item_id"
+  end
+
+  add_index "menus_items", ["item_id"], :name => "index_menus_items_on_item_id"
+  add_index "menus_items", ["menu_id", "item_id"], :name => "index_menus_items_on_menu_id_and_item_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

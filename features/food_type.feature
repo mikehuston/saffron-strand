@@ -6,9 +6,9 @@ Feature: Add food type field to Items
 Background: items have been added to the database
 	Given the following recipes exist:
   | name                   | desc        | category 	| price | type |
-  | Mac and Cheese         | organic     | Lunch		| 4     | side |
-  | Deli Sandwich 		   | turkey 	 | Lunch 		| 7     | meat |
-  | Steak		 		   | medium 	 | Dinner 		| 11    | meat |
+  | Mac and Cheese         | organic     | Lunch		  | 4     | side |
+  | Deli Sandwich 		     | turkey 	   | Lunch 		  | 7     | meat |
+  | Steak		 		           | medium 	   | Dinner 		| 11    | meat |
 
 Scenario: Should be able to see food type field 
   Given I am a new, authenticated admin user
