@@ -42,6 +42,9 @@ module NavigationHelpers
       @item = Item.find_by_name($1)
       edit_admin_item_path(@item)
 
+    when /^the New Event page/
+      '/events/new'
+
     else
       begin
         page_name =~ /^the (.*) page$/
