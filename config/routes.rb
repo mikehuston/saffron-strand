@@ -1,7 +1,5 @@
 Saffron::Application.routes.draw do
 
-  # get "events/get_started", to: "events#get_started"
-
 namespace :admin do
   resources :items
 end
