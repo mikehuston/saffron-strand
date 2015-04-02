@@ -1,8 +1,11 @@
 Saffron::Application.routes.draw do
 
+  get "/events/custom_order", to: "events#custom_order"
 namespace :admin do
   resources :items
+  resources :menus
 end
+
 
   devise_for :users
   get "/items/lunch", to: "items#lunch"
@@ -10,7 +13,6 @@ end
   get "/items/dinner", to: "items#dinner"
   resources :items, :except => :show
   resources :events
-
   get "welcome/index"
   match '/home' => 'welcome#index'
   match '/menu' => 'items#index'

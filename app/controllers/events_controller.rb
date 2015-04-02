@@ -12,7 +12,7 @@ class EventsController < ApplicationController
       @event.save
       @event.create_menu name: 'Default Name', budget_per_person: budget_per_person
       current_user.event = @event
-      redirect_to event_path(@event)
+      redirect_to '/events/custom_order'
   	end
   end
 
@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   def edit
   end
 
-  def show
-  	@event = Event.find(params[:id])
+  def custom_order
+  	# @event = Event.find(params[:id])
   end
 end

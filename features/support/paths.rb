@@ -45,6 +45,8 @@ module NavigationHelpers
     when /^the New Event page/
       '/events/new'
 
+    when /^the Customize Order page/
+      '/events/edit'
     else
       begin
         page_name =~ /^the (.*) page$/
