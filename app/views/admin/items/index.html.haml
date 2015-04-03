@@ -11,6 +11,7 @@
       %th Title
       %th Price
       %th Category
+      %th Type
       %th Description
       %th More Info
       %th 
@@ -21,6 +22,7 @@
         %td= item.name 
         %td= item.price
         %td= item.category
+        %td= item.food_type
         %td= item.desc
         %td= link_to "Show", admin_item_path(item)
         %td= link_to "Edit", edit_admin_item_path(item)

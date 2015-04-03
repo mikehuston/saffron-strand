@@ -1,11 +1,18 @@
 class Admin::ItemsController < ApplicationController
   before_filter :authenticate_user!
+
   def new
   end
 
   def create
-    @item = Item.create!(params[:item])
-    redirect_to admin_items_path
+    @item = Item.new(params[:item])
+    if @item.valid?
+      @item.save
+      flash[:notice] = 'Item created'
+      redirect_to admin_items_path
+    else
+      redirect_to new_admin_item_path
+    end
   end
 
   def edit

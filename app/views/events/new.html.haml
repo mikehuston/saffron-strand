@@ -1,0 +1,17 @@
+Please Enter your Event Details
+
+= form_tag events_path, :method => :post do
+
+	%p
+		= label :event, :name, 'Name'
+		= text_field :event, 'name'
+
+	%p
+		= label :event, :head_count, 'Head Count'
+		= number_field :event, 'head_count'
+
+	%p
+		= label :event, :budget_per_person, 'Budget Per Person'
+		= select :event, :budget_per_person, ['8', '10', '15']
+
+	= submit_tag 'Create Event'

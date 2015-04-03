@@ -5,7 +5,8 @@ describe WelcomeController do
 			# fake_user =	double("User", :admin => true)
 			# allow(controller).to receive(:current_user) { fake_user })
 			get :index
-			response.should redirect_to("http://test.host/users/sign_in")			
+			# response.should redirect_to("http://test.host/users/sign_in")
+			response.should be_success
 		end
 	end
 end

@@ -6,10 +6,10 @@ So that I can choose food items for this specific timing of my event
 
 Background: items have been added to the database
 	Given the following recipes exist:
-  | name                   | desc        | category 	| price |
-  | Mac and Cheese         | organic     | Lunch		| 4     |
-  | Deli Sandwich 		   | turkey 	 | Lunch 		| 7     |
-  | Steak		 		   | medium 	 | Dinner 		| 11    |
+  | name                   	| desc     | category 	| price |
+  | Mac and Cheese         	| organic  | Lunch			| 4     |
+  | Deli Sandwich 		   		| turkey 	 | Lunch 			| 7     |
+  | Steak		 		   					| medium 	 | Dinner 		| 11    |
 
 
 	And I am a new, authenticated user

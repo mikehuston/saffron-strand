@@ -1,0 +1,25 @@
+%h1= 'Edit "' + @menu.name + '" Item'
+
+= form_tag admin_menu_path(@menu), :method => :put, :multipart => true do	
+
+	- unless flash[:message].nil?
+		%p 
+			%font{:color => "red"} 
+				=flash[:message]
+	
+	%p
+		= label :menu, :name, 'Name'
+		= text_field :menu, 'name'
+
+	%p
+		= label :menu, :budget_per_person, 'Budget Per Person'
+		= select :menu, :budget_per_person, ['8', '10', '15']
+
+	%p Include items:
+	- Item.all.each do |item|
+		%div
+			= item.name
+			= check_box_tag "items[#{item.id}]", 1, @menu.items.include?(item) ? true : false, :id => item.name
+
+
+	= submit_tag 'Update Menu'
