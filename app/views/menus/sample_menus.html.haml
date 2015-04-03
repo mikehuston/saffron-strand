@@ -5,7 +5,7 @@
 
 		%h3= "Name: #{m.name}"
 		%h3= "Budget Per Person: #{m.budget_per_person}"
-		%table.sample_menu
+		%table.table.sample_menu
 			%tr
 				%th Item Name
 			-if not m.items.empty?
@@ -13,4 +13,4 @@
 					%tr
 						%td= i.name
 
-= link_to "Get Started", new_event_path
+= button_to "Get Started", new_event_path, :method => :get
