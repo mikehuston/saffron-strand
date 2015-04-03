@@ -18,7 +18,7 @@
 	%p Include items:
 	- Item.all.each do |item|
 		%div
-			= item
+			= item.name
 			= check_box_tag "items[#{item.id}]"
 
 
