@@ -1,8 +1,7 @@
-Feature: User can 
-
-As a user of the site
-So that I have an entry point into planning my catering event
-I should see a "Get Started" button on the home page
+Feature: User can click a button to start their menu building process
+	As a user of the site
+	So that I have an entry point into planning my catering event
+	I should see a "Get Started" button on the home page
 
 Scenario:
 	Given I am a new, authenticated user
