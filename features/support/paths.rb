@@ -51,6 +51,12 @@ module NavigationHelpers
     when /^the sample menu page/
       '/menus/sample_menus'
 
+    when /^the New Sample Menu page/
+      '/admin/menus/new'
+
+    when /^the Admin Sample Menus page/
+      '/admin/menus'
+
     else
       begin
         page_name =~ /^the (.*) page$/
