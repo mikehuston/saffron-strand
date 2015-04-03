@@ -16,7 +16,7 @@ end
   match '/home' => 'welcome#index'
   match '/menu' => 'items#index'
 
-  get '/menus/sample_menus', to: 'menus#sample_menu'
+  get '/menus/sample_menus', to: 'menus#sample_menus'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

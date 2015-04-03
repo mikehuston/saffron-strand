@@ -34,6 +34,7 @@
           <ul class="nav navbar-nav">
             <li <% if active == 'Home' %>  class="active"<% end %>><%= link_to 'Home', '/home'%></li>
             <li <% if active == 'Menu' %>  class="active"<% end %>><%= link_to 'Menu', '/menu'%></li>
+            <li <% if active == 'Sample Menu' %>  class="active"<% end %>><%= link_to 'Sample Menu', '/menus/sample_menus'%></li>
             <li <% if active == 'Edit' %>  class="active"<% end %>><%= link_to('Edit registration', edit_user_registration_path) %></li>
             <li  <% if active == 'Logout' %>  class="active"<% end %>><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>  </li>
           </ul>

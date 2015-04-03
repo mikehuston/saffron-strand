@@ -12,3 +12,4 @@ Scenario: add new food item to menu
 	Then I should be on the Admin Items Index page
 	And I should see "Turkey Sandwich"
 	And I should see "Meat"
+	

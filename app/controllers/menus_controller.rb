@@ -22,7 +22,7 @@ class MenusController < ApplicationController
   end
 
   def sample_menus
-    @menus = Menu.sample_menus
+    @sample_menus = Menu.sample_menus
   end
 
 end

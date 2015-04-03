@@ -4,15 +4,16 @@ Feature: Sample Menu view
   So that I can get an idea of what to order
 
 Background: 
-Given we have this preset menu for the $8 option:
-  | name                   | desc        | category 	| price | type |
-  | Mac and Cheese         | organic     | Lunch		| 4     | side |
-  | Deli Sandwich 		   | turkey 	 | Lunch 		| 7     | meat |
+Given a "8" per person budget sample menu named "Sample Lunch Menu" exists with the following items:
+  | name            | desc    | category | price | food_type |
+  | Mac and Cheese  | organic | Lunch    | 4     | side      |
+  | Deli Sandwich   | turkey  | Lunch    | 7     | meat      |
 
 Scenario: I can see the items of the $8 preset menu
-  Given that I am a user of the site
-  And I am on the home page
-  And I follow 'Sample Menu'
-  Then I should be on the 'Sample Menu' page
-  Then I should see 'Mac and Cheese' within the table
-  And I should see 'Deli Sandwich' within the table
+  Given I am on the home page
+  When I follow "Sample Menu"
+  Then I should be on the sample menu page
+  Then I should see "Mac and Cheese" inside a menu table
+  And I should see "Deli Sandwich" inside a menu table
+  And I should see "Budget Per Person: 8"
+  And I should see "Name: Sample Lunch Menu"

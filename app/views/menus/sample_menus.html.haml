@@ -1,8 +1,11 @@
+= render :partial => "items/menu_bar", :locals => { :active => 'Sample Menu'}
+
 - if not @sample_menus.nil?
 	= @sample_menus.each do |m|
 
-		%h3= "#{m.name} Menu"
-		%table.table
+		%h3= "Name: #{m.name}"
+		%h3= "Budget Per Person: #{m.budget_per_person}"
+		%table.sample_menu
 			%tr
 				%th Item Name
 			-if not m.items.empty?
