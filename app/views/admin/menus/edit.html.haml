@@ -1,6 +1,6 @@
-%h1 Add New Sample Menu
+%h1= 'Edit "' + @menu.name + '" Item'
 
-= form_tag admin_menus_path, :method => :post, :multipart => true do	
+= form_tag admin_menu_path(@menu), :method => :put, :multipart => true do	
 
 	- unless flash[:message].nil?
 		%p 
@@ -19,7 +19,7 @@
 	- Item.all.each do |item|
 		%div
 			= item.name
-			= check_box_tag "items[#{item.id}]", 1, false, :id => item.name
+			= check_box_tag "items[#{item.id}]", 1, @menu.items.include?(item) ? true : false, :id => item.name
 
 
-	= submit_tag 'Create Menu'
+	= submit_tag 'Update Menu'

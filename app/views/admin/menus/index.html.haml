@@ -1,10 +1,15 @@
 - Menu.sample_menus.each do |m|
 
-	%h3= "#{m.name} Menu"
-	%table.table
+	%h3= "Name: #{m.name}"
+	%h3= "Budget Per Person: #{m.budget_per_person}"
+	%table.table.sample_menu
 		%tr
 			%th Item Name
 		-if not m.items.empty?
 			- m.items.each do |i|
 				%tr
 					%td= i.name
+	%td= link_to "Edit", edit_admin_menu_path(m)
+	%td= button_to "Delete", admin_menu_path(m), :method => :delete, :confirm => 'Are you sure?'
+
+= link_to 'Add new sample menu', new_admin_menu_path

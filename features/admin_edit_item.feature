@@ -11,7 +11,7 @@ Scenario: edit as an admin
 	And I am on the details page for "Tomato Soup"
 	Then I should see "Tomato Soup"
 	When I follow "Edit"
-	Then I should be on the edit page for "Tomato Soup"
+	Then I should be on the edit item page for "Tomato Soup"
 	When I fill in "Name" with "Organic Tomato Soup"
 	And I press "Update Item Info"
 	Then I should be on the Admin Items Index page
