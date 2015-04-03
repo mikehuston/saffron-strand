@@ -1,5 +1,5 @@
 class Admin::MenusController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :save]
+  before_filter :authenticate_user!
 
   def new
   end
