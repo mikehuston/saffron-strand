@@ -38,9 +38,13 @@ module NavigationHelpers
       @item = Item.find_by_name($1)
       admin_item_path(@item)
 
-    when /^the edit page for "(.*)"/
+    when /^the edit item page for "(.*)"/
       @item = Item.find_by_name($1)
       edit_admin_item_path(@item)
+
+    when /^the edit menu page for "(.*)"/
+      @menu = Menu.find_by_name($1)
+      edit_admin_menu_path(@menu)
 
     when /^the New Event page/
       '/events/new'

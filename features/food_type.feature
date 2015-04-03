@@ -12,7 +12,7 @@ Background: items have been added to the database
 
 Scenario: Should be able to see food type field 
   Given I am a new, authenticated admin user
-  And I am on the edit page for "Mac and Cheese"
+  And I am on the edit item page for "Mac and Cheese"
   Then I should see a field for "Type"
 
 Scenario: Should be able to see food type field in food table

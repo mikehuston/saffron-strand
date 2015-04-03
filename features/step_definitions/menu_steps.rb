@@ -10,6 +10,10 @@ Then /^I should see "(.*)" inside a menu table$/ do |text|
   page.should have_css("table.sample_menu", :text => text)
 end
 
+Then /^I should not see "(.*)" inside a menu table$/ do |text|
+  page.should have_no_css("table.sample_menu", :text => text)
+end
+
 Then /^I should see a "(.*)" button$/ do |name|
   find_button(name).should_not be_nil
 end

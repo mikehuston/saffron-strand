@@ -24,7 +24,18 @@ class Admin::MenusController < ApplicationController
   end
 
   def update
-    @menu = Menu.find params[:id]
+    @menu = Menu.find(params[:id])
+    if params[:items].nil?
+      flash[:message] = "You must choose at least one item!"
+      redirect_to edit_admin_menu_path(@menu) and return
+    else 
+      items = params[:items].select {|k,v| v == '1'}.map {|k,v| k}
+      new_items = []
+      items.each do |item|
+        new_items << Item.find(item)
+      end
+      @menu.items = new_items
+    end
     @menu.update_attributes!(params[:menu])
     redirect_to admin_menus_path
   end
