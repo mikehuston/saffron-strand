@@ -46,6 +46,7 @@ gem 'factory_girl_rails'
 gem 'paperclip'
 gem 'dropbox'
 gem "paperclip-dropbox", ">= 1.1.7"
+gem 'figaro'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
