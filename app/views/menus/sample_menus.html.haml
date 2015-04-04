@@ -1,10 +1,10 @@
 = render :partial => "items/menu_bar", :locals => { :active => 'Sample Menu'}
 
 - if not @sample_menus.nil?
-	= @sample_menus.each do |m|
+	- @sample_menus.each do |m|
 
-		%h3= "Name: #{m.name}"
-		%h3= "Budget Per Person: #{m.budget_per_person}"
+		%h4= "Name: #{m.name}"
+		%h4= "Budget Per Person: #{m.budget_per_person}"
 		%table.table.sample_menu
 			%tr
 				%th Item Name
