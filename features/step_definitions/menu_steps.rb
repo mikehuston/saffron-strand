@@ -1,4 +1,4 @@
-Given /a "(.*)" per person budget sample menu named "(.*)" exists with the following items/ do |budget_per_person, name, items_table|
+Given /a "(.*)" per person budget menu named "(.*)" exists with the following items/ do |budget_per_person, name, items_table|
   menu = Menu.create! budget_per_person: budget_per_person.to_i, name: name
   items_table.hashes.each do |item_hash|
     item = Item.create! item_hash
