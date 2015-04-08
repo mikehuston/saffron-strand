@@ -7,6 +7,9 @@ Background: items have been added to the database
   Given the following items exist:
   | name           | desc    | category | price | food_type |
   | Mac and Cheese | organic | Dinner   | 4     | Side      |
+  | Crackers       | organic | Dinner   | 5     | Side      |
+  | Oreo           | organic | Dinner   | 3     | Side      |
+  | Mash Potato    | organic | Dinner   | 7     | Side      |
   | Deli Sandwich  | turkey  | Dinner   | 7     | Meat      |
   | Steak          | medium  | Dinner   | 11    | Meat      |
   | Chicken        | medium  | Dinner   | 5     | Appetizer |
@@ -35,7 +38,7 @@ Scenario: Should be able to see 7$ menu items
   Then I should see 6 items with food_type "Appetizer"
   Then I should see 2 items with food_type "Meat"
   Then I should see 4 items with food_type "Veg"
-  Then I should not see "Beverages"
+  Then I should not see "Beverage"
   Then I should not see "Desert"
   Then I should not see "Salad/B"
 
@@ -46,7 +49,32 @@ Scenario: Should be able to see 8$ menu items
   Then I should see 1 item with food_type "Salad/B"
   Then I should see 1 item with food_type "Veg"
   Then I should see 1 item with food_type "Meat"
-  Then I should not see "Beverages"
+  Then I should not see "Beverage"
   Then I should not see "Desert"
+
+Scenario: Should be able to see 12$ menu items
+  Given budget per person is 12
+  And I am on the Customized Order Page
+  Then I should see 2 items with food_type "Appetizer"
+  Then I should see 3 items with food_type "Entree"
+  Then I should see 1 item with food_type "Salad/B"
+  Then I should see "Veg"
+  Then I should see "Meat"
+  Then I should see 2 items with food_type "Side"
+  Then I should see "Beverage"
+  Then I should see "Desert"
+
+Scenario: Should be able to see 15$ menu items
+  Given budget per person is 15
+  And I am on the Customized Order Page
+  Then I should see 3 items with food_type "Appetizer"
+  Then I should see 4 items with food_type "Entree"
+  Then I should see 1 item with food_type "Salad/B"
+  Then I should see "Veg"
+  Then I should see "Meat"
+  Then I should see 3 items with food_type "Side"
+  Then I should see "Beverage"
+  Then I should see "Desert"
+
 
 
