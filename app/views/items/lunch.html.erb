@@ -1,28 +1,22 @@
-<!DOCTYPE html>
-<%= render :partial => "menu_bar", :locals => { :active => 'Menu'} %>
+<h1> Lunch Items: </h1>
+
+<h3>
+  <table>
+        <tr>
+          <th>Item</th>&nbsp;&nbsp;&nbsp;
+         <th>Price</th>
+         
+       </tr>
+
+       <% @items.each do |item| %>
+         <tr>
+           <td><%= item.name %>&nbsp;&nbsp;&nbsp;</td>&nbsp;&nbsp;&nbsp;
+           <td><%= item.price %></td>&nbsp;&nbsp;&nbsp;
+           
+         </tr>
+       <% end %>
+      </table>
 
 
-        <h1> Lunch Items: </h1>
-
-        <h3>
-          <table>
-                <tr>
-                  <th>Item</th>&nbsp;&nbsp;&nbsp;
-                 <th>Price</th>
-                 
-               </tr>
- 
-               <% @items.each do |item| %>
-                 <tr>
-                   <td><%= item.name %>&nbsp;&nbsp;&nbsp;</td>&nbsp;&nbsp;&nbsp;
-                   <td><%= item.price %></td>&nbsp;&nbsp;&nbsp;
-                   
-                 </tr>
-               <% end %>
-              </table>
-
-
-          
-        </h3>
-
-
+  
+</h3>
