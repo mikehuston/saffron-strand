@@ -1,10 +1,11 @@
 Saffron::Application.routes.draw do
 
   get "/events/custom_order", to: "events#custom_order"
-namespace :admin do
-  resources :items
-  resources :menus
-end
+  
+  namespace :admin do
+    resources :items
+    resources :menus
+  end
 
   devise_for :users
   get "/items/lunch", to: "items#lunch"
@@ -17,6 +18,8 @@ end
   match '/menu' => 'items#index'
 
   get '/menus/sample_menus', to: 'menus#sample_menus'
+  get '/users/non_admin', to: 'users#non_admin'
+  get '/users/add_admin/:id', to: 'users#add_admin'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

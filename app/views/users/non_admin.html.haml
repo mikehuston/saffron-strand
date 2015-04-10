@@ -1,0 +1,11 @@
+-if @non_admin
+  %table.table
+    %thead
+      %tr
+        %th Email
+        %th Make Admin
+    %tbody
+      - @non_admin.each do |u|
+        %tr{:id => "#{u.id}"}
+          %td= u.email
+          %td= link_to 'Make Admin', '/users/add_admin/' + u.id.to_s

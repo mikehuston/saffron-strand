@@ -3,6 +3,10 @@ Feature: Admin can add admin
 	So that I can create other admin accounts for Saffron Strand employees
 	I want to be able to give certain registered users admin access
 
+	When I am on the admin settings page
+	And I follow 'Add an admin users'
+	Then I should be on the admin settings add admin page
+
 Background: 
 
 	Given the following users exist:
@@ -11,9 +15,9 @@ Background:
 	  
 Scenario: admin can add other admin users
 
-	Given I am new, authenticated admin user
-	When I am on the admin settings page
-	And I follow 'Add an admin users'
-	Then I should be on the admin settings add admin page
+	Given I am a new, authenticated admin user
+	And I am on the admin settings add admin page
 	When I make "Testy McFutureAdmin" an admin user
-	Then "Testy McFutureAdmin" should be an admin user
+	Then I should be on the admin settings add admin page
+	And "Testy McFutureAdmin" should be an admin user
+	And I should not see "Testy McFutureAdmin"

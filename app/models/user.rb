@@ -9,4 +9,10 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_one :event
+
+  def self.non_admin
+    users = User.all
+    users.reject { |e| e.admin? }
+  end	
+
 end

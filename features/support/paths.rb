@@ -61,6 +61,9 @@ module NavigationHelpers
     when /^the Admin Sample Menus page/
       '/admin/menus'
 
+    when /^the admin settings add admin page/
+      '/users/non_admin'
+
     else
       begin
         page_name =~ /^the (.*) page$/

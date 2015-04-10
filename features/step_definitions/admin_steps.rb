@@ -1,10 +1,11 @@
 When /^I make "(.*)" an admin user$/ do |user_name|
-	within(:css, "li#" + user_name) do
+	user = User.find_by_name(user_name)
+	within(:css, "tr#" + user.id.to_s) do
 		click_link('Make Admin')
 	end
 end
 
 Then /"(.*)" should be an admin user$/ do |user_name|
-	user = User.find_by_name(username)
-	assert(user.admin?)
+	user = User.find_by_name(user_name)
+	assert(user.admin? == true)
 end
