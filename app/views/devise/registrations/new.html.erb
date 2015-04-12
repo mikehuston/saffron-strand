@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<%= render :partial => "items/menu_bar", :locals => { :active => 'Edit'} %>
-
-
-
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  
 
   <div class="field">
     <%= f.label :name %><br />
@@ -54,13 +47,3 @@
 <% end %><br>
 
 <%= render "devise/shared/links" %>
-
-
-  </div>
-
-
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-  </body>
-</html>
