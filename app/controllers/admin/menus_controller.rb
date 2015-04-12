@@ -12,9 +12,7 @@ class Admin::MenusController < ApplicationController
     else 
       items = params[:items].select {|k,v| v == '1'}.map {|k,v| k}
       @menu = Menu.create(params[:menu])
-      items.each do |item|
-        @menu.items << Item.find(item)
-      end
+      @menu.items = Item.find(items)
       redirect_to admin_menus_path
     end
   end
@@ -30,11 +28,7 @@ class Admin::MenusController < ApplicationController
       redirect_to edit_admin_menu_path(@menu) and return
     else 
       items = params[:items].select {|k,v| v == '1'}.map {|k,v| k}
-      new_items = []
-      items.each do |item|
-        new_items << Item.find(item)
-      end
-      @menu.items = new_items
+      @menu.items = Item.find(items)
     end
     @menu.update_attributes!(params[:menu])
     redirect_to admin_menus_path
