@@ -13,7 +13,7 @@ Scenario:
 Scenario:
 	Given I am a new, authenticated user
 	And I am on the admin home page
-	Then I should see "Items"
+	Then I should see "Menu Items"
 	When I follow "Items"
 	Then I should be on the Admin Items Index page
 

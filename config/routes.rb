@@ -5,6 +5,7 @@ Saffron::Application.routes.draw do
   namespace :admin do
     resources :items
     resources :menus
+    resources :settings
   end
 
   devise_for :users

@@ -1,5 +1,7 @@
 class Admin::ItemsController < ApplicationController
+  layout "admin_application"
   before_filter :authenticate_user!
+
 
   def new
   end
