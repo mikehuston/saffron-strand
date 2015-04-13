@@ -24,3 +24,6 @@ menu2 = Menu.create name: 'Sample $15 Menu', budget_per_person: 8
 menu2.items << item4
 menu2.items << item7
 menu2.items << item5
+
+User.create!(:email => 'testuser@saffron.test', :password => 'password', :password_confirmation => 'password')
+User.create!(:email => 'testadmin@saffron.test', :password => 'password', :password_confirmation => 'password', :admin => true)

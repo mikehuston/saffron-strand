@@ -1,0 +1,46 @@
+!!!
+%html
+  %head
+    %title Saffron
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    %link{:href => "http://getbootstrap.com/dist/css/bootstrap.min.css", :rel => "stylesheet"}
+    %link{:href => "starter-template.css", :rel => "stylesheet"}
+    %script{:src => "http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"}
+    %script{:src => "http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"}
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand Saffron Strand Catering
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li{:class => "#{params[:controller] == 'welcome' ? 'active': ''}"}= link_to 'Home', '/home'
+            %li{:class => "#{params[:controller] == 'items' ? 'active': ''}"}= link_to 'Menu', '/menu'
+            %li{:class => "#{params[:controller] == 'menus' ? 'active': ''}"}= link_to 'Sample Menu', '/menus/sample_menus'
+            -if user_signed_in?
+              %li{:class => "#{params[:controller] == 'devise/registrations' ? 'active': ''}"}=link_to 'Edit registration', edit_user_registration_path
+              %li= link_to 'Logout', destroy_user_session_path, :method => :delete
+            -else
+              %li{:class => "#{params[:controller] == 'devise/sessions' ? 'active': ''}"}= link_to 'Log In', new_user_session_path
+        / /.nav-collapse
+    %br
+    %br
+    %br
+    .container
+      / <div class="starter-template">
+      = yield
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"}
+    %script{:src => "http://getbootstrap.com/dist/js/bootstrap.min.js"}
