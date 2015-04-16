@@ -1,5 +1,7 @@
 Saffron::Application.routes.draw do
 
+  get "events/submit"
+
   get "/events/custom_order", to: "events#custom_order"
   
   namespace :admin do

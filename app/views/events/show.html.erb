@@ -1,0 +1,80 @@
+
+<h3> You selected this to be your custom menu: </h3>
+	
+	<% if @appetizers != 0 %>
+	<h4> Appetizer(s): </h4>
+	<% @items_appetizers.each do |item| %>
+			<%= item.name %><br>
+			
+	<% end %>
+	<% end %>
+
+
+	<% if @salb != 0 %>
+	<h4> Salad/bread: </h4>
+	<% @items_salb.each do |item| %>
+			<%= item.name %><br>
+			
+	<% end %>
+	<% end %>
+
+
+	<% if @entrees != 0 %>
+	<h4> Entree(s): </h4>
+	<% @items_entrees.each do |item| %>
+			<%= item.name %><br>
+			
+	<% end %>
+	<% end %>
+
+
+	<% if @meat != 0 %>
+	<h4>  Meat(s): </h4>
+	<% @items_meat.each do |item| %>
+			<%= item.name %><br>
+			
+	<% end %>
+	<% end %>
+
+
+	<% if @veg != 0 %>
+	<h4> Veg(s): </h4>
+	<% @items_veg.each do |item| %>
+			<%= item.name %><br>
+			
+	<% end %>
+	<% end %>
+
+
+	<% if @sides != 0 %>
+	<h4> Side(s): </h4>
+	<% @items_sides.each do |item| %>
+			<%= item.name %><br>
+			
+	<% end %>
+	<% end %>
+
+
+	<% if @desserts != 0 %>
+	<h4>  Dessert(s): </h4>
+	<% @items_desserts.each do |item| %>
+			<%= item.name %><br>
+			
+	<% end %>
+	<% end %>
+
+
+	<% if @bev != 0 %>
+	<h4> Beverage(s): </h4>
+	<% @items_bev.each do |item| %>
+			<%= item.name %><br>
+			
+	<% end %>
+	<% end %>
+
+
+	<br>
+
+	<%= link_to "Submit Order", "/events/submit" %>
+
+	<br>

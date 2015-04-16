@@ -1,4 +1,4 @@
-Please Enter your Event Details
+<h3> Please Enter your Event Details: </h3><br>
 
 = form_tag events_path, :method => :post do
 
@@ -12,6 +12,6 @@ Please Enter your Event Details
 
 	%p
 		= label :event, :budget_per_person, 'Budget Per Person'
-		= select :event, :budget_per_person, ['8', '10', '15']
+		= select :event, :budget_per_person, ['7', '8', '12', '15']
 
 	= submit_tag 'Create Event'

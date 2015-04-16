@@ -13,7 +13,7 @@
 
 	%p
 		= label :menu, :budget_per_person, 'Budget Per Person'
-		= select :menu, :budget_per_person, ['8', '10', '15']
+		= select :menu, :budget_per_person, ['7', '8', '12', '15']
 
 	%p Include items:
 	- Item.all.each do |item|

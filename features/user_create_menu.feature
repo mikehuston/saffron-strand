@@ -30,7 +30,7 @@ Background: items have been added to the database
   | Chinese        | medium  | Dinner   | 13    | Entree    |
   | Indian         | medium  | Dinner   | 15    | Entree    |
   | Juice          | medium  | Dinner   | 3     | Beverage  |
-  | Cream          | medium  | Dinner   | 4     | Desert    |
+  | Cream          | medium  | Dinner   | 4     | Dessert   |
 
 Scenario: Should be able to see 7$ menu items
   Given budget per person is 7
@@ -39,7 +39,7 @@ Scenario: Should be able to see 7$ menu items
   Then I should see 2 items with food_type "Meat"
   Then I should see 4 items with food_type "Veg"
   Then I should not see "Beverage"
-  Then I should not see "Desert"
+  Then I should not see "Dessert"
   Then I should not see "Salad/B"
 
 Scenario: Should be able to see 8$ menu items
@@ -50,7 +50,7 @@ Scenario: Should be able to see 8$ menu items
   Then I should see 1 item with food_type "Veg"
   Then I should see 1 item with food_type "Meat"
   Then I should not see "Beverage"
-  Then I should not see "Desert"
+  Then I should not see "Dessert"
 
 Scenario: Should be able to see 12$ menu items
   Given budget per person is 12
@@ -62,7 +62,7 @@ Scenario: Should be able to see 12$ menu items
   Then I should see "Meat"
   Then I should see 2 items with food_type "Side"
   Then I should see "Beverage"
-  Then I should see "Desert"
+  Then I should see "Dessert"
 
 Scenario: Should be able to see 15$ menu items
   Given budget per person is 15
@@ -74,7 +74,7 @@ Scenario: Should be able to see 15$ menu items
   Then I should see "Meat"
   Then I should see 3 items with food_type "Side"
   Then I should see "Beverage"
-  Then I should see "Desert"
+  Then I should see "Dessert"
 
 
 
