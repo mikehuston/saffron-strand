@@ -15,12 +15,12 @@ item6 = Item.create(name: 'Mixed Green Salad', desc: 'healthy side for your meal
 item7 = Item.create(name: 'Green Beans', desc: 'fresh and local', price: 4, category: 'Lunch', food_type: 'Side')
 
 
-menu1 = Menu.create name: 'Sample $8 Menu', budget_per_person: 8
+menu1 = Menu.create name: 'Sample $8 Menu', budget_per_person: 8, sample: true
 menu1.items << item6
 menu1.items << item7
 menu1.items << item4
 
-menu2 = Menu.create name: 'Sample $15 Menu', budget_per_person: 8
+menu2 = Menu.create name: 'Sample $15 Menu', budget_per_person: 15, sample: true
 menu2.items << item4
 menu2.items << item7
 menu2.items << item5

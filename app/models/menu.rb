@@ -22,6 +22,15 @@ class Menu < ActiveRecord::Base
     items = new_items
   end
 
+  def get_items_by_type
+    items_by_type = {}
+    item_types = Menu.get_item_types budget_per_person
+    item_types.each do |type|
+      items_by_type[type] = items.where food_type: type
+    end
+    items_by_type
+  end
+
   def self.get_item_types budget_per_person
     item_types = []
     case budget_per_person

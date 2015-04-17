@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150402004952) do
+ActiveRecord::Schema.define(:version => 20150417180553) do
 
   create_table "events", :force => true do |t|
     t.string  "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20150402004952) do
     t.string  "name"
     t.integer "budget_per_person"
     t.integer "event_id"
+    t.boolean "sample"
   end
 
   create_table "users", :force => true do |t|
