@@ -1,5 +1,5 @@
 class Menu < ActiveRecord::Base
-  attr_accessible :name, :budget_per_person
+  attr_accessible :name, :budget_per_person, :sample
   # has_one :event
   has_and_belongs_to_many :items
   has_one :event
@@ -17,6 +17,29 @@ class Menu < ActiveRecord::Base
       new_items << Item.find(id)
     end
     items = new_items
+  end
+
+  def self.get_item_types budget_per_person
+    item_types = []
+    case budget_per_person
+    when 7
+      item_types = ['Appetizer']
+    when 8
+      item_types = ['Entree']
+    when 12
+      item_types = ['Appetizer', 'Entree', 'Side', 'Dessert']
+    when 15
+      item_types = ['Appetizer', 'Entree', 'Side', 'Dessert']
+    end
+    item_types
+  end
+
+  def self.get_item_options item_types
+    item_options = {}
+    item_types.each do |type|
+      item_options[type] = Item.where food_type: type
+    end
+    item_options
   end
 
   def self.get_item_counts budget_per_person
@@ -42,13 +65,16 @@ class Menu < ActiveRecord::Base
 
   private
 
+  # Only want to run validation for custom_menu menus
   def item_counts
-    correct_item_counts = Menu.get_item_counts budget_per_person
-    actual_item_counts = {}
-    items.each {|item| item_counts[item.food_type] += 1}
-    correct_item_counts.each do |name, count|
-      if actual_item_counts[name] != count
-        errors.add(:base, "Please select #{count} #{name}s")
+    if not sample
+      correct_item_counts = Menu.get_item_counts budget_per_person
+      actual_item_counts = Hash.new 0
+      items.each {|item| actual_item_counts[item.food_type] += 1}
+      correct_item_counts.each do |name, count|
+        if actual_item_counts[name] != count
+          errors.add(:base, "Please select #{count} #{name}s")
+        end
       end
     end
   end
