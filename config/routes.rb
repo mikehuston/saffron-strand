@@ -3,12 +3,8 @@ Saffron::Application.routes.draw do
   get "events/submit"
 
   get "/events/custom_order", to: "events#custom_order"
-<<<<<<< HEAD
   post "/events/save_order", to: "events#save_order"
-  
-=======
 
->>>>>>> cbcd80647c2766c94becfca27ca4fedb193c8fda
   namespace :admin do
     resources :items, :menus, :events
   end
