@@ -64,6 +64,12 @@ module NavigationHelpers
     when /^the Custom Order page/
       '/events/custom_order'
 
+    when /^the Show Event page/
+      '/events/show'
+
+    when /^the Saved Orders page/
+      '/events/view_saved'
+
     else
       begin
         page_name =~ /^the (.*) page$/

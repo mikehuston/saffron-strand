@@ -3,23 +3,35 @@ Feature: Customer can save order
   So that I can go back to a specific order
   I want to be able to login and save my order
 
-Scenario: I can save my order after customizing a menu
-  Given that I am on the Customized Order Page
-  And I have selected the $8 option
-  When I select "Steak" within meat
-  And I select "Salad" within sides
+Background: items have been added to the database and event details page submitted
+  Given the following items exist:
+  | name           | desc    | category | price | food_type |
+  | Red Thai       | medium  | Dinner   | 16    | Entree    |
+  | Chinese        | medium  | Dinner   | 13    | Entree    |
+  | Indian         | medium  | Dinner   | 15    | Entree    |
+  Given I am a new, authenticated user
+  And I am on the New Event page
+  And I fill in "Name" with "Wedding"
+  And I select "8" from "Budget Per Person"
+  And I fill in "Head Count" with "100"
+  And I press "Create Event"
+
+Scenario: I can save my order after customizing a menu and see it under My Orders
+  Given I am on the Custom Order page
+  When I check "Red Thai"
+  And I check "Chinese"
   When I press "Save Order"
-  Then I should see "You're order has been saved"
-  
-Scenario: I can see saved order from tab
+  Then I should be on the Show Event page
+  Then I should see "Red Thai"
+  And I should see "Chinese"
   When I follow "My Orders"
-  And I press "Previous Orders"
-  Then I should see a list of previous orders
-  When I click on the first order
-  Then I should be on the Customized Order Page
+  Then I should be on the Saved Orders page
+  And I should see "Wedding"
+  When I follow "Wedding"
+  Then I should be on the Show Event page
 
 Scenario: Can only save order if signed in 
-  Given that I am not logged in
-  And I am on the Customized Order Page
+  Given I am not logged in
+  And I am on the Customized Order page
   And I press "Save Order"
   Then I should be on the login page
