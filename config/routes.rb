@@ -3,10 +3,10 @@ Saffron::Application.routes.draw do
   get "events/submit"
 
   get "/events/custom_order", to: "events#custom_order"
+  post "/events/save_order", to: "events#save_order"
   
   namespace :admin do
-    resources :items
-    resources :menus
+    resources :items, :menus, :events
   end
 
   devise_for :users
