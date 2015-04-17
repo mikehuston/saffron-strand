@@ -31,6 +31,7 @@
             %li{:class => "#{params[:controller] == 'items' ? 'active': ''}"}= link_to 'Menu', '/menu'
             %li{:class => "#{params[:controller] == 'menus' ? 'active': ''}"}= link_to 'Sample Menu', '/menus/sample_menus'
             -if user_signed_in?
+              %li{:class => "#{params[:controller] == 'events' ? 'active': ''}"}= link_to 'My Events', '/events/show'
               %li{:class => "#{params[:controller] == 'devise/registrations' ? 'active': ''}"}=link_to 'Edit registration', edit_user_registration_path
               %li= link_to 'Logout', destroy_user_session_path, :method => :delete
             -else
