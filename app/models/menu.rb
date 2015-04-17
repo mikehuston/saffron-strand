@@ -4,19 +4,19 @@ class Menu < ActiveRecord::Base
   has_and_belongs_to_many :items
   has_one :event
 
-  validate :item_counts
+  # validate :item_counts
 
   def self.sample_menus
-  	# TODO: FIX THIS ONCE ADMIN IMPLEMENTED
-  	Menu.all.select {|m| true}.to_a
+    # TODO: FIX THIS ONCE ADMIN IMPLEMENTED
+    Menu.all.select {|m| true}.to_a
   end
 
   def set_items item_ids
-  	new_items = []
-  	item_ids.each do |id|
-  	  new_items << Item.find(id)
-  	end
-  	items = new_items
+    new_items = []
+    item_ids.each do |id|
+      new_items << Item.find(id)
+    end
+    items = new_items
   end
 
   def self.get_item_counts budget_per_person
