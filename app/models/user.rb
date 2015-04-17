@@ -15,4 +15,10 @@ class User < ActiveRecord::Base
     users.reject { |e| e.admin? }
   end	
 
+  def destroy_current_event
+    if not event.nil?
+      event.destroy
+    end
+  end
+
 end

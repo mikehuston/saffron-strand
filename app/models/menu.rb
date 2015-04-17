@@ -61,16 +61,10 @@ class Menu < ActiveRecord::Base
       item_counts['Appetizer'] = 6
     when 8
       item_counts['Entree'] = 2
-    when 12
-      item_counts['Appetizer'] = 2
-      item_counts['Entree'] = 3
-      item_counts['Side'] = 2
-      item_counts['Dessert'] = 1
+    when 12, 15
+      item_counts = {'Appetizer' => 2, 'Entree' => 3, 'Side' => 2, 'Dessert' => 1}
     when 15
-      item_counts['Appetizer'] = 3
-      item_counts['Entree'] = 4
-      item_counts['Side'] = 3
-      item_counts['Dessert'] = 2     
+      item_counts = {'Appetizer' => 3, 'Entree' => 4, 'Side' => 3, 'Dessert' => 2}
     end
     item_counts
   end

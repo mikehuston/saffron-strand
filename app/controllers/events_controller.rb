@@ -29,18 +29,12 @@ class EventsController < ApplicationController
       if @menu.valid?
         @menu.save
         # This logic should be in a seperate method
-        if not current_user.event.nil?
-         current_user.event.destroy
-         current_user.save!
-        end
+        current_user.destroy_current_event
         @event = Event.new(params[:event])
         if @event.valid?
           @event.menu = @menu
           current_user.event = @event
           @event.save
-          # params[:budget_per_person].clear
-          # params[:event].clear
-          # params[:items].clear
           redirect_to '/events/show'
         end
       else
@@ -62,7 +56,6 @@ class EventsController < ApplicationController
   end
 
   def custom_order
-    @items_checked
     if flash[:message]
       flash.keep
     end
