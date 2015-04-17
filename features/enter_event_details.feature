@@ -8,7 +8,7 @@ Scenario:
 	Given I am a new, authenticated user
 	And I am on the New Event page
 	And I fill in "Name" with "Wedding"
-	And I select "10" from "Budget Per Person"
+	And I select "12" from "Budget Per Person"
 	And I fill in "Head Count" with "100"
 	And I press "Create Event"
 	Then I should see "Customized Order Page"

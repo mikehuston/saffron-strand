@@ -11,7 +11,9 @@ class Admin::MenusController < ApplicationController
       redirect_to new_admin_menu_path
     else 
       items = params[:items].select {|k,v| v == '1'}.map {|k,v| k}
-      @menu = Menu.create(params[:menu])
+      @menu = Menu.new(params[:menu])
+      @menu.sample = true
+      @menu.save
       @menu.items = Item.find(items)
       redirect_to admin_menus_path
     end
