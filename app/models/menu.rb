@@ -7,8 +7,11 @@ class Menu < ActiveRecord::Base
   # validate :item_counts
 
   def self.sample_menus
-    # TODO: FIX THIS ONCE ADMIN IMPLEMENTED
-    Menu.all.select {|m| true}.to_a
+    Menu.all.select { |m| m.is_sample_menu? }.to_a
+  end
+
+  def is_sample_menu?
+    sample
   end
 
   def set_items item_ids
