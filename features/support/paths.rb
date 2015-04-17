@@ -64,6 +64,9 @@ module NavigationHelpers
     when /^the admin settings add admin page/
       '/users/non_admin'
 
+    when /^the Custom Order page/
+      '/events/custom_order'
+
     else
       begin
         page_name =~ /^the (.*) page$/
