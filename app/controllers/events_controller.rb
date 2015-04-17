@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   def create
     session[:budget_per_person] = params[:event].delete :budget_per_person
     session[:event] = params[:event]
-    redirect_to '/events/custom_order'
+    redirect_to events_custom_order_path
   end
 
   def save_order
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
         @menu.save
         # This logic should be in a seperate method
         current_user.destroy_current_event
-        @event = Event.new(params[:event])
+        @event = Event.new(session[:event])
         if @event.valid?
           @event.menu = @menu
           current_user.event = @event
@@ -190,6 +190,13 @@ class EventsController < ApplicationController
     # @items_bev = @menu.items.where(food_type: 'Beverage')
   end
 
+  def view_saved
+    if current_user.event
+      @event = current_user.event
+    else
+      redirect_to events_custom_order_path
+    end
+  end
 
   def update
     @menu = current_user.event.menu

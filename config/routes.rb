@@ -4,6 +4,7 @@ Saffron::Application.routes.draw do
 
   get "/events/custom_order", to: "events#custom_order"
   post "/events/save_order", to: "events#save_order"
+  get "/events/view_saved", to: "events#view_saved"
 
   namespace :admin do
     resources :items, :menus, :events
