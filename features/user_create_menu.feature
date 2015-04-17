@@ -32,15 +32,33 @@ Background: items have been added to the database
   | Juice          | medium  | Dinner   | 3     | Beverage  |
   | Cream          | medium  | Dinner   | 4     | Dessert   |
 
-Scenario: Should be able to see 7$ menu items
-  Given budget per person is 7
-  And I am on the Customized Order Page
-  Then I should see 6 items with food_type "Appetizer"
-  Then I should see 2 items with food_type "Meat"
-  Then I should see 4 items with food_type "Veg"
-  Then I should not see "Beverage"
-  Then I should not see "Dessert"
-  Then I should not see "Salad/B"
+  Given I am a user with email "user@test.com" and password "user1234"
+  And I am on the New Event page
+  And I fill in "Name" with "Wedding"
+  And I select "8" from "Budget Per Person"
+  And I fill in "Head Count" with "100"
+  And I press "Create Event"
+  Then I should be on the Custom Order page
+
+Scenario:
+  When I press "Save changes"
+  Then I should be on the Sign In page
+  When I fill in "Email" with "user@test.com"
+  And I fill in "Password" with "user1234"
+  And I press "Log in"
+  Then I should be on the Custom Order page
+  And I shouold see "Please select 2 Entrees"
+
+Scenario:
+  When I check "Red Thai"
+  And I check "Chinese"
+  When I press "Save changes"
+  Then I should be on the Sign In page
+  When I fill in "Email" with "user@test.com"
+  And I fill in "Password" with "user1234"
+  And I press "Log in"
+  Then I should be on the Custom Order page
+  And I shouold see "Please select 2 Entrees"
 
 Scenario: Should be able to see 8$ menu items
   Given budget per person is 8

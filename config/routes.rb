@@ -3,7 +3,7 @@ Saffron::Application.routes.draw do
   get "events/submit"
 
   get "/events/custom_order", to: "events#custom_order"
-  post "/events/save_order", to: "events#save_order"
+  match "/events/save_order", to: "events#save_order"
 
   namespace :admin do
     resources :items, :menus, :events

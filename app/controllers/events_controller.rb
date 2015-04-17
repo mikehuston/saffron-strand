@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     if not user_signed_in?
       session[:items] = @items
       session[:user_return_to] = '/events/save_order'
-      redirect_to new_user_session_path
+      redirect_to new_user_session_path and return
     else
       if not session[:items].nil?
         @items = session[:items]
@@ -30,17 +30,17 @@ class EventsController < ApplicationController
         @menu.save
         # This logic should be in a seperate method
         current_user.destroy_current_event
-        @event = Event.new(params[:event])
+        @event = Event.new(session[:event])
         if @event.valid?
           @event.menu = @menu
           current_user.event = @event
           @event.save
-          redirect_to '/events/show'
+          redirect_to '/events/show' and return
         end
       else
         # Fix up this logic to ensure correct message is shown.
         flash[:message] = @menu.errors.messages[:base].first
-        redirect_to '/events/custom_order'
+        redirect_to '/events/custom_order' and return
       end
     end
   end
