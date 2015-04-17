@@ -76,6 +76,8 @@ class EventsController < ApplicationController
       @desserts = 2
       @bev = 1
     end
+    @meat = 0
+    @veg = 0
     if @event.menu.save
       if @event.menu.items.where(food_type: 'Appetizer').count != @appetizers
         flash[:message] = "Please select the correct number of Appetizers!"
