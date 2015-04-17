@@ -16,7 +16,7 @@ class EventsController < ApplicationController
       session[:user_return_to] = '/events/save_order'
       redirect_to new_user_session_path
     else
-      if params[:items].nil? and not session[:items].nil?
+      if not session[:items].nil?
         @items = session[:items]
         session[:items].clear
         if not session[:user_return_to].nil?
@@ -31,14 +31,17 @@ class EventsController < ApplicationController
         # This logic should be in a seperate method
         if not current_user.event.nil?
          current_user.event.destroy
-         current_user.save
+         current_user.save!
         end
         @event = Event.new(params[:event])
         if @event.valid?
           @event.menu = @menu
           current_user.event = @event
           @event.save
-          redirect_to event_path(@event)
+          # params[:budget_per_person].clear
+          # params[:event].clear
+          # params[:items].clear
+          redirect_to '/events/show'
         end
       else
         # Fix up this logic to ensure correct message is shown.

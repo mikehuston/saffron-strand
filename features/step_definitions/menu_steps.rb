@@ -7,11 +7,12 @@ Given /a "(.*)" per person budget sample menu named "(.*)" exists with the follo
 end
 
 Given /a "(.*)" per person budget menu named "(.*)" exists with the following items/ do |budget_per_person, name, items_table|
-  menu = Menu.create! budget_per_person: budget_per_person.to_i, name: name
+  menu = Menu.new budget_per_person: budget_per_person.to_i, name: name
   items_table.hashes.each do |item_hash|
     item = Item.create! item_hash
     menu.items << item
   end
+  menu.save
 end
 
 Then /^I should see "(.*)" inside a menu table$/ do |text|

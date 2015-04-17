@@ -8,5 +8,5 @@ Scenario:
 	And I fill in "Head Count" with "100"
 	And I press "Create Event"
 	Then I should be on the Custom Order page
-	When I press "Update Menu"
+	When I press "Save changes"
 	Then I should be on the Custom Order page

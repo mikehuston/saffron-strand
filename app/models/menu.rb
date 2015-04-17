@@ -4,7 +4,7 @@ class Menu < ActiveRecord::Base
   has_and_belongs_to_many :items
   has_one :event
 
-  # validate :item_counts
+  validate :item_counts
 
   def self.sample_menus
     Menu.all.select { |m| m.is_sample_menu? }.to_a
