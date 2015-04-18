@@ -27,4 +27,10 @@ Scenario:
 	When I follow "Settings"
 	Then I should be on the Admin Settings page
 
+Scenario:
+	Then I logged out
+	Then I go to the Admin Settings page
+	Then I should be on the Sign In page
+
+
 

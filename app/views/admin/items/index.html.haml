@@ -3,7 +3,7 @@
   Include: 
   - @all_categories.each do |category|
     = category
-    = check_box_tag "category[#{category}]"
+    = check_box_tag "category[#{category}]", 1, @checked_categories.include?(category), :id => category
   = submit_tag 'Refresh'
 %table#items
   %thead
