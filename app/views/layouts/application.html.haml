@@ -25,18 +25,30 @@
             %span.icon-bar
             %span.icon-bar
           %a.navbar-brand Saffron Strand Catering
-        .collapse.navbar-collapse
-          %ul.nav.navbar-nav
-            %li{:class => "#{params[:controller] == 'welcome' ? 'active': ''}"}= link_to 'Home', '/home'
-            %li{:class => "#{params[:controller] == 'items' ? 'active': ''}"}= link_to 'Menu', '/menu'
-            %li{:class => "#{params[:controller] == 'menus' ? 'active': ''}"}= link_to 'Sample Menu', '/menus/sample_menus'
-            -if user_signed_in?
-              %li{:class => "#{params[:controller] == 'events' ? 'active': ''}"}= link_to 'My Orders', '/events/view_saved'
-              %li{:class => "#{params[:controller] == 'devise/registrations' ? 'active': ''}"}=link_to 'Edit registration', edit_user_registration_path
+        - if current_user != nil && current_user.admin? && params[:admin_view].nil?
+          .collapse.navbar-collapse
+            %ul.nav.navbar-nav
+              %li{:class => "#{params[:controller] == 'admin/welcome' ? 'active' : ''}"}= link_to 'Admin Home', '/admin/welcome'
+              %li{:class => "#{params[:controller] == 'admin/items' ? 'active' : ''}"}= link_to 'Menu', '/admin/items'
+              %li{:class => "#{params[:controller] == 'admin/menus' ? 'active' : ''}"}= link_to 'Sample Menu', '/admin/menus'
+              %li{:class => "#{params[:controller] == 'admin/events' ? 'active' : ''}"}= link_to 'Events', '/admin/events'
+              %li{:class => "#{params[:controller] == 'admin/settings' ? 'active' : ''}"}=link_to 'Settings', admin_settings_path
               %li= link_to 'Logout', destroy_user_session_path, :method => :delete
-            -else
-              %li{:class => "#{params[:controller] == 'devise/sessions' ? 'active': ''}"}= link_to 'Log In', new_user_session_path
-        / /.nav-collapse
+
+          / /.nav-collapse
+        - else
+          .collapse.navbar-collapse
+            %ul.nav.navbar-nav
+              %li{:class => "#{params[:controller] == 'welcome' ? 'active': ''}"}= link_to 'Home', '/home'
+              %li{:class => "#{params[:controller] == 'items' ? 'active': ''}"}= link_to 'Menu', '/menu'
+              %li{:class => "#{params[:controller] == 'menus' ? 'active': ''}"}= link_to 'Sample Menu', '/menus/sample_menus'
+              -if user_signed_in?
+                %li{:class => "#{params[:controller] == 'events' ? 'active': ''}"}= link_to 'My Orders', '/events/view_saved'
+                %li{:class => "#{params[:controller] == 'devise/registrations' ? 'active': ''}"}=link_to 'Edit registration', edit_user_registration_path
+                %li= link_to 'Logout', destroy_user_session_path, :method => :delete
+              -else
+                %li{:class => "#{params[:controller] == 'devise/sessions' ? 'active': ''}"}= link_to 'Log In', new_user_session_path
+          / /.nav-collapse
     %br
     %br
     %br

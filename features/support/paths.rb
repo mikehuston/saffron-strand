@@ -28,11 +28,23 @@ module NavigationHelpers
     when /^the Menu page/
       '/menu'
 
+    when /^the admin home page/
+      '/admin/welcome'
+
     when /^the Admin Items Index page/
       '/admin/items'
 
     when /^the Admin New Item page/
       '/admin/items/new'
+
+    when /^the Admin Menu page/
+      '/admin/items'
+
+    when /^the Admin Settings page/
+      '/admin/settings'
+
+    when /^the Admin Events page/
+      '/admin/events'
 
     when /^the details page for "(.*)"/
       @item = Item.find_by_name($1)
