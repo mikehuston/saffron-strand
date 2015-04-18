@@ -37,6 +37,9 @@ Scenario: I can save my order after customizing a menu and see it under My Order
   And I should see "Wedding"
   When I follow "Wedding"
   Then I should be on the Show Event page
+  And I should see "Submit Order"
+  When I follow "Submit Order"
+  Then I should be on the Confirmation page
 
 Scenario: I can save my order after customizing a menu and see it under My Orders
   And I select "7" from "Budget Per Person"

@@ -79,6 +79,9 @@ module NavigationHelpers
     when /^the Admin Events page/i
       '/admin/events'
 
+    when /^the confirmation page/i
+      '/events/submit'
+
     else
       begin
         page_name =~ /^the (.*) page$/
