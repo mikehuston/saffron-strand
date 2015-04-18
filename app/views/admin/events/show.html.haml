@@ -1,0 +1,14 @@
+%h3= "Event Name: #{@event.name}"
+%h5= "Head Count: #{@event.head_count}"
+%h5= "User Name: #{@event.user.name}"
+%h5= "User E-mail: #{@event.user.email}"
+-m = @event.menu
+%h4= "Name: #{m.name}"
+%h4= "Budget Per Person: #{m.budget_per_person}"
+%table.table.sample_menu
+	%tr
+		%th Item Name
+	-if not m.items.empty?
+		- m.items.each do |i|
+			%tr
+				%td= i.name
