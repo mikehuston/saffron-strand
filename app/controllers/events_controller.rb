@@ -1,13 +1,13 @@
 class EventsController < ApplicationController
 
-  before_filter :authenticate_user!
-  layout :user_or_admin_layout
+  before_filter :authenticate_user!, current_user.admin? ? session[:admin_view] = true : session[:admin_view] = false
+#  layout :user_or_admin_layout
 
 
-  private
-    def user_or_admin_layout
-      current_user.admin? ? "admin_application" : "application"
-    end
+#  private
+#    def user_or_admin_layout
+#      current_user.admin? ? "admin_application" : "application"
+#    end
 
   def create
   	budget_per_person = params[:event].delete :budget_per_person

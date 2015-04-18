@@ -1,5 +1,5 @@
 class Admin::MenusController < ApplicationController
-  layout "admin_application"
+  #layout "admin_application"
   before_filter :authenticate_user!
 
   def new
