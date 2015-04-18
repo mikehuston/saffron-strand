@@ -40,7 +40,7 @@ Background: items have been added to the database
   And I press "Create Event"
   Then I should be on the Custom Order page
 
-Scenario:
+Scenario: User submits empty custom order form
   When I press "Save Order"
   Then I should be on the Sign In page
   When I fill in "Email" with "user@test.com"
@@ -49,7 +49,7 @@ Scenario:
   Then I should be on the Custom Order page
   And I should see "Please select 2 Entrees"
 
-Scenario:
+Scenario: User correctly completes custom order form and saves order
   When I check "Red Thai"
   And I check "Chinese"
   When I press "Save Order"
@@ -61,7 +61,7 @@ Scenario:
   Then I should see "Red Thai"
   And I should see "Chinese"
 
-Scenario:
+Scenario: User selects too many items for a custom order
   When I check "Red Thai"
   And I check "Chinese"
   And I check "Indian"
