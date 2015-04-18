@@ -9,15 +9,15 @@ Background: items have been added to the database and event details page submitt
   | Red Thai       | medium  | Dinner   | 16    | Entree    |
   | Chinese        | medium  | Dinner   | 13    | Entree    |
   | Indian         | medium  | Dinner   | 15    | Entree    |
+
+Scenario: I can save my order after customizing a menu and see it under My Orders
   Given I am a new, authenticated user
   And I am on the New Event page
   And I fill in "Name" with "Wedding"
   And I select "8" from "Budget Per Person"
   And I fill in "Head Count" with "100"
   And I press "Create Event"
-
-Scenario: I can save my order after customizing a menu and see it under My Orders
-  Given I am on the Custom Order page
+  Then I should be on the Custom Order page
   When I check "Red Thai"
   And I check "Chinese"
   When I press "Save Order"
@@ -31,7 +31,11 @@ Scenario: I can save my order after customizing a menu and see it under My Order
   Then I should be on the Show Event page
 
 Scenario: Can only save order if signed in 
-  Given I am not logged in
-  And I am on the Customized Order page
+  Given I am on the New Event page
+  And I fill in "Name" with "Wedding"
+  And I select "8" from "Budget Per Person"
+  And I fill in "Head Count" with "100"
+  And I press "Create Event"
+  Then I should be on the Custom Order page
   And I press "Save Order"
-  Then I should be on the login page
+  Then I should be on the Sign In page

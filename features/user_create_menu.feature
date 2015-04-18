@@ -41,24 +41,37 @@ Background: items have been added to the database
   Then I should be on the Custom Order page
 
 Scenario:
-  When I press "Save changes"
+  When I press "Save Order"
   Then I should be on the Sign In page
   When I fill in "Email" with "user@test.com"
   And I fill in "Password" with "user1234"
   And I press "Log in"
   Then I should be on the Custom Order page
-  And I shouold see "Please select 2 Entrees"
+  And I should see "Please select 2 Entrees"
 
 Scenario:
   When I check "Red Thai"
   And I check "Chinese"
-  When I press "Save changes"
+  When I press "Save Order"
+  Then I should be on the Sign In page
+  When I fill in "Email" with "user@test.com"
+  And I fill in "Password" with "user1234"
+  And I press "Log in"
+  Then I should be on the Show Event page
+  Then I should see "Red Thai"
+  And I should see "Chinese"
+
+Scenario:
+  When I check "Red Thai"
+  And I check "Chinese"
+  And I check "Indian"
+  When I press "Save Order"
   Then I should be on the Sign In page
   When I fill in "Email" with "user@test.com"
   And I fill in "Password" with "user1234"
   And I press "Log in"
   Then I should be on the Custom Order page
-  And I shouold see "Please select 2 Entrees"
+  And I should see "Please select 2 Entrees"
 
 Scenario: Should be able to see 8$ menu items
   Given budget per person is 8
@@ -93,6 +106,3 @@ Scenario: Should be able to see 15$ menu items
   Then I should see 3 items with food_type "Side"
   Then I should see "Beverage"
   Then I should see "Dessert"
-
-
-
