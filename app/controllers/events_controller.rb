@@ -2,6 +2,8 @@ class EventsController < ApplicationController
 
   before_filter :authenticate_user!, only: [:show]
 
+  helper_method :parse_selected, :save_items_session, :get_items_session_and_reset, :assign_user_event
+
   def create
     session[:budget_per_person] = params[:event].delete :budget_per_person
     session[:event] = params[:event]
@@ -9,40 +11,23 @@ class EventsController < ApplicationController
   end
 
   def save_order
-    @items = params[:items].nil? ? {} : params[:items]
-    @items = @items.select {|k,v| v == '1'}.map {|k,v| k}
+    @items = parse_selected params[:items]
     if not user_signed_in?
-      session[:items] = @items
-      session[:user_return_to] = '/events/save_order'
-      redirect_to new_user_session_path
-    else
-      if not session[:items].nil?
-        @items = session[:items]
-        session.delete :items
-        if not session[:user_return_to].nil?
-          session.delete :user_return_to
-        end
-      end
-      # Do validation on session before getting here
-      @menu = Menu.new budget_per_person: session[:budget_per_person].to_i
-      @menu.items = Item.find(@items)
-      if @menu.valid?
-        @menu.save
-        # This logic should be in a seperate method
-        current_user.destroy_current_event
-        @event = Event.new(session[:event])
-        if @event.valid?
-          @event.menu = @menu
-          current_user.event = @event
-          @event.save
-          redirect_to '/events/show'
-        end
-      else
-        # Fix up this logic to ensure correct message is shown.
-        flash[:message] = @menu.errors.messages[:base].first
-        redirect_to '/events/custom_order'
-      end
+      save_items_session
+      redirect_to new_user_session_path and return
     end
+    if not session[:items].nil?
+      @items = get_items_session_and_reset
+    end
+    @menu = Menu.new budget_per_person: session[:budget_per_person].to_i
+    @menu.items = Item.find(@items)
+    if @menu.valid?
+      @menu.save
+      assign_user_event @menu
+      redirect_to '/events/show' and return
+    end
+    flash[:message] = @menu.errors.messages[:base].first
+    redirect_to '/events/custom_order'
   end
 
   def new
@@ -208,6 +193,34 @@ class EventsController < ApplicationController
     else
       redirect_to events_custom_order_path
     end
+  end
+
+  private
+
+  def parse_selected selected
+    items = selected.nil? ? {} : selected
+    items.select {|k,v| v == '1'}.map {|k,v| k}
+  end
+
+  def save_items_session
+    session[:items] = @items
+    session[:user_return_to] = '/events/save_order'
+  end
+
+  def get_items_session_and_reset
+    items = session[:items]
+    session.delete :items
+    if not session[:user_return_to].nil?
+      session.delete :user_return_to
+    end
+    items
+  end
+
+  def assign_user_event menu
+    current_user.destroy_current_event
+    event = Event.create session[:event]
+    event.menu = menu
+    current_user.event = event
   end
 
 end

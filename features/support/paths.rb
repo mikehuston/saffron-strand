@@ -37,14 +37,8 @@ module NavigationHelpers
     when /^the Admin New Item page/
       '/admin/items/new'
 
-    when /^the Admin Menu page/
-      '/admin/items'
-
     when /^the Admin Settings page/
       '/admin/settings'
-
-    when /^the Admin Events page/
-      '/admin/events'
 
     when /^the details page for "(.*)"/
       @item = Item.find_by_name($1)
