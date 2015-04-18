@@ -12,3 +12,5 @@ Scenario:
 	And I fill in "Head Count" with "100"
 	And I press "Create Event"
 	Then I should see "Customized Order Page"
+
+

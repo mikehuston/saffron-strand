@@ -73,6 +73,19 @@ Scenario: User selects too many items for a custom order
   Then I should be on the Custom Order page
   And I should see "Please select 2 Entrees"
 
+Scenario: Should see only appetizers for $7 budget
+  Given I am on the New Event page
+  And I fill in "Name" with "Party"
+  And I select "7" from "Budget Per Person"
+  And I fill in "Head Count" with "100"
+  And I press "Create Event"
+  Then I should be on the Custom Order Page
+  And I should not see "Entree(s)"
+  And I should see "6 Appetizer(s)"
+  And I should not see "Side(s)"
+  And I should not see "Dessert(s)"
+  And I should see "Chicken"
+
 Scenario: Should see only entrees for $8 budget
   Given I am on the New Event page
   And I fill in "Name" with "Wedding"
@@ -97,4 +110,15 @@ Scenario: Should see sides, entrees, appetizers, and desserts for $12 budget
   And I should see "1 Dessert(s)"
   And I should see "2 Side(s)"
 
+Scenario: Should see sides, entrees, appetizers, and desserts for $15 budget
+  Given I am on the New Event page
+  And I fill in "Name" with "Bar Mitzvah"
+  And I select "15" from "Budget Per Person"
+  And I fill in "Head Count" with "250"
+  And I press "Create Event"
+  Then I should be on the Custom Order Page
+  And I should see "4 Entree(s)"
+  And I should see "3 Appetizer(s)"
+  And I should see "2 Dessert(s)"
+  And I should see "3 Side(s)"
 
