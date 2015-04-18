@@ -6,34 +6,45 @@ Feature: Admin can view open orders
 Background:
 
 	Given a "8" per person budget menu named "Bob's Menu" exists with the following items:
-	  | name            | desc    | category | price | food_type |
-	  | Mac and Cheese  | organic | Lunch    | 4     | side      |
+	  | name            | desc    | category | price | food_type  |
+	  | Steak           | organic | Lunch    | 4     | Entree     |
+	  | Fish            | organic | Lunch    | 4     | Entree     |
 
-	Given a "10" per person budget menu named "Cat's Menu" exists with the following items:
-	  | name            | desc    | category | price | food_type |
-	  |Deli Sandwich    | turkey  | Lunch    | 7     | entree    |
+	Given a "12" per person budget menu named "Cat's Menu" exists with the following items:
+	  | name            | desc    | category | price | food_type  |
+	  | Deli Sandwich   | turkey  | Lunch    | 7     | Entree     |
+	  | Steak           | organic | Lunch    | 4     | Entree     |
+	  | Fish            | organic | Lunch    | 4     | Entree     |
+	  | Fries           | organic | Lunch    | 4     | Appetizer  |	 
+	  | Chicken Wings   | organic | Lunch    | 4     | Appetizer  |	 
+	  | Celery          | organic | Lunch    | 4     | Side       |
+  	  | Broccoli        | organic | Lunch    | 4     | Side       | 
+  	  | Cake            | organic | Lunch    | 4     | Dessert    | 
 
-	Given the following orders exist:
-	  | user                   | menu        | date_created |
-	  | bob@email.com          | Bob's Menu  |  04/01/2015  |
-	  | cat@email.com          | Cat's Menu  |  04/02/2015  |
+	Given the following users exist:
+	  | name | email         | password | password_confirmation |
+	  | Bob  | bob@email.com | password | password              |
+	  | Cat  | cat@email.com | password | password              |
+
+	Given the following events exist:
+	  | user                   | menu        |  name            | head_count |
+	  | bob@email.com          | Bob's Menu  |  Bob's Birthday  |     15     |
+	  | cat@email.com          | Cat's Menu  |  Cat's Wedding   |     20     |
 
 Scenario:
 	Given I am a new, authenticated user
-	And I am on the admin home page
-	When I follow "Orders"
-	Then I should be on the Admin Orders page
+	And I am on the Admin Events page
 	And I should see "bob@email.com"
-	And I should see "Bob's Menu"
+	And I should see "Bob's Birthday"
 	And I should see "cat@email.com"
-	And I should see "Cat's Menu"
+	And I should see "Cat's Wedding"
 
 Scenario:
 	Given I am a new, authenticated user
-	And I am on the Admin Orders page
-	And I press "Bob's Menu"
-	Then I should be on the menu details page for "Bob's Menu"
+	And I am on the Admin Events page
+	And I follow "Bob's Birthday"
 	And I should see "Budget Per Person: 8"
-	And I should see "Mac and Cheese" inside a menu table
+	And I should see "Steak" inside a menu table
+	And I should see "Fish" inside a menu table
 
 

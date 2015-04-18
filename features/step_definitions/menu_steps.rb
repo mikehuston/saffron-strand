@@ -12,7 +12,7 @@ Given /a "(.*)" per person budget menu named "(.*)" exists with the following it
     item = Item.create! item_hash
     menu.items << item
   end
-  menu.save
+  menu.save!
 end
 
 Then /^I should see "(.*)" inside a menu table$/ do |text|

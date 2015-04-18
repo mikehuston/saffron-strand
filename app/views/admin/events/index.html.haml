@@ -1,7 +1,8 @@
 %h1 Pending Events
 - @events.each do |e|
 	- if e.user
-		%h3= "Event Name: #{e.name}"
+		%h3= "Event Name:" 
+		=link_to "#{e.name}", admin_event_path(e.id)
 		%h5= "Head Count: #{e.head_count}"
 		%h5= "User Name: #{e.user.name}"
 		%h5= "User E-mail: #{e.user.email}"
