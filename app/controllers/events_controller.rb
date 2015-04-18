@@ -9,22 +9,23 @@ class EventsController < ApplicationController
   end
 
   def save_order
-    @items = params[:items].nil? ? [] : params[:items]
+    @items = params[:items].nil? ? {} : params[:items]
     @items = @items.select {|k,v| v == '1'}.map {|k,v| k}
     if not user_signed_in?
       session[:items] = @items
       session[:user_return_to] = '/events/save_order'
-      redirect_to new_user_session_path and return
+      redirect_to new_user_session_path
     else
+      flash[:message] = session[:items].to_s
       if not session[:items].nil?
         @items = session[:items]
-        session[:items].clear
+        session.delete :items
         if not session[:user_return_to].nil?
-          session[:user_return_to].clear
+          session.delete :user_return_to
         end
       end
       # Do validation on session before getting here
-      @menu = Menu.new budget_per_person: session[:budget_per_person]
+      @menu = Menu.new budget_per_person: session[:budget_per_person].to_i
       @menu.items = Item.find(@items)
       if @menu.valid?
         @menu.save
@@ -35,12 +36,12 @@ class EventsController < ApplicationController
           @event.menu = @menu
           current_user.event = @event
           @event.save
-          redirect_to '/events/show' and return
+          redirect_to '/events/show'
         end
       else
         # Fix up this logic to ensure correct message is shown.
         flash[:message] = @menu.errors.messages[:base].first
-        redirect_to '/events/custom_order' and return
+        redirect_to '/events/custom_order'
       end
     end
   end

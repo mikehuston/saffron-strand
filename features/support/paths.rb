@@ -28,11 +28,23 @@ module NavigationHelpers
     when /^the Menu page/
       '/menu'
 
+    when /^the admin home page/
+      '/admin/welcome'
+
     when /^the Admin Items Index page/
       '/admin/items'
 
     when /^the Admin New Item page/
       '/admin/items/new'
+
+    when /^the Admin Menu page/
+      '/admin/items'
+
+    when /^the Admin Settings page/
+      '/admin/settings'
+
+    when /^the Admin Events page/
+      '/admin/events'
 
     when /^the details page for "(.*)"/
       @item = Item.find_by_name($1)
@@ -46,31 +58,31 @@ module NavigationHelpers
       @menu = Menu.find_by_name($1)
       edit_admin_menu_path(@menu)
 
-    when /^the New Event page/
+    when /^the New Event page/i
       '/events/new'
 
-    when /^the sample menu page/
+    when /^the sample menu page/i
       '/menus/sample_menus'
 
-    when /^the New Sample Menu page/
+    when /^the New Sample Menu page/i
       '/admin/menus/new'
 
-    when /^the Admin Sample Menus page/
+    when /^the Admin Sample Menus page/i
       '/admin/menus'
 
-    when /^the admin settings add admin page/
+    when /^the admin settings add admin page/i
       '/users/non_admin'
 
-    when /^the Custom Order page/
+    when /^the Custom Order page/i
       '/events/custom_order'
 
-    when /^the Show Event page/
+    when /^the Show Event page/i
       '/events/show'
 
-    when /^the Saved Orders page/
+    when /^the Saved Orders page/i
       '/events/view_saved'
 
-    when /^the Admin Events page/
+    when /^the Admin Events page/i
       '/admin/events'
 
     else
