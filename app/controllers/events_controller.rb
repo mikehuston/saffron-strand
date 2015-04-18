@@ -16,7 +16,6 @@ class EventsController < ApplicationController
       session[:user_return_to] = '/events/save_order'
       redirect_to new_user_session_path
     else
-      flash[:message] = session[:items].to_s
       if not session[:items].nil?
         @items = session[:items]
         session.delete :items
