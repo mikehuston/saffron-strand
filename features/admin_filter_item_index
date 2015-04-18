@@ -1,0 +1,20 @@
+Feature: Admin can filter items in the admin items index 
+
+Background:
+  Given the following items exist:
+  | name                   | desc        | category 	| price |
+  | Tomato Soup            | organic     | Lunch		| 4     |
+  | Cereal                 | organic     | Breakfast	| 4     |
+  | Steak           	   | organic     | Dinner		| 4     |
+
+Scenario: add new food item to menu
+	Given I am a new, authenticated admin user
+	And I am on the Admin Items Index page
+	And I check "Lunch"
+	And I uncheck "Breakfast"
+	And I uncheck "Dinner"
+	And I press "Refresh"
+	Then the "Lunch" checkbox should be checked
+	Then I should see "Tomato Soup"
+	And I should not see "Cereal"
+	And I should not see "Steak"

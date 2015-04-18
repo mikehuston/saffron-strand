@@ -1,0 +1,12 @@
+Feature: Admin can view user view of item
+Background:
+  Given the following items exist:
+  | name                   | desc        | category 	| price |
+  | Tomato Soup            | organic     | Lunch		| 4     |
+
+Scenario: add new food item to menu
+	Given I am a new, authenticated admin user
+	And I am on the Admin Items Index page
+	And I follow "Show"
+	Then I should see "Tomato Soup"
+
