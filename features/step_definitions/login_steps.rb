@@ -1,5 +1,9 @@
 # Source: https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Cucumber
 
+Given /^I logged out/ do
+  click_link "Logout"
+end
+
 Given /^I am not authenticated$/ do
   visit('/users/sign_out') # ensure that at least
 end

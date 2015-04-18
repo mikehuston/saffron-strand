@@ -55,7 +55,7 @@ end
 
 ### GIVEN ###
 Given /^I am not logged in$/ do
-  visit '/users/sign_out'
+  visit destroy_user_session_path
 end
 
 Given /^I am logged in$/ do

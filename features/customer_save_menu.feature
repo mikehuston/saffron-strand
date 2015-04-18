@@ -30,8 +30,13 @@ Scenario: I can save my order after customizing a menu and see it under My Order
   When I follow "Wedding"
   Then I should be on the Show Event page
 
-Scenario: Can only save order if signed in 
-  Given I am not logged in
-  And I am on the Customized Order page
-  And I press "Save Order"
-  Then I should be on the login page
+Scenario: Can only save order if signed in
+  Given I logged out
+  And I am on the New Event page
+  And I fill in "Name" with "Wedding"
+  And I select "8" from "Budget Per Person"
+  And I fill in "Head Count" with "100"
+  And I press "Create Event"
+  Then I should be on the Custom Order page
+  When I press "Save Order"
+  Then I should be on the Sign In page
