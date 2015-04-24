@@ -15,7 +15,7 @@
     %script{:src => "http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"}
     %script{:src => "http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"}
   %body
-    .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+    .navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
       .container
         .navbar-header
           %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
@@ -24,7 +24,8 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.navbar-brand Saffron Strand Catering
+          %a.navbar-brand
+          = image_tag 'logo.png', :style => "margin: 5px; height: 35px"
         - if current_user != nil && current_user.admin? && params[:admin_view].nil?
           .collapse.navbar-collapse
             %ul.nav.navbar-nav
