@@ -1,5 +1,7 @@
 %h3 You selected this to be your custom menu:
 
+%h3= @event.name
+
 -@item_types.each do |type|
 	%h4= type + '(s):'
 	-@items_by_type[type].each do |item|
@@ -7,6 +9,7 @@
 		%br
 
 = link_to "Submit Order", "/events/submit"
+= button_to "Delete", event_path(@event), :method => :delete, :confirm => 'Are you sure?'
 
 / <h3> You selected this to be your custom menu: </h3>
 	
