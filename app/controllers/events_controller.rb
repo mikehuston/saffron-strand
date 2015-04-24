@@ -1,3 +1,5 @@
+require 'mandrill'
+
 class EventsController < ApplicationController
 
   before_filter :authenticate_user!, only: [:show]
@@ -35,6 +37,20 @@ class EventsController < ApplicationController
 
   def submit
     @name = current_user.name
+    mandrill = Mandrill::API.new env["MANDRILL_API_KEY"]
+    message = {  
+     :subject=> "Customer order",  
+     :from_name=> "Saffron Strand",  
+     :text=>"Hi message, how are you?",  
+     :to=>[  
+       {  
+         :email=> "mhuston955@gmail.com",  
+         :name=> "Recipient1"  
+       }  
+     ],    
+     :from_email=>"sender@yourdomain.com"  
+    }  
+    sending = m.messages.send message  
   end
 
   def edit
