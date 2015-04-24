@@ -131,56 +131,16 @@ class EventsController < ApplicationController
       @item_types = Menu.get_item_types @menu.budget_per_person
       @items_by_type = @menu.get_items_by_type
     end
+  end
 
-    # @menu = current_user.event.menu
-    # @event = current_user.event
-    # if @event.menu.budget_per_person == 7
-    #   @appetizers = 6
-    #   @meat = 2
-    #   @veg = 4
-    # end
-    # if @event.menu.budget_per_person == 8
-    #   @salb = 1
-    #   @entrees = 2
-    #   @veg = 1
-    #   @meat = 1
-    # end
-    # if @event.menu.budget_per_person == 12
-    #   @appetizers = 2
-    #   @salb = 1
-    #   @entrees = 3
-    #   @meat = 1
-    #   @veg = 1
-    #   @sides = 2
-    #   @desserts = 1
-    #   @bev = 1
-    # end
-    # if @event.menu.budget_per_person == 15
-    #   @appetizers = 3
-    #   @salb = 1
-    #   @entrees = 4
-    #   @meat = 1
-    #   @veg = 1
-    #   @sides = 3
-    #   @desserts = 2
-    #   @bev = 1
-    # end
-    # @items_appetizers = @menu.items.where(food_type: 'Appetizer')
-    # @items_salb = @menu.items.where(food_type: 'Salad/B')
-    # @items_entrees = @menu.items.where(food_type: 'Entree')
-    # @items_meat = @menu.items.where(food_type: 'Meat')
-    # @items_veg = @menu.items.where(food_type: 'Veg')
-    # @items_sides = @menu.items.where(food_type: 'Side')
-    # @items_desserts = @menu.items.where(food_type: 'Dessert')
-    # @items_bev = @menu.items.where(food_type: 'Beverage')
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to events_view_saved_path
   end
 
   def view_saved
-    if current_user.event
-      @event = current_user.event
-    else
-      redirect_to events_custom_order_path
-    end
+    @event = current_user.event ? current_user.event : Event.null_event
   end
 
   def update
