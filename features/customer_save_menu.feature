@@ -41,7 +41,7 @@ Scenario: I can save my order after customizing a menu and see it under My Order
   When I follow "Submit Order"
   Then I should be on the Confirmation page
 
-Scenario: Menu validations
+Scenario: I can save my order after customizing a menu and see it under My Orders
   And I select "7" from "Budget Per Person"
   And I fill in "Head Count" with "100"
   And I press "Create Event"
