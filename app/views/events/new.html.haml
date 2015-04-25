@@ -1,17 +1,23 @@
+= javascript_include_tag 'menu_structure'
+
 <h3> Please Enter your Event Details: </h3><br>
 
-= form_tag events_path, :method => :post do
+%row
+	%div.col-md-5
+		= form_tag events_path, :method => :post do
 
-	%p
-		= label :event, :name, 'Name'
-		= text_field :event, 'name'
+			%p
+				= label :event, :name, 'Name'
+				= text_field :event, 'name'
 
-	%p
-		= label :event, :head_count, 'Head Count'
-		= number_field :event, 'head_count'
+			%p
+				= label :event, :head_count, 'Head Count'
+				= number_field :event, 'head_count'
 
-	%p
-		= label :event, :budget_per_person, 'Budget Per Person'
-		= select :event, :budget_per_person, ['7', '8', '12', '15']
+			%p
+				= label :event, :budget_per_person, 'Budget Per Person'
+				= select :event, :budget_per_person, ['7', '8', '12', '15']
 
-	= submit_tag 'Create Event'
+			= submit_tag 'Create Event'
+	%div.col-md-7
+		%div#menuDisplay
