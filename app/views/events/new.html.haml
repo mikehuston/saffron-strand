@@ -3,7 +3,7 @@
 <h3> Please Enter your Event Details: </h3><br>
 
 %row
-	%div.col-md-5
+	%div.col-sm-5.col-md-5.col-lg-5
 		= form_tag events_path, :method => :post do
 
 			%p
@@ -19,5 +19,5 @@
 				= select :event, :budget_per_person, ['7', '8', '12', '15']
 
 			= submit_tag 'Create Event'
-	%div.col-md-7
+	%div.col-sm-7.col-md-7.col-md-7
 		%div#menuDisplay
