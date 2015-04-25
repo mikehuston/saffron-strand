@@ -12,11 +12,11 @@
 	-@item_types.each do |item_type|
 		%h4= 'Please select ' + @item_counts[item_type].to_s + ' ' + item_type + '(s) from the following:'
 		-@item_options[item_type].each do |item_option|
+			= check_box_tag "items[#{item_option.id}]", 1, false, :id => item_option.name
 			-if item_option.has_image?
 				= link_to item_option.name, item_path(item_option), :class => 'item'
 			-else
 				=item_option.name
-			= check_box_tag "items[#{item_option.id}]", 1, false, :id => item_option.name
 			%br
 	= submit_tag("Save Order", :data => (current_user and current_user.event ? {confirm: 'Are you sure?'} : nil))
 
