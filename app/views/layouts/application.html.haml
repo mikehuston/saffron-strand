@@ -24,7 +24,6 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.navbar-brand
           = image_tag 'logo.png', :style => "margin: 5px; height: 35px"
         - if current_user != nil && current_user.admin? && params[:admin_view].nil?
           .collapse.navbar-collapse
