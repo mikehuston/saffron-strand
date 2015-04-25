@@ -4,6 +4,14 @@ class ItemsController < ApplicationController
 		@items = Item.all
 	end
 
+	def show
+		@item = Item.find(params[:id])
+		if request.xhr?
+			render(:partial => 'item', :object => @item) and return
+		end
+		redirect_to :back
+	end
+
 	def breakfast
 		@items = Item.where(category: 'Breakfast')
 	end
