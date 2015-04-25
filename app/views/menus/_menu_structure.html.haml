@@ -1,0 +1,3 @@
+%h4= 'The $' + budgetpp.to_s + ' budget per person menu includes'
+-item_types.each do |item_type|
+	%h4= item_counts[item_type].to_s + ' ' + item_type + '(s)'
