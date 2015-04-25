@@ -1,5 +1,6 @@
 class Admin::ItemsController < ApplicationController
-  before_filter :authenticate_user!
+  # before_filter :authenticate_user!
+  # before_filter :authorize_admin
 
   def new
   end
