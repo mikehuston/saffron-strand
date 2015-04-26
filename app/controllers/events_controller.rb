@@ -31,6 +31,8 @@ class EventsController < ApplicationController
   end
 
   def new
+    @item_types = Menu.get_item_types @budget_per_person
+    @item_counts = Menu.get_item_counts @budget_per_person
   end
 
   def submit

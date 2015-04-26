@@ -1,5 +1,12 @@
 class MenusController < ApplicationController
 
+  def structure
+    @budgetpp = params[:budgetpp].to_i
+    @item_types = Menu.get_item_types @budgetpp
+    @item_counts = Menu.get_item_counts @budgetpp
+    render(:partial => 'menu_structure', :locals => {budgetpp: @budgetpp, item_types: @item_types, item_counts: @item_counts})
+  end
+
   def new
   end
 
