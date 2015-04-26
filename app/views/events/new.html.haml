@@ -1,23 +1,28 @@
 = javascript_include_tag 'menu_structure'
 
-<h3> Please Enter your Event Details: </h3><br>
+%h3 Tell Us About Your Event Details:
+%br
+
 
 %row
+
 	%div.col-sm-5.col-md-5.col-lg-5
+
 		= form_tag events_path, :method => :post do
+			.col-md-7
+				.form-group
+					= label :event, :name, 'Name'
+					= text_field :event, 'name', :class => "form-control", :placeholder => "Enter event name"
 
-			%p
-				= label :event, :name, 'Name'
-				= text_field :event, 'name'
+				.form-group
+					= label :event, :head_count, 'Head Count'
+					= number_field :event, 'head_count', :class => "form-control", :placeholder => "Enter head count"
 
-			%p
-				= label :event, :head_count, 'Head Count'
-				= number_field :event, 'head_count'
+				.form-group
+					= label :event, :budget_per_person, 'Budget Per Person'
+					= select :event, :budget_per_person, ['7', '8', '12', '15'], :class => "form-control"
 
-			%p
-				= label :event, :budget_per_person, 'Budget Per Person'
-				= select :event, :budget_per_person, ['7', '8', '12', '15']
-
-			= submit_tag 'Create Event'
+				= submit_tag 'Create Event', :class => "btn btn-default"
 	%div.col-sm-7.col-md-7.col-md-7
-		%div#menuDisplay
+		.col-md-7
+			%div#menuDisplay

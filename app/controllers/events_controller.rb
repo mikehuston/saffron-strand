@@ -26,7 +26,7 @@ class EventsController < ApplicationController
       assign_user_event @menu
       redirect_to '/events/show' and return
     end
-    flash[:message] = @menu.errors.messages[:base].first
+    flash[:danger] = @menu.errors.messages[:base].first
     redirect_to '/events/custom_order'
   end
 
