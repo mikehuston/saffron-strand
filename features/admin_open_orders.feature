@@ -31,8 +31,9 @@ Background:
 	  | bob@email.com          | Bob's Menu  |  Bob's Birthday  |     15     |
 	  | cat@email.com          | Cat's Menu  |  Cat's Wedding   |     20     |
 
+	Given I am a new, authenticated admin user
+
 Scenario:
-	Given I am a new, authenticated user
 	And I am on the Admin Events page
 	And I should see "bob@email.com"
 	And I should see "Bob's Birthday"
@@ -40,7 +41,6 @@ Scenario:
 	And I should see "Cat's Wedding"
 
 Scenario:
-	Given I am a new, authenticated user
 	And I am on the Admin Events page
 	And I follow "Bob's Birthday"
 	And I should see "Budget Per Person: 8"
