@@ -9,7 +9,7 @@ body {
     font-family:sans-serif;
 }
 
-#ck-button {
+.ck-button {
     margin:4px;
     background-color:#EFEFEF;
     border-radius:4px;
@@ -18,18 +18,18 @@ body {
     float:left;
 }
 
-#ck-button label {
+.ck-button label {
     float:left;
-    width:40.0em;
+    width:30.0em;
 }
 
-#ck-button label span {
+.ck-button label span {
     text-align:center;
     padding:3px 0px;
     display:block;
 }
 
-#ck-button input:checked + span {
+.ck-button input:checked + span {
     background-color:#B576AD;
     color:#fff;
 
