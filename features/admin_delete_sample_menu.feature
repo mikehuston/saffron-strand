@@ -5,7 +5,7 @@ Background:
 	Given a "8" per person budget sample menu named "Sample Lunch Menu" exists with the following items:
 	  | name            | desc    | category | price | food_type |
 	  | Mac and Cheese  | organic | Lunch    | 4     | Side      |
-	  | Deli Sandwich   | turkey  | Lunch    | 7     | Entree      |
+	  | Deli Sandwich   | turkey  | Lunch    | 7     | Entree    |
 
 	Scenario: add new food item to menu
 		Given I am a new, authenticated admin user
