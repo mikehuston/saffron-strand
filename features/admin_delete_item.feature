@@ -13,3 +13,11 @@ Scenario: delete existing food item from menu
 	When I press "Delete"
 	Then I should be on the Admin Items Index page
 	And I should not see "Tomato Soup"
+
+Scenario: delete from items index page
+	Given I am a new, authenticated admin user
+	And I am on the Admin Items Index page
+	Then I should see "Tomato Soup"
+	When I press "Delete"
+	Then I should be on the Admin Items Index page
+	And I should not see "Tomato Soup"

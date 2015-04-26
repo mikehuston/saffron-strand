@@ -13,7 +13,7 @@
 			= item_option.name
 			= check_box_tag "items[#{item_option.id}]", 1, false, :id => item_option.name
 			%br
-	= submit_tag("Save Order", :data => (current_user.event ? {confirm: 'Are you sure?'} : nil))
+	= submit_tag("Save Order", :data => (current_user.event ? {confirm: 'Successful submission of this form will delete your existing saved event order. Save new order?'} : nil))
 
 / <h2> Customized Order Page </h2>
 
