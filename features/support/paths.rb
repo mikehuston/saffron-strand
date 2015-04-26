@@ -28,7 +28,7 @@ module NavigationHelpers
     when /^the Menu page/i
       '/menu'
 
-    when /^the Admin Home page/i
+    when /^the admin home page/i
       '/admin/welcome'
 
     when /^the Admin Items Index page/i

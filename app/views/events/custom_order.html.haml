@@ -1,3 +1,5 @@
+= javascript_include_tag 'custom_order_images'
+
 %h2 Customized Order Page
 
 =@items
@@ -5,103 +7,23 @@
 -unless flash[:message].nil?
 	%font= flash[:message]
 
-= form_tag('/events/save_order') do
+%row
+	.col-sm-6.col-md-6.col-lg-6
+		= form_tag('/events/save_order') do
 
-	-@item_types.each do |item_type|
-		%h4= 'Please select ' + @item_counts[item_type].to_s + ' ' + item_type + '(s) from the following:'
-		-@item_options[item_type].each do |item_option|
-			= item_option.name
-			= check_box_tag "items[#{item_option.id}]", 1, false, :id => item_option.name
-			%br
-	= submit_tag("Save Order", :data => (current_user.event ? {confirm: 'Are you sure?'} : nil))
+			-@item_types.each do |item_type|
 
-/ <h2> Customized Order Page </h2>
+				%h4= 'Please select ' + @item_counts[item_type].to_s + ' ' + item_type + '(s) from the following:'
+				-@item_options[item_type].each do |item_option|
+					%a{:class => 'item', :href => '/items/' + item_option.id.to_s}
+						.ck-button
+							%label					
+								/ %input{:items => "#{item_option.id}", :type => "checkbox", :value => "1", :id => item_option.name}
+								= check_box_tag "items[#{item_option.id}]", 1, false, :id => item_option.name, :type => "checkbox", :class => "hidden"
+								%span
+									= item_option.name
+						%br
+			= submit_tag("Save Order", :data => (current_user and current_user.event ? {confirm: 'Are you sure?'} : nil))
+	.col-sm-6.col-md-6.col-lg-6
+		#displayImage
 
-/ <%= form_for @event.menu, url: events_custom_order_path, :method => :put, :multipart => true do |f| %>
-
-/ 	<% unless flash[:message].nil? %>
-/ 		<font color="red"> <%= flash[:message] %> </font>
-/ 	<% end %>
-
-/ 	<% if @appetizers != 0 %>
-/ 	<h4> Please select <%= @appetizers %> Appetizer(s) from the following: </h4>
-/ 	<% @items_appetizers.each do |item| %>
-/ 			<%= item.name %>
-/ 			<%= check_box_tag "items[#{item.id}]", 1, false, :id => item.name %> <br>
-			
-/ 	<% end %>
-/ 	<% end %>
-
-
-/ 	<% if @salb != 0 %>
-/ 	<h4> You will receive the following Salad/bread (Please tick to receive): </h4>
-/ 	<% @items_salb.each do |item| %>
-/ 			<%= item.name %>
-/ 			<%= check_box_tag "items[#{item.id}]", 1, false, :id => item.name %> <br>
-			
-/ 	<% end %>
-/ 	<% end %>
-
-
-/ 	<% if @entrees != 0 %>
-/ 	<h4> Please select <%= @entrees %> Entree(s) from the following: </h4>
-/ 	<% @items_entrees.each do |item| %>
-/ 			<%= item.name %>
-/ 			<%= check_box_tag "items[#{item.id}]", 1, false, :id => item.name %> <br>
-			
-/ 	<% end %>
-/ 	<% end %>
-
-
-/ 	<% if @meat != 0 %>
-/ 	<h4> Please select <%= @meat %> Meat(s) from the following: </h4>
-/ 	<% @items_meat.each do |item| %>
-/ 			<%= item.name %>
-/ 			<%= check_box_tag "items[#{item.id}]", 1, false, :id => item.name %> <br>
-			
-/ 	<% end %>
-/ 	<% end %>
-
-
-/ 	<% if @veg != 0 %>
-/ 	<h4> Please select <%= @veg %> Veg(s) from the following: </h4>
-/ 	<% @items_veg.each do |item| %>
-/ 			<%= item.name %>
-/ 			<%= check_box_tag "items[#{item.id}]", 1, false, :id => item.name %> <br>
-			
-/ 	<% end %>
-/ 	<% end %>
-
-
-/ 	<% if @sides != 0 %>
-/ 	<h4> Please select <%= @sides %> Side(s) from the following: </h4>
-/ 	<% @items_sides.each do |item| %>
-/ 			<%= item.name %>
-/ 			<%= check_box_tag "items[#{item.id}]", 1, false, :id => item.name %> <br>
-			
-/ 	<% end %>
-/ 	<% end %>
-
-
-/ 	<% if @desserts != 0 %>
-/ 	<h4> Please select <%= @desserts %> Dessert(s) from the following: </h4>
-/ 	<% @items_desserts.each do |item| %>
-/ 			<%= item.name %>
-/ 			<%= check_box_tag "items[#{item.id}]", 1, false, :id => item.name %> <br>
-			
-/ 	<% end %>
-/ 	<% end %>
-
-
-/ 	<% if @bev != 0 %>
-/ 	<h4> You will receive the following Beverages (Please tick to receive): </h4>
-/ 	<% @items_bev.each do |item| %>
-/ 			<%= item.name %>
-/ 			<%= check_box_tag "items[#{item.id}]", 1, false, :id => item.name %> <br>
-			
-/ 	<% end %>
-/ 	<% end %>
-
-/ 	<br>
-/ 	<%= f.submit %>
-/ 	<% end %>

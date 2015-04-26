@@ -1,5 +1,7 @@
 Saffron::Application.routes.draw do
 
+  get '/menus/structure/:budgetpp', to: 'menus#structure'
+
   get "events/submit"
 
   get "/events/custom_order", to: "events#custom_order"
@@ -16,7 +18,8 @@ Saffron::Application.routes.draw do
   get "/items/lunch", to: "items#lunch"
   get "/items/breakfast", to: "items#breakfast"
   get "/items/dinner", to: "items#dinner"
-  resources :items, :except => :show
+  
+  resources :items
   resources :events
   get "welcome/index"
   match '/home' => 'welcome#index'
