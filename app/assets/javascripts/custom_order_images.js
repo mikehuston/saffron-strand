@@ -1,6 +1,6 @@
 var ImagePopup = {
   setup: function() {
-    $('.item').mouseover(ImagePopup.getImageInfo);
+    $('.item a').click(ImagePopup.getImageInfo);
   }
   ,getImageInfo: function() {
     $.ajax({type: 'GET',
