@@ -3,8 +3,8 @@ Feature: admin can add and delete food items from menu
 Background: items have been added to the database
 
   Given the following items exist:
-  | name                   | desc        | category 	| price |
-  | Tomato Soup            | organic     | Lunch		| 4     |
+  | name                   | desc        | category 	| price | food_type |
+  | Tomato Soup            | organic     | Lunch		| 4     | Entree    |
 
 Scenario: delete existing food item from menu
 	Given I am a new, authenticated admin user

@@ -7,7 +7,7 @@ Background:
   Given a "8" per person budget sample menu named "Sample Lunch Menu" exists with the following items:
     | name            | desc    | category | price | food_type |
     | Mac and Cheese  | organic | Lunch    | 4     | side      |
-    | Deli Sandwich   | turkey  | Lunch    | 7     | meat      |
+    | Deli Sandwich   | turkey  | Lunch    | 7     | Entree      |
 
   Given a "8" per person budget menu named "My Real Lunch Menu" exists with the following items:
     | name            | desc    | category | price | food_type |

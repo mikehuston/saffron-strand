@@ -34,11 +34,11 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    @checked_categories = @all_categories = %w{Breakfast Lunch Dinner}
-    if params[:category]
-      @checked_categories = params[:category].keys
+    @checked_food_types = @all_food_types = %w{Appetizer Entree Sides Dessert}
+    if params[:food_type]
+      @checked_food_types = params[:food_type].keys
     end
-    @items = Item.where(:category => @checked_categories)
+    @items = Item.where(:food_type => @checked_food_types)
   end
 
   def show 
