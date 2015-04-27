@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.get_event_types
-  	['Breakfast','Brunch','Lunch','Dinner']
+  	['Cocktail Party','Breakfast','Brunch','Lunch','Dinner']
   end
 
   def self.null_event
