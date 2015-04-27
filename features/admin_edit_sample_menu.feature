@@ -25,7 +25,7 @@ Scenario: edit as an admin
 	And I check "Deli Sandwich"
 	And I press "Update Menu"
 	Then I should be on the Admin Sample Menus page
-	And I should see "Name: Sample Dinner Menu"
+	And I should see "Sample Dinner Menu"
 	And I should see "Budget Per Person: 15"
   	And I should not see "Mac and Cheese" inside a menu table
   	And I should see "Deli Sandwich" inside a menu table

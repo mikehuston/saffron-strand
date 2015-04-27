@@ -30,7 +30,9 @@ Background: items have been added to the database and event details page submitt
 
 Scenario: I can save my order after customizing a menu and see it under My Orders
   Given I am on the Saved Orders page
-  Then I should see "Delete"
+  Then I should see "Wedding"
+  When I follow "Wedding"
+  Then I should be on the Show Event page
   When I press "Delete"
-  I should not see "Wedding"
+  Then I should not see "Wedding"
   

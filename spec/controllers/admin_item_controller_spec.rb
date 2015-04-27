@@ -3,6 +3,7 @@ describe Admin::ItemsController do
 	 	before(:each) do
  		allow_message_expectations_on_nil
 		user = double('user')
+    user.stub(:admin?) { true }
 		allow(request.env['warden']).to receive(:authenticate!) { user }
 		allow(controller).to receive(:current_user) { user }
   end
