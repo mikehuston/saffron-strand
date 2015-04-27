@@ -16,13 +16,16 @@
 
 				%h4= 'Please select ' + @item_counts[item_type].to_s + ' ' + item_type + '(s) from the following:'
 				-@item_options[item_type].each do |item_option|
-					%a{:class => 'item', :href => '/items/' + item_option.id.to_s}
-						.ck-button
+					%div
+						.ck-button{style: 'display: inline-block; vertical-align: middle'}
 							%label					
 								/ %input{:items => "#{item_option.id}", :type => "checkbox", :value => "1", :id => item_option.name}
 								= check_box_tag "items[#{item_option.id}]", 1, false, :id => item_option.name, :type => "checkbox", :class => "hidden"
 								%span
 									= item_option.name
+						.item{style: 'display: inline-block'}
+							=link_to '/items/' + item_option.id.to_s do
+								%span.glyphicon.glyphicon-plus
 			= submit_tag "Save Order", :data => (current_user and current_user.event ? {confirm: 'Are you sure?'} : nil), :class => "btn btn-default"
 	.col-sm-6.col-md-6.col-lg-6
 		#displayImage

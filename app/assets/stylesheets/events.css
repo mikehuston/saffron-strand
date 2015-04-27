@@ -12,6 +12,7 @@ body {
 }
 
 .ck-button {
+    width: 80%;
     margin:4px;
     background-color:#EFEFEF;
     border-radius:4px;
