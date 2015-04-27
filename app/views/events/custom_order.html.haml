@@ -23,7 +23,7 @@
 								= check_box_tag "items[#{item_option.id}]", 1, false, :id => item_option.name, :type => "checkbox", :class => "hidden"
 								%span
 									= item_option.name
-			= submit_tag("Save Order", :data => (current_user and current_user.event ? {confirm: 'Are you sure?'} : nil))
+			= submit_tag "Save Order", :data => (current_user and current_user.event ? {confirm: 'Are you sure?'} : nil), :class => "btn btn-default"
 	.col-sm-6.col-md-6.col-lg-6
 		#displayImage
 
