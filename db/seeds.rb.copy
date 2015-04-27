@@ -69,8 +69,8 @@ end
 desserts = ["Blueberry Crumble",
 			"Lemon Bundt Cake"]
 
-desserts.each do |i|
-	Item.create name: i, food_type: 'Dessert'
+desserts.each do |d|
+	Item.create name: d, food_type: 'Dessert'
 end
 
 User.destroy_all :email =~ /@saffron.test/
