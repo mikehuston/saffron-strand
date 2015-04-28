@@ -45,7 +45,7 @@ Scenario: User submits empty custom order form
   Then I should be on the Sign In page
   When I fill in "Email" with "user@test.com"
   And I fill in "Password" with "user1234"
-  And I press "Log in"
+  And I press "Sign in"
   Then I should be on the Custom Order page
   And I should see "Please select 2 Entrees"
 
@@ -56,7 +56,7 @@ Scenario: User correctly completes custom order form and saves order
   Then I should be on the Sign In page
   When I fill in "Email" with "user@test.com"
   And I fill in "Password" with "user1234"
-  And I press "Log in"
+  And I press "Sign in"
   Then I should be on the Show Event page
   Then I should see "Red Thai"
   And I should see "Chinese"
@@ -69,7 +69,7 @@ Scenario: User selects too many items for a custom order
   Then I should be on the Sign In page
   When I fill in "Email" with "user@test.com"
   And I fill in "Password" with "user1234"
-  And I press "Log in"
+  And I press "Sign in"
   Then I should be on the Custom Order page
   And I should see "Please select 2 Entrees"
 

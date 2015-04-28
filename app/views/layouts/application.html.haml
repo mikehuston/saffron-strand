@@ -49,7 +49,7 @@
                 %li{:class => "#{params[:controller] == 'devise/registrations' ? 'active': ''}"}=link_to 'Edit registration', edit_user_registration_path
                 %li= link_to 'Logout', destroy_user_session_path, :method => :delete
               -else
-                %li{:class => "#{params[:controller] == 'devise/sessions' ? 'active': ''}"}= link_to 'Log In', new_user_session_path
+                %li{:class => "#{params[:controller] == 'devise/sessions' ? 'active': ''}"}= link_to 'Sign In', new_user_session_path
           / /.nav-collapse
     %br
     %br
