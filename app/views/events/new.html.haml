@@ -10,8 +10,8 @@
 		= form_tag events_path, :method => :post do
 			.col-md-7
 				.form-group
-					= label :event, :type, 'Event Type'
-					= select :event, :type, @event_types.each {|t| t}, {}, { :class => 'form-control' }
+					= label :event, :event_type, 'Event Type'
+					= select :event, :event_type, @event_types.each {|t| t}, {}, { :class => 'form-control' }
 				.form-group
 					= label :event, :head_count, 'Head Count'
 					= number_field :event, 'head_count', :class => "form-control", :placeholder => "Enter head count"
