@@ -43,49 +43,33 @@ end
 
 appetizers = ["Vegetable Plate",
 			"Fruit Plate",
-			"Cheese Plate",
-			"Chips and Salsa",
-			"Chicken and Shrimp Lumpia",
-			"Sundried Tomato and Basil Tea Sandwiches",
+			"Tuna Cutlets",
 			"Smoked Salmon Tea Sandwiches",
 			"Almond Chicken Salad Tea Sandwiches",
-			"Stuffed Mushrooms",
-			"Sweet and Sour Meatballs",
-			"Tuna Cutlets"]
+			"Sweet and Sour Meatballs"]
 
 appetizers.each do |i|
 	create_item_helper i, 'Appetizer'
 end
 
+fp = Item.find_by_name("Fruit Plate")
+fp.desc = "Wedges of fresh pineapple, cantaloupe, slicies of kiwis, berries and grapes."
+fp.save
+
 entrees = ["Roasted Chicken with Lemon Herb Sauce",
-		"Fiesta Shredded Chicken",
 		"Asian Flank Steak",
 		"Pork Carnitas",
-		"Polynesian Pulled Pork",
-		"Meat Lasagna",
 		"Vegetable Lasagna"]
 
 entrees.each do |i|
 	create_item_helper i, 'Entree'
 end
 
+afs = Item.find_by_name("Asian Flank Steak")
+afs.desc = "This entree is excellent for summer entertaining."
+afs.save
+
 sides = ["Spiced Green Beans",
-		"Almond Green Beans",
-		"Corn Casserole",
-		"Vegetarian Dirty Rice",
-		"Wild Rice with Mushrooms",
-		"Toasted Almond Currant Rice Pilaf",
-		"Indian Fried Rice",
-		"Pesto Pasta",
-		"Pasta al Pomodoro",
-		"Roasted Root Vegetables",
-		"Spinach Apple Salad",
-		"Sesame Peanut Noodle Salad",
-		"Cucumber Salad",
-		"Carrot Raisin Salad",
-		"Firecracker Salad",
-		"Cranberry Almond Salad",
-		"Tri-Color Slaw",
 		"Asian Style Slaw",
 		"Miso Cucumber Salad"]
 
@@ -94,11 +78,10 @@ sides.each do |i|
 end
 
 desserts = ["Blueberry Crumble",
-			"Peach Cobbler",
 			"Lemon Bundt Cake"]
 
-desserts.each do |d|
-	Item.create name: d, food_type: 'Dessert'
+desserts.each do |i|
+	Item.create name: i, food_type: 'Dessert'
 end
 
 User.destroy_all :email =~ /@saffron.test/

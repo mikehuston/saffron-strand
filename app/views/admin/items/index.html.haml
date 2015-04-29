@@ -4,8 +4,8 @@
   - @all_food_types.each do |food_type|
     = food_type
     = check_box_tag "food_type[#{food_type}]", 1, @checked_food_types.include?(food_type), :id => food_type
-  = submit_tag 'Refresh'
-%table#items
+  = submit_tag 'Refresh', class: 'btn btn-default'
+%table.table#items
   %thead
     %tr
       %th Title
@@ -24,6 +24,6 @@
         %td= item.desc
         %td= link_to "Show", admin_item_path(item)
         %td= link_to "Edit", edit_admin_item_path(item)
-        %td= button_to "Delete", admin_item_path(item), :method => :delete, :confirm => 'Are you sure?'
+        %td= button_to "Delete", admin_item_path(item), :method => :delete, :confirm => 'Are you sure?', class: 'btn btn-default'
 
 = link_to 'Add new item', new_admin_item_path

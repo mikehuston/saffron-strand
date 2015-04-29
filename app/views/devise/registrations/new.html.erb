@@ -3,12 +3,12 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
 <%= devise_error_messages! %>
 
-<div class="form-group">
+<!-- <div class="form-group">
     <%= f.label :name, class: "col-sm-2 control-label" %>
     <div class="col-sm-6">
         <%= f.text_field :name, class: "form-control",autofocus: true %>
     </div>
-</div>
+</div> -->
 
 <div class="form-group">
     <%= f.label :email, class: "col-sm-2 control-label" %>
@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="form-group">
+<!-- <div class="form-group">
   <%= f.label :phone_no, class: "col-sm-2 control-label" %>
   <div class="col-sm-6">
     <%= f.telephone_field :phone, autocomplete: "off", class: "form-control" %>
@@ -29,7 +29,7 @@
   <div class="col-sm-6">
     <%= f.text_field :address, autocomplete: "off", class: "form-control" %>
   </div>
-</div>
+</div> -->
 
 <div class="form-group">
     <%= f.label :password, class: "col-sm-2 control-label" %>

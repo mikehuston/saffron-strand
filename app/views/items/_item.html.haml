@@ -1,7 +1,8 @@
 
 %h4=item.name
+
 -if item.desc
-	=item.desc
+	%h5=item.desc
 
 -if item.has_image?
 	= image_tag item.image.url
