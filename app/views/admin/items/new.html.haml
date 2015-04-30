@@ -1,23 +1,32 @@
-%h1 Add new item
+%h2 Add new item
 
-= form_tag admin_items_path, :method => :post, :multipart => true do
+%div.col-sm-4.col-md-4.col-lg-4
 
-	= label :item, :name, 'Name'
-	= text_field :item, 'name'
+	= form_tag admin_items_path, :method => :post, :multipart => true do
 
-	= label :item, :desc, 'Description'
-	= text_field :item, 'desc'
+		.form-group
+		= label :item, :name, 'Name'
+		= text_field :item, 'name', :class => "form-control"
 
-	= label :item, :price, 'Price'
-	= number_field :item, 'price', :step => 0.01
+		.form-group
+		= label :item, :desc, 'Description'
+		= text_field :item, 'desc', :class => "form-control"
 
-	= label :item, :category, 'Category'
-	= select :item, :category, ['Breakfast', 'Lunch', 'Dinner']
+		.form-group
+		= label :item, :price, 'Price'
+		= number_field :item, 'price', :step => 0.01, :class => "form-control"
 
-	= label :item, :food_type, 'Type'
-	= select :item, :food_type, ['Appetizer', 'Entree', 'Side', 'Dessert']
+		.form-group
+		= label :item, :category, 'Category'
+		= select :item, :category, ['Breakfast', 'Lunch', 'Dinner'], {}, {:class => "form-control"}
 
-	= label :item, :image, 'Image'
-	= file_field :item, 'image'
+		.form-group
+		= label :item, :food_type, 'Type'
+		= select :item, :food_type, ['Appetizer', 'Entree', 'Side', 'Dessert'], {}, {:class => "form-control"}
 
-	= submit_tag 'Create Item'
+		.form-group
+		= label :item, :image, 'Image'
+		= file_field :item, 'image'
+
+	%br
+		= submit_tag 'Create Item', :class => "btn btn-default"
