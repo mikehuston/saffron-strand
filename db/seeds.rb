@@ -47,7 +47,10 @@ entrees = ["Roasted Chicken with Lemon Herb Sauce",
 		"Vegetable Lasagna",
 		"Apricot Chicken",
 		"Pumpkin Curry",
-		"Cashew Beef Stir Fry"]
+		"Cashew Beef Stir Fry",
+		"Chicken Pastry Puff",
+		"Eggplant Parmesan",
+		"Parsley and Garlic Fettuccine"]
 
 entrees.each do |i|
 	create_item_helper i, 'Entree', 'Dinner'
@@ -86,23 +89,38 @@ desserts.each do |d|
 end
 
 app_menu = Menu.create name: 'Sample Appetizer Menu', budget_per_person: 7, sample: true
-app_menu.items << Item.find_by_name(["Vegetable Plate", "Sundried Tomato and Basil Tea Sandwiches",
-							"Chips and Salsa", "Stuffed Mushrooms", "Chicken and Shrimp Lumpia", "Tuna Cutlets"])
+app_items = ["Vegetable Plate", "Sundried Tomato and Basil Tea Sandwiches",
+							"Chips and Salsa", "Stuffed Mushrooms", "Chicken and Shrimp Lumpia", "Tuna Cutlets"]
+app_items.each do |i|
+	app_menu.items << Item.find_by_name(i)
+end
 
 eight_menu = Menu.create name: 'Sample $8 Menu', budget_per_person: 8, sample: true
-eight_menu.items << Item.find_by_name(["Roasted Chicken with Lemon Herb Sauce", "Vegetable Lasagna"])
+eight_items = ["Roasted Chicken with Lemon Herb Sauce", "Vegetable Lasagna"]
+
+eight_items.each do |i|
+	eight_menu.items << Item.find_by_name(i)
+end
 
 twelve_menu = Menu.create name: 'Sample $12 Menu', budget_per_person: 12, sample: true
-twelve_menu.items << Item.find_by_name(["Sweet and Sour Meatballs", "Stuffed Mushrooms", "Tuna Cutlets",
+twelve_items = ["Sweet and Sour Meatballs", "Stuffed Mushrooms", "Tuna Cutlets",
 							"Apricot Chicken", "Pumpkin Curry", "Cashew Beef Stir Fry",
-							"Toasted Almond Currant Stir Fry", "Spiced Green Beans", "Peach Cobbler"])
+							"Toasted Almond Currant Rice Pilaf", "Spiced Green Beans", "Peach Cobbler"]
+
+twelve_items.each do |i|
+	twelve_menu.items << Item.find_by_name(i)
+end
 
 fifteen_menu = Menu.create name: 'Sample $15 Menu', budget_per_person: 15, sample: true
-fifteen_menu.items << Item.find_by_name(["Fruit Plate", "Cheese Plate", "Smoked Salmon Tea Sandwiches",
+fifteen_items = ["Fruit Plate", "Cheese Plate", "Smoked Salmon Tea Sandwiches",
 							"Asian Flank Steak", "Chicken Pastry Puff", "Eggplant Parmesan",
 							"Parsley and Garlic Fettuccine", "Roasted Root Vegetables",
 							"Cranberry Almond Salad", "Wild Rice with Mushrooms", "Lemon Bundt Cake",
-							"Peach Cobbler"])
+							"Peach Cobbler"]
+
+fifteen_items.each do |i|
+	fifteen_menu.items << Item.find_by_name(i)
+end
 
 User.destroy_all :email =~ /@saffron.test/
 User.create!(:email => 'testuser@saffron.test', :password => 'password', :password_confirmation => 'password')
