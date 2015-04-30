@@ -1,14 +1,31 @@
-%h3= "Event Name: #{@event.name}"
-%h5= "Head Count: #{@event.head_count}"
-%h5= "User Name: #{@event.user.name}"
-%h5= "User E-mail: #{@event.user.email}"
+%h2 Event Details
+
+%b Event Type: 
+="#{@event.event_type}"
+%br
+%b Head Count: 
+="#{@event.head_count}"
+%br
+%b User Name: 
+="#{@event.user.name}"
+%br
+%b User E-mail: 
+="#{@event.user.email}"
+%br
 -m = @event.menu
-%h4= "Name: #{m.name}"
-%h4= "Budget Per Person: #{m.budget_per_person}"
-%table.table.sample_menu
-	%tr
-		%th Item Name
-	-if not m.items.empty?
-		- m.items.each do |i|
-			%tr
-				%td= i.name
+%b= "Name: #{m.name}"
+%br
+%b Budget Per Person: 
+="#{m.budget_per_person}"
+%br
+%br
+
+%div.col-sm-5.col-md-5.col-lg-5
+
+	%table.table.sample_menu
+		%tr
+			%th Item Name
+		-if not m.items.empty?
+			- m.items.each do |i|
+				%tr
+					%td= i.name

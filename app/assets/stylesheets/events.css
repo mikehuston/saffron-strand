@@ -20,9 +20,14 @@ body {
     overflow:hidden;
 }
 
+.ck-button:hover {
+    background:#B0B0B0 ;
+}
+
 .ck-button label {
     width:40.0em;
 }
+
 
 .ck-button label span {
     text-align:center;

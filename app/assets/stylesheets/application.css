@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+h3 {
+    font-family: '‘Lato’', sans-serif;
+}
+

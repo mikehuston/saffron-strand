@@ -1,8 +1,9 @@
 %h1 Pending Events
+%table.table-striped
 - @events.each do |e|
 	- if e.user
-		%h3= "Event Name:" 
-		=link_to "#{e.name}", admin_event_path(e.id)
+		%h3= "Event Type: #{e.event_type}" 
 		%h5= "Head Count: #{e.head_count}"
 		%h5= "User Name: #{e.user.name}"
 		%h5= "User E-mail: #{e.user.email}"
+		=link_to "View Order Details", admin_event_path(e.id), :class => "btn btn-default"

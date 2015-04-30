@@ -2,7 +2,6 @@
 %html
   %head
     %title Saffron
-    = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     %meta{:charset => "utf-8"}
@@ -14,6 +13,9 @@
     / %link{:href => "starter-template.css", :rel => "stylesheet"}
     %script{:src => "http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"}
     %script{:src => "http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"}
+    = stylesheet_link_tag    "application", :media => "all"
+    %link{:href => "http://fonts.googleapis.com/css?family=Lato:400,400italic", :rel => "stylesheet", :type => "text/css"}
+
   %body
     .navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
       .container
@@ -29,7 +31,7 @@
           .collapse.navbar-collapse
             %ul.nav.navbar-nav
               %li{:class => "#{params[:controller] == 'admin/welcome' ? 'active' : ''}"}= link_to 'Admin Home', '/admin/welcome'
-              %li{:class => "#{params[:controller] == 'admin/items' ? 'active' : ''}"}= link_to 'Menu', '/admin/items'
+              %li{:class => "#{params[:controller] == 'admin/items' ? 'active' : ''}"}= link_to 'Menu Items', '/admin/items'
               %li{:class => "#{params[:controller] == 'admin/menus' ? 'active' : ''}"}= link_to 'Sample Menu', '/admin/menus'
               %li{:class => "#{params[:controller] == 'admin/events' ? 'active' : ''}"}= link_to 'Events', '/admin/events'
               %li{:class => "#{params[:controller] == 'admin/settings' ? 'active' : ''}"}=link_to 'Settings', admin_settings_path
@@ -47,7 +49,7 @@
                 %li{:class => "#{params[:controller] == 'devise/registrations' ? 'active': ''}"}=link_to 'Edit registration', edit_user_registration_path
                 %li= link_to 'Logout', destroy_user_session_path, :method => :delete
               -else
-                %li{:class => "#{params[:controller] == 'devise/sessions' ? 'active': ''}"}= link_to 'Log In', new_user_session_path
+                %li{:class => "#{params[:controller] == 'devise/sessions' ? 'active': ''}"}= link_to 'Sign In', new_user_session_path
           / /.nav-collapse
     %br
     %br
