@@ -30,8 +30,8 @@ Item.destroy_all
 # menu2.items << item7
 # menu2.items << item5
 
-def create_item_helper name, food_type
-	item = Item.create name: name, food_type: food_type
+def create_item_helper name, food_type, category
+	item = Item.create name: name, food_type: food_type, category: category
 	fname = 'app/assets/images/' + name.downcase.gsub(' ', '_') + '.jpg'
 	begin
 		item.image = Rails.root.join(fname).open
@@ -54,7 +54,7 @@ appetizers = ["Vegetable Plate",
 			"Tuna Cutlets"]
 
 appetizers.each do |i|
-	create_item_helper i, 'Appetizer'
+	create_item_helper i, 'Appetizer', 'Cocktail Party'
 end
 
 entrees = ["Roasted Chicken with Lemon Herb Sauce",
@@ -66,7 +66,7 @@ entrees = ["Roasted Chicken with Lemon Herb Sauce",
 		"Vegetable Lasagna"]
 
 entrees.each do |i|
-	create_item_helper i, 'Entree'
+	create_item_helper i, 'Entree', 'Dinner'
 end
 
 sides = ["Spiced Green Beans",
@@ -90,7 +90,7 @@ sides = ["Spiced Green Beans",
 		"Miso Cucumber Salad"]
 
 sides.each do |i|
-	create_item_helper i, 'Side'
+	create_item_helper i, 'Side', 'Lunch'
 end
 
 desserts = ["Blueberry Crumble",
@@ -98,7 +98,7 @@ desserts = ["Blueberry Crumble",
 			"Lemon Bundt Cake"]
 
 desserts.each do |d|
-	Item.create name: d, food_type: 'Dessert'
+	Item.create name: d, food_type: 'Dessert', category: 'Dinner'
 end
 
 User.destroy_all :email =~ /@saffron.test/
