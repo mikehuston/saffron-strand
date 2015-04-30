@@ -1,14 +1,16 @@
-- if not @sample_menus.nil?
-	- @sample_menus.each do |m|
+%div.col-sm-5.col-md-5.col-lg-5
 
-		%h4= "Name: #{m.name}"
-		%h4= "Budget Per Person: #{m.budget_per_person}"
-		%table.table.sample_menu
-			%tr
-				%th Item Name
-			-if not m.items.empty?
-				- m.items.each do |i|
-					%tr
-						%td= i.name
+	- if not @sample_menus.nil?
+		- @sample_menus.each do |m|
 
-= button_to "Get Started", new_event_path, :method => :get, :class => "btn btn-default"
+			%h4= "Name: #{m.name}"
+			%h4= "Budget Per Person: #{m.budget_per_person}"
+			%table.table.sample_menu
+				%tr
+					%th Item Name
+				-if not m.items.empty?
+					- m.items.each do |i|
+						%tr
+							%td= i.name
+
+	= button_to "Get Started", new_event_path, :method => :get, :class => "btn btn-default"
