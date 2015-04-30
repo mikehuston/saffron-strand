@@ -13,5 +13,5 @@
 					%tr
 						%td= item.name
 
-	= link_to "Submit Order", "/events/submit", :class => "btn btn-default"
+	= link_to "Submit Order", events_submit_path(@event_info), :class => "btn btn-default"
 	= button_to "Cancel Order", event_path(@event), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-default"
