@@ -104,3 +104,5 @@ end
 User.destroy_all :email =~ /@saffron.test/
 User.create!(:email => 'testuser@saffron.test', :password => 'password', :password_confirmation => 'password')
 User.create!(:email => 'testadmin@saffron.test', :password => 'password', :password_confirmation => 'password', :admin => true)
+
+Menu.create!(:name => "Appetizer Galore", :budget_per_person => 7, :sample => true)

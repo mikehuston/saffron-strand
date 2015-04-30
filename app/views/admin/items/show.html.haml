@@ -2,21 +2,22 @@
 
 %ul
 	%li
-		Description:
+		%b Description:
 		= @item.desc
 	%li
-		Price:
+		%b Price:
 		= @item.price
 	%li
-		Category:
+		%b Category:
 		= @item.category
 	%li
-		Type:
+		%b Type:
 		= @item.food_type
 	%li
-		Image:
+		%b Image:
+		%br
 		= image_tag @item.image.url
 
-= link_to 'Edit', edit_admin_item_path(@item)
-= button_to 'Delete', admin_item_path(@item), :method => :delete, :confirm => 'Are you sure?'
-= link_to 'Back to items', admin_items_path
+= link_to 'Edit', edit_admin_item_path(@item), :class => "btn btn-default"
+= button_to 'Delete', admin_item_path(@item), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-default"
+= link_to 'Back to items', admin_items_path, :class => "btn btn-default"

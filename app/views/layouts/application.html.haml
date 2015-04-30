@@ -31,7 +31,7 @@
           .collapse.navbar-collapse
             %ul.nav.navbar-nav
               %li{:class => "#{params[:controller] == 'admin/welcome' ? 'active' : ''}"}= link_to 'Admin Home', '/admin/welcome'
-              %li{:class => "#{params[:controller] == 'admin/items' ? 'active' : ''}"}= link_to 'Menu', '/admin/items'
+              %li{:class => "#{params[:controller] == 'admin/items' ? 'active' : ''}"}= link_to 'Menu Items', '/admin/items'
               %li{:class => "#{params[:controller] == 'admin/menus' ? 'active' : ''}"}= link_to 'Sample Menu', '/admin/menus'
               %li{:class => "#{params[:controller] == 'admin/events' ? 'active' : ''}"}= link_to 'Events', '/admin/events'
               %li{:class => "#{params[:controller] == 'admin/settings' ? 'active' : ''}"}=link_to 'Settings', admin_settings_path

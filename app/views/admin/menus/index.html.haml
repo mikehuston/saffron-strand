@@ -9,7 +9,7 @@
 			- m.items.each do |i|
 				%tr
 					%td= i.name
-	%td= link_to "Edit", edit_admin_menu_path(m)
+	%td= link_to "Edit", edit_admin_menu_path(m), :class => "btn btn-default"
 	%td= button_to "Delete", admin_menu_path(m), :method => :delete, :confirm => 'Are you sure?'
-
-= link_to 'Add new sample menu', new_admin_menu_path
+%br
+= link_to 'Add new sample menu', new_admin_menu_path, :class => "btn btn-default"
