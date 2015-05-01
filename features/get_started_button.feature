@@ -9,7 +9,7 @@ Scenario:
 	Then I should see a "Get Started" button
 	When I press "Get Started"
 	Then I should be on the New Event page
-	And I should see "Please Enter your Event Details"
+	And I should see "Tell us about your event"
 
 Scenario:
 	Given I am a new, authenticated user
@@ -17,4 +17,4 @@ Scenario:
 	Then I should see a "Get Started" button
 	When I press "Get Started"
 	Then I should be on the New Event page
-	And I should see "Please Enter your Event Details"
+	And I should see "Tell us about your event"

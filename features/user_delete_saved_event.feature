@@ -19,7 +19,7 @@ Background: items have been added to the database and event details page submitt
 
   Given I am a new, authenticated user
   And I am on the New Event page
-  And I fill in "Name" with "Wedding"
+  And I select "Cocktail Party" from "Event Type"
   And I select "8" from "Budget Per Person"
   And I fill in "Head Count" with "100"
   And I press "Create Event"
@@ -30,9 +30,9 @@ Background: items have been added to the database and event details page submitt
 
 Scenario: I can save my order after customizing a menu and see it under My Orders
   Given I am on the Saved Orders page
-  Then I should see "Wedding"
-  When I follow "Wedding"
+  Then I should see "Cocktail Party"
+  When I follow "Cocktail Party"
   Then I should be on the Show Event page
-  When I press "Delete"
-  Then I should not see "Wedding"
+  When I press "Cancel Order"
+  Then I should not see "Cocktail Party"
   
