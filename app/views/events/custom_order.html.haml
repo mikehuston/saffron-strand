@@ -28,5 +28,5 @@
 								%span.glyphicon.glyphicon-info-sign
 			= submit_tag "Save Order", :data => (current_user and current_user.event ? {confirm: 'Are you sure?'} : nil), :class => "btn btn-default"
 	.col-sm-6.col-md-6.col-lg-6
-		#displayImage
+		#displayImage{style: 'position: fixed'}
 

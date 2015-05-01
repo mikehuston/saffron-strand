@@ -8,21 +8,21 @@
 			%font{:color => "red"} 
 				=flash[:message]
 	
-%div.col-sm-4.col-md-4.col-lg-4
+	%div.col-sm-4.col-md-4.col-lg-4
 
-	.form-group
-		= label :menu, :name, 'Name'
-		= text_field :menu, 'name', :class => "form-control"
+		.form-group
+			= label :menu, :name, 'Name'
+			= text_field :menu, 'name', :class => "form-control"
 
-	.form-group
-		= label :menu, :budget_per_person, 'Budget Per Person'
-		= select :menu, :budget_per_person, ['7', '8', '12', '15'], {}, {:class => "form-control"}
+		.form-group
+			= label :menu, :budget_per_person, 'Budget Per Person'
+			= select :menu, :budget_per_person, ['7', '8', '12', '15'], {}, {:class => "form-control"}
 
-	%p Include items:
-	- Item.all.each do |item|
-		%div
-			= check_box_tag "items[#{item.id}]", 1, false, :id => item.name
-			= item.name
+		%p Include items:
+		- Item.all.each do |item|
+			%div
+				= check_box_tag "items[#{item.id}]", 1, false, :id => item.name
+				= item.name
 
-	%br 
-	= submit_tag 'Create Menu', :class => "btn btn-default"
+		%br 
+		= submit_tag 'Create Menu', :class => "btn btn-default"

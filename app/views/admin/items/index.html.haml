@@ -2,10 +2,16 @@
 
 = form_tag admin_items_path, :method => :get do
   %b Filter: 
+  %br
+  - @all_categories.each do |category|
+    = category
+    = check_box_tag "category[#{category}]", 1, @checked_categories.include?(category), :id => category
+  %br
   - @all_food_types.each do |food_type|
     = food_type
     = check_box_tag "food_type[#{food_type}]", 1, @checked_food_types.include?(food_type), :id => food_type
   \&nbsp&nbsp&nbsp&nbsp
+  %br
   = submit_tag 'Refresh', :class => "btn btn-default"
 
 %br
@@ -14,15 +20,17 @@
   %thead
     %tr
       %th Title
+      %th Category
       %th Type
       %th Description
       %th More Info
       %th 
       %th
   %tbody
-    - @items.each do |item|
+    -@items.each do |item|
       %tr
         %td= item.name 
+        %td= item.category
         %td= item.food_type
         %td= item.desc
         %td= link_to "Show", admin_item_path(item), :class => "btn btn-default"
