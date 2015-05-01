@@ -88,6 +88,14 @@ desserts.each do |d|
 	Item.create name: d, food_type: 'Dessert', category: 'Dinner'
 end
 
+breakfast = ["Hot Spinach and Cheese Sandwich", "Hot Egg and Cheese Sandwich",
+			"Pastry Assortment", "Bagels and spread", "Yogurt Parfait"]
+
+breakfast.each do |b|
+	Item.create name: b, food_type: 'Entree', category: 'Breakfast', desc: b + ' plus more'
+end
+
+
 app_menu = Menu.create name: 'Sample Appetizer Menu', budget_per_person: 7, sample: true
 app_items = ["Vegetable Plate", "Sundried Tomato and Basil Tea Sandwiches",
 							"Chips and Salsa", "Stuffed Mushrooms", "Chicken and Shrimp Lumpia", "Tuna Cutlets"]

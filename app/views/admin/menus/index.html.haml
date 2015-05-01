@@ -1,8 +1,16 @@
-- Menu.sample_menus.each do |m|
+%h2 Sample Menus 
+%p Here are some sample menus to give you an idea of what kind of menus you can build!
 
-	%h3= m.name
-	%h3= "Budget Per Person: #{m.budget_per_person}"
-	%div.col-sm-5.col-md-5.col-lg-5
+
+= link_to '+ Add new sample menu', new_admin_menu_path, :class => "btn btn-default"
+%br
+%br
+.col-md-6.col-lg-6
+
+	- Menu.sample_menus.each do |m|
+
+		%h3= m.name
+		%h3= "Budget Per Person: #{m.budget_per_person}"
 
 		%table.table.sample_menu
 			%tr
@@ -14,4 +22,3 @@
 		%td= link_to "Edit", edit_admin_menu_path(m), :class => "btn btn-default"
 		%td= button_to "Delete", admin_menu_path(m), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-default"
 		%br
-		= link_to 'Add new sample menu', new_admin_menu_path, :class => "btn btn-default"
