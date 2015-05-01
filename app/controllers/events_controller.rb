@@ -37,6 +37,8 @@ class EventsController < ApplicationController
   end
 
   def submit
+    current_user.event.status = 'new'
+    current_user.event.save!
     @name = current_user.name
   end
 

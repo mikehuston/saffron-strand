@@ -1,18 +1,24 @@
 Saffron::Application.routes.draw do
 
+  get "admin/process"
+
   get '/menus/structure/:budgetpp', to: 'menus#structure'
 
   get "events/submit"
+  
 
   get "/events/custom_order", to: "events#custom_order"
   match "/events/save_order", to: "events#save_order"
   get "/events/view_saved", to: "events#view_saved"
   get "/admin/settings", to: "admin/settings#index"
   get "/admin/welcome", to: "admin/welcome#index"
-
+  get "/admin/events/change/:id", to: "admin/events#change"
+  get "/admin/events/finalize/:id", to: "admin/events#finalize"
   namespace :admin do
     resources :items, :menus, :events
   end
+
+
 
   devise_for :users
   get "/items/lunch", to: "items#lunch"

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def authorize_admin
   	if controller_path =~ /admin/
 	    authenticate_user!
-    	redirect_to(root_path) unless current_user.admin?
+    	#redirect_to(root_path) unless current_user.admin?
     end
   end
    
