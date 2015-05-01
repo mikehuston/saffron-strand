@@ -13,8 +13,8 @@ Scenario:
 	Then I should be on the Admin Sample Menus page
 
 Scenario:
-	Then I should see "Menu"
-	When I follow "Menu"
+	Then I should see "Menu Items"
+	When I follow "Menu Items"
 	Then I should be on the Admin Items Index page
 
 Scenario:
