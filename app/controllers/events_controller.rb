@@ -38,22 +38,26 @@ class EventsController < ApplicationController
     @item_counts = Menu.get_item_counts @budget_per_person
   end
 
+  def email_body user
+    "Hi! \n \t #{user.name} has placed an order! Please go to saffronstrand.herokuapp.com/admin/events to view and process the order."
+  end
+
   def submit
     @name = current_user.name
-    mandrill = Mandrill::API.new env["MANDRILL_API_KEY"]
+    mandrill = Mandrill::API.new ENV["MANDRILL_API_KEY"]
     message = {  
      :subject=> "Customer order",  
      :from_name=> "Saffron Strand",  
-     :text=>"Hi message, how are you?",  
+     :text=>email_body(current_user),  
      :to=>[  
        {  
-         :email=> "mhuston955@gmail.com",  
-         :name=> "Recipient1"  
+         :email=> current_user.email,  
+         :name=> current_user.name 
        }  
      ],    
-     :from_email=>"sender@yourdomain.com"  
+     :from_email=>"Saffron@saffronstrand.com"  
     }  
-    sending = m.messages.send message  
+    sending = mandrill.messages.send message  
   end
 
   def edit
