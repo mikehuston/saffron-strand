@@ -1,7 +1,7 @@
 Feature: User can create custom menus
   As a user of the site
   When I create an event
-  There should be a field that denotes the 'type' of food, such as meats, starches, sides, etc.
+  There should be a field that denotes the 'type' of food, such as Entrees, starches, sides, etc.
 
 Background: items have been added to the database
   Given the following items exist:
@@ -10,8 +10,8 @@ Background: items have been added to the database
   | Crackers       | organic | Dinner   | 5     | Side      |
   | Oreo           | organic | Dinner   | 3     | Side      |
   | Mash Potato    | organic | Dinner   | 7     | Side      |
-  | Deli Sandwich  | turkey  | Dinner   | 7     | Meat      |
-  | Steak          | medium  | Dinner   | 11    | Meat      |
+  | Deli Sandwich  | turkey  | Dinner   | 7     | Entree    |
+  | Steak          | medium  | Dinner   | 11    | Entree    |
   | Chicken        | medium  | Dinner   | 5     | Appetizer |
   | Sticks         | medium  | Dinner   | 9     | Appetizer |
   | Fish           | medium  | Dinner   | 2     | Appetizer |
@@ -20,10 +20,10 @@ Background: items have been added to the database
   | Rooms          | medium  | Dinner   | 17    | Appetizer |
   | Beef           | medium  | Dinner   | 11    | Appetizer |
   | Rolls          | medium  | Dinner   | 5     | Appetizer |
-  | Mushrooms      | medium  | Dinner   | 9     | Veg       |
-  | Paneer         | medium  | Dinner   | 6     | Veg       |
-  | Okra           | medium  | Dinner   | 14    | Veg       |
-  | Tomato         | medium  | Dinner   | 12    | Veg       |
+  | Mushrooms      | medium  | Dinner   | 9     | Side      |
+  | Paneer         | medium  | Dinner   | 6     | Side      |
+  | Okra           | medium  | Dinner   | 14    | Side      |
+  | Tomato         | medium  | Dinner   | 12    | Side      |
   | Green          | medium  | Dinner   | 13    | Salad/B   |
   | Red            | medium  | Dinner   | 13    | Salad/B   |
   | Red Thai       | medium  | Dinner   | 16    | Entree    |
@@ -45,7 +45,7 @@ Scenario: User submits empty custom order form
   Then I should be on the Sign In page
   When I fill in "Email" with "user@test.com"
   And I fill in "Password" with "user1234"
-  And I press "Log in"
+  And I press "Sign in"
   Then I should be on the Custom Order page
   And I should see "Please select 2 Entrees"
 
@@ -56,7 +56,7 @@ Scenario: User correctly completes custom order form and saves order
   Then I should be on the Sign In page
   When I fill in "Email" with "user@test.com"
   And I fill in "Password" with "user1234"
-  And I press "Log in"
+  And I press "Sign in"
   Then I should be on the Show Event page
   Then I should see "Red Thai"
   And I should see "Chinese"
@@ -69,7 +69,7 @@ Scenario: User selects too many items for a custom order
   Then I should be on the Sign In page
   When I fill in "Email" with "user@test.com"
   And I fill in "Password" with "user1234"
-  And I press "Log in"
+  And I press "Sign in"
   Then I should be on the Custom Order page
   And I should see "Please select 2 Entrees"
 

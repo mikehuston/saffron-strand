@@ -1,0 +1,17 @@
+%h2
+  = meal_name
+  Items:
+%h3
+%table.table-striped
+  %tr
+    %th> Item
+    \   
+    %th Description
+  - @items.each do |item|
+    %tr
+      %td>
+        = item.name
+        \   
+      \   
+      = succeed "\u{a0}\u{a0}\u{a0}" do
+        %td= item.desc

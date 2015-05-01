@@ -1,0 +1,6 @@
+.panel.panel-default
+	.panel-heading
+		%h4.panel-title= 'The $' + budgetpp.to_s + ' budget per person menu includes:'
+	.panel-body
+		-item_types.each do |item_type|
+			%div= item_counts[item_type].to_s + ' ' + item_type + '(s)'

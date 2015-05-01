@@ -1,15 +1,17 @@
 - Menu.sample_menus.each do |m|
 
-	%h3= "Name: #{m.name}"
+	%h3= m.name
 	%h3= "Budget Per Person: #{m.budget_per_person}"
-	%table.table.sample_menu
-		%tr
-			%th Item Name
-		-if not m.items.empty?
-			- m.items.each do |i|
-				%tr
-					%td= i.name
-	%td= link_to "Edit", edit_admin_menu_path(m)
-	%td= button_to "Delete", admin_menu_path(m), :method => :delete, :confirm => 'Are you sure?'
+	%div.col-sm-5.col-md-5.col-lg-5
 
-= link_to 'Add new sample menu', new_admin_menu_path
+		%table.table.sample_menu
+			%tr
+				%th Item Name
+			-if not m.items.empty?
+				- m.items.each do |i|
+					%tr
+						%td= i.name
+		%td= link_to "Edit", edit_admin_menu_path(m), :class => "btn btn-default"
+		%td= button_to "Delete", admin_menu_path(m), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-default"
+		%br
+		= link_to 'Add new sample menu', new_admin_menu_path, :class => "btn btn-default"
