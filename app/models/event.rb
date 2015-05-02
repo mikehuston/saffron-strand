@@ -3,8 +3,6 @@ class Event < ActiveRecord::Base
   has_one :menu, :dependent => :destroy
   belongs_to :user
 
-<<<<<<< HEAD
-=======
   def show
   	"/events/show"
   end
@@ -25,5 +23,4 @@ class Event < ActiveRecord::Base
   	end
   	@@instance
   end
->>>>>>> iter4
 end

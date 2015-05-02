@@ -1,14 +1,5 @@
 %h3 Review your order:
 
-<<<<<<< HEAD
--@item_types.each do |type|
-	%h4= type + '(s):'
-	-@items_by_type[type].each do |item|
-		= item.name
-		%br
-
-= link_to "Submit Order", "/events/submit"
-=======
 %h4= @event.event_type
 
 %div.col-sm-5.col-md-5.col-lg-5
@@ -17,7 +8,6 @@
 		%table.table.sample_menu
 			%tr
 				%th= type + '(s):'
->>>>>>> iter4
 
 				-@items_by_type[type].each do |item|
 					%tr
