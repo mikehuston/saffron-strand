@@ -2,10 +2,9 @@ Saffron::Application.routes.draw do
 
   get '/menus/structure/:budgetpp', to: 'menus#structure'
 
-  get "/events/:event_info/submit", to: "events#submit", as: "events_submit"
+  get "events/submit"
 
-
-  get "/events/:event_info/custom_order", to: "events#custom_order", as: "events_custom_order"
+  get "/events/custom_order", to: "events#custom_order"
   match "/events/save_order", to: "events#save_order"
   get "/events/view_saved", to: "events#view_saved"
   get "/admin/settings", to: "admin/settings#index"
@@ -21,8 +20,7 @@ Saffron::Application.routes.draw do
   get "/items/dinner", to: "items#dinner"
   
   resources :items
-  resources :events, except: :show
-  get "/events/:event_info", to: "events#show", as: "events_show"
+  resources :events
   get "welcome/index"
   match '/home' => 'welcome#index'
   match '/menu' => 'items#index'
