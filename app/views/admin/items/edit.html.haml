@@ -1,23 +1,27 @@
-%h1= 'Edit "' + @item.name + '" Item'
+%h2= 'Edit "' + @item.name + '" Item'
 
 = form_tag admin_item_path(@item), :method => :put, :multipart => true do
 
-	= label :item, :name, 'Name'
-	= text_field :item, 'name'
+	%div.col-sm-4.col-md-4.col-lg-4
 
-	= label :item, :desc, 'Description'
-	= text_field :item, 'desc'
+		.form-group
+			= label :item, :name, 'Name'
+			= text_field :item, 'name', :class => "form-control"
 
-	= label :item, :price, 'Price'
-	= number_field :item, 'price', :step => 0.01
+		.form-group
+			= label :item, :desc, 'Description'
+			= text_field :item, 'desc', :class => "form-control"
 
-	= label :item, :category, 'Category'
-	= select :item, :category, ['Breakfast', 'Lunch', 'Dinner']
+		.form-group
+			= label :item, :category, 'Category'
+			= select :item, :category, ['Breakfast', 'Lunch', 'Dinner'], {}, {:class => "form-control"}
 
-	= label :item, :food_type, 'Type'
-	= select :item, :food_type, ['Meat', 'Starch', 'Side']
+		.form-group
+			= label :item, :food_type, 'Type'
+			= select :item, :food_type, ['Appetizer', 'Entree', 'Side', 'Dessert'], {}, {:class => "form-control"}
 
-	= label :item, :image, 'Image'
-	= file_field :item, 'image'
+		.form-group
+			= label :item, :image, 'Image'
+			= file_field :item, 'image'
 
-	= submit_tag 'Update Item Info'
+		= submit_tag 'Update Item Info', :class => "btn btn-default"

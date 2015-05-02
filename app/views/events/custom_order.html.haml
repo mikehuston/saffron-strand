@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 %h2 Customized Order Page
 
 =@items
@@ -92,17 +93,37 @@
 			
 / 	<% end %>
 / 	<% end %>
+=======
+= javascript_include_tag 'custom_order_images'
+>>>>>>> iter4
 
+%h2 Customized Order Page
 
-/ 	<% if @bev != 0 %>
-/ 	<h4> You will receive the following Beverages (Please tick to receive): </h4>
-/ 	<% @items_bev.each do |item| %>
-/ 			<%= item.name %>
-/ 			<%= check_box_tag "items[#{item.id}]", 1, false, :id => item.name %> <br>
-			
-/ 	<% end %>
-/ 	<% end %>
+%p
+	- flash.each do |type, msg|
+		%div{:class => "alert alert-#{type.to_sym == :notice ? "success" : type} fadeout", "data-dismiss" => "alert"}
+			%button.close &times;
+			= msg if msg.is_a?(String)
 
-/ 	<br>
-/ 	<%= f.submit %>
-/ 	<% end %>
+%row
+	.col-sm-6.col-md-6.col-lg-6
+		= form_tag('/events/save_order') do
+
+			-@item_types.each do |item_type|
+
+				%h4= 'Please select ' + @item_counts[item_type].to_s + ' ' + item_type + '(s) from the following:'
+				-@item_options[item_type].each do |item_option|
+					%div
+						.ck-button{style: 'display: inline-block; vertical-align: middle'}
+							%label					
+								/ %input{:items => "#{item_option.id}", :type => "checkbox", :value => "1", :id => item_option.name}
+								= check_box_tag "items[#{item_option.id}]", 1, false, :id => item_option.name, :type => "checkbox", :class => "hidden"
+								%span
+									= item_option.name
+						.item{style: 'display: inline-block'}
+							=link_to '/items/' + item_option.id.to_s do
+								%span.glyphicon.glyphicon-info-sign
+			= submit_tag "Save Order", :data => (current_user and current_user.event ? {confirm: 'Are you sure?'} : nil), :class => "btn btn-default"
+	.col-sm-6.col-md-6.col-lg-6
+		#displayImage{style: 'position: fixed'}
+

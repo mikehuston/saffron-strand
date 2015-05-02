@@ -26,11 +26,14 @@ class EventsController < ApplicationController
       assign_user_event @menu
       redirect_to '/events/show' and return
     end
-    flash[:message] = @menu.errors.messages[:base].first
+    flash[:danger] = @menu.errors.messages[:base].first
     redirect_to '/events/custom_order'
   end
 
   def new
+    @event_types = Event.get_event_types
+    @item_types = Menu.get_item_types @budget_per_person
+    @item_counts = Menu.get_item_counts @budget_per_person
   end
 
   def submit

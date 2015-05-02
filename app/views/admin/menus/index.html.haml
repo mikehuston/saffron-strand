@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 - Menu.sample_menus.each do |m|
 
 	%h3= "Name: #{m.name}"
@@ -13,3 +14,29 @@
 	%td= button_to "Delete", admin_menu_path(m), :method => :delete, :confirm => 'Are you sure?'
 
 = link_to 'Add new sample menu', new_admin_menu_path
+=======
+%h2 Sample Menus 
+%p Here are some sample menus to give you an idea of what kind of menus you can build!
+
+
+= link_to '+ Add new sample menu', new_admin_menu_path, :class => "btn btn-default"
+%br
+%br
+.col-md-6.col-lg-6
+
+	- Menu.sample_menus.each do |m|
+
+		%h3= m.name
+		%h3= "Budget Per Person: #{m.budget_per_person}"
+
+		%table.table.sample_menu
+			%tr
+				%th Item Name
+			-if not m.items.empty?
+				- m.items.each do |i|
+					%tr
+						%td= i.name
+		%td= link_to "Edit", edit_admin_menu_path(m), :class => "btn btn-default"
+		%td= button_to "Delete", admin_menu_path(m), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-default"
+		%br
+>>>>>>> iter4

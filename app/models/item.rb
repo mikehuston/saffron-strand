@@ -11,4 +11,9 @@ class Item < ActiveRecord::Base
     	access_type: ENV['dropbox_access_type']},
     :dropbox_visibility => 'public'
   validates_attachment_content_type :image, content_type: ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'] 
+
+  def has_image?
+    image and (image.url != '/images/original/missing.png')
+  end
+  
 end

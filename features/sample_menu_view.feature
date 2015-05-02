@@ -7,7 +7,7 @@ Background:
   Given a "8" per person budget sample menu named "Sample Lunch Menu" exists with the following items:
     | name            | desc    | category | price | food_type |
     | Mac and Cheese  | organic | Lunch    | 4     | side      |
-    | Deli Sandwich   | turkey  | Lunch    | 7     | meat      |
+    | Deli Sandwich   | turkey  | Lunch    | 7     | Entree      |
 
   Given a "8" per person budget menu named "My Real Lunch Menu" exists with the following items:
     | name            | desc    | category | price | food_type |
@@ -21,5 +21,5 @@ Scenario: I can see the items of the $8 preset menu
   Then I should see "Mac and Cheese" inside a menu table
   And I should see "Deli Sandwich" inside a menu table
   And I should see "Budget Per Person: 8"
-  And I should see "Name: Sample Lunch Menu"
+  And I should see "Sample Lunch Menu"
   And I should not see "My Real Lunch Menu"

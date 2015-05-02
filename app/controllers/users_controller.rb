@@ -16,8 +16,7 @@ class UsersController < ApplicationController
   private
 
   def authorize_admin
-    authenticate_user!
-    redirect_to(root_path) unless current_user.admin?
+    redirect_to(root_path) unless (current_user and current_user.admin?)
   end
 
 end

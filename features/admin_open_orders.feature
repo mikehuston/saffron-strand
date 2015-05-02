@@ -27,22 +27,22 @@ Background:
 	  | Cat  | cat@email.com | password | password              |
 
 	Given the following events exist:
-	  | user                   | menu        |  name            | head_count |
-	  | bob@email.com          | Bob's Menu  |  Bob's Birthday  |     15     |
-	  | cat@email.com          | Cat's Menu  |  Cat's Wedding   |     20     |
+	  | user                   | menu        |  event_type      | head_count |
+	  | bob@email.com          | Bob's Menu  |  Cocktail Party  |     15     |
+	  | cat@email.com          | Cat's Menu  |  Cocktail Party  |     20     |
+
+	Given I am a new, authenticated admin user
 
 Scenario:
-	Given I am a new, authenticated user
 	And I am on the Admin Events page
 	And I should see "bob@email.com"
-	And I should see "Bob's Birthday"
+	And I should see "Cocktail Party"
 	And I should see "cat@email.com"
-	And I should see "Cat's Wedding"
+	And I should see "Cocktail Party"
 
 Scenario:
-	Given I am a new, authenticated user
 	And I am on the Admin Events page
-	And I follow "Bob's Birthday"
+	And I follow "View Bob's Order Details"
 	And I should see "Budget Per Person: 8"
 	And I should see "Steak" inside a menu table
 	And I should see "Fish" inside a menu table

@@ -1,31 +1,42 @@
 %h1 All Recipes
+
 = form_tag admin_items_path, :method => :get do
-  Include: 
+  %b Filter: 
+  %br
   - @all_categories.each do |category|
     = category
     = check_box_tag "category[#{category}]", 1, @checked_categories.include?(category), :id => category
-  = submit_tag 'Refresh'
-%table#items
+  %br
+  - @all_food_types.each do |food_type|
+    = food_type
+    = check_box_tag "food_type[#{food_type}]", 1, @checked_food_types.include?(food_type), :id => food_type
+  %br
+  = submit_tag 'Refresh', :class => "btn btn-default"
+
+%br
+
+= link_to '+ Add new item', new_admin_item_path, :class => "btn btn-default"
+
+
+%table.table.table-striped#items
   %thead
     %tr
       %th Title
-      %th Price
       %th Category
       %th Type
       %th Description
       %th More Info
-      %th 
+      %th Edit
       %th
   %tbody
-    - @items.each do |item|
+    -@items.each do |item|
       %tr
         %td= item.name 
-        %td= item.price
         %td= item.category
         %td= item.food_type
         %td= item.desc
-        %td= link_to "Show", admin_item_path(item)
-        %td= link_to "Edit", edit_admin_item_path(item)
-        %td= button_to "Delete", admin_item_path(item), :method => :delete, :confirm => 'Are you sure?'
+        %td= link_to "Show", admin_item_path(item), :class => "btn btn-default"
+        %td= link_to "Edit", edit_admin_item_path(item), :class => "btn btn-default"
+        %td= button_to "Delete", admin_item_path(item), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-default"
 
-= link_to 'Add new item', new_admin_item_path
+%br
