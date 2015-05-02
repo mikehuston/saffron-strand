@@ -11,7 +11,7 @@
 %row
 	.col-sm-6.col-md-6.col-lg-6
 		= form_tag('/events/save_order') do
-
+			= hidden_field_tag(:event_info, @event_info)
 			-@item_types.each do |item_type|
 
 				%h4= 'Please select ' + @item_counts[item_type].to_s + ' ' + item_type + '(s) from the following:'
