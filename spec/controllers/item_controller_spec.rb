@@ -9,8 +9,9 @@ describe ItemsController do
 
 	describe 'index' do
 		it 'should call model method to get all items' do
-			Item.should_receive(:all)
+			
 			get :index
+			expect(response).to redirect_to(items_breakfast_path)
 		end
 	end
 	describe 'breakfast' do
