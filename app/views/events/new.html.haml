@@ -11,15 +11,14 @@
 			.col-md-7
 				.form-group
 					= label :event, :event_type, 'Event Type'
-					= select :event, :event_type, @event_types.each {|t| t}, {}, { :class => 'form-control' }
+					= select :event, :event_type, Category.names, {}, { :class => 'form-control' }
 				.form-group
 					= label :event, :head_count, 'Head Count'
 					= number_field :event, 'head_count', :class => "form-control", :placeholder => "Enter head count"
 
 				.form-group
 					= label :event, :budget_per_person, 'Budget Per Person'
-					= select :event, :budget_per_person, ['7', '8', '12', '15'], {}, {:class => "form-control"}
-
+					= select :event, :budget_per_person, MenuStructure.get_budgets, {}, {:class => "form-control"}
 
 
 				= submit_tag 'Create Event', :class => "btn btn-default"

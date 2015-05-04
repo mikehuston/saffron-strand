@@ -2,7 +2,12 @@ class MenuStructure < ActiveRecord::Base
   attr_accessible :event_type, :budget_per_person, :num_appetizers, :num_sides, :num_entrees, :num_desserts
 
   has_many :menus
-  
+  def self.find_menu_struct session
+    MenuStructure.where(:event_type => session[:event][:event_type], :budget_per_person => session[:budget_per_person].to_i).first
+  end
+  def self.get_budgets
+    MenuStructure.all.map {|item| item.budget_per_person}.uniq
+  end
 
   def get_item_types
     item_types = []
