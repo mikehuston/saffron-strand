@@ -50,10 +50,14 @@ class EventsController < ApplicationController
     if session[:event].nil? or session[:budget_per_person].nil?
       redirect_to '/events/new'
     end
-    @budget_per_person = session[:budget_per_person].to_i
-    @item_types = Menu.get_item_types @budget_per_person
-    @item_counts = Menu.get_item_counts @budget_per_person
-    @item_options = Menu.get_item_options @item_types
+    # @budget_per_person = session[:budget_per_person].to_i
+    # @item_types = Menu.get_item_types @budget_per_person
+    # @item_counts = Menu.get_item_counts @budget_per_person
+    # @item_options = Menu.get_item_options @item_types
+    menu_struct = MenuStructure.where(:event_type => session[:event][:event_type], :budget_per_person => session[:budget_per_person].to_i)
+    @item_types = menu_struct.get_item_types
+    @item_counts = menu_struct.get_item_counts
+    @item_options = menu_struct.get_item_options  
   end
 
   def show
