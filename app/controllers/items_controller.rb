@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
 	def index
-		@items = Item.all
+		redirect_to items_breakfast_path
 	end
 
 	def show

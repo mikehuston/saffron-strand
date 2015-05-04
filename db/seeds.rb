@@ -6,29 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
 User.destroy_all
 Event.destroy_all
 Menu.destroy_all
 Item.destroy_all
-
-# item1 = Item.create(name: 'Chicken Parm', desc: 'delish food', price: 10, category: 'Dinner', food_type: 'Meat')
-# item2 = Item.create(name: 'Eggs and Bacon', desc: 'American breakfast', price: 6, category: 'Breakfast', food_type: 'Meat')
-# item3 = Item.create(name: 'Roast Beef Sandwich', desc: 'better than Subway', price: 7, category: 'Lunch', food_type: 'Meat')
-# item4 = Item.create(name: 'Caesar Salad', desc: 'healthy side for your meal', price: 4, category: 'Dinner', food_type: 'Side')
-# item5 = Item.create(name: 'Filet Mignon', desc: 'grass fed beef', price: 12, category: 'Dinner', food_type: 'Meat')
-# item6 = Item.create(name: 'Mixed Green Salad', desc: 'healthy side for your meal', price: 4, category: 'Dinner', food_type: 'Side')
-# item7 = Item.create(name: 'Green Beans', desc: 'fresh and local', price: 4, category: 'Lunch', food_type: 'Side')
-
-# menu1 = Menu.create name: 'Sample $8 Menu', budget_per_person: 8, sample: true
-# menu1.items << item6
-# menu1.items << item7
-# menu1.items << item4
-
-# menu2 = Menu.create name: 'Sample $15 Menu', budget_per_person: 15, sample: true
-# menu2.items << item4
-# menu2.items << item7
-# menu2.items << item5
 
 def create_item_helper name, food_type, category
 	item = Item.create name: name, food_type: food_type, category: category
@@ -63,7 +44,13 @@ entrees = ["Roasted Chicken with Lemon Herb Sauce",
 		"Pork Carnitas",
 		"Polynesian Pulled Pork",
 		"Meat Lasagna",
-		"Vegetable Lasagna"]
+		"Vegetable Lasagna",
+		"Apricot Chicken",
+		"Pumpkin Curry",
+		"Cashew Beef Stir Fry",
+		"Chicken Pastry Puff",
+		"Eggplant Parmesan",
+		"Parsley and Garlic Fettuccine"]
 
 entrees.each do |i|
 	create_item_helper i, 'Entree', 'Dinner'
@@ -101,8 +88,48 @@ desserts.each do |d|
 	Item.create name: d, food_type: 'Dessert', category: 'Dinner'
 end
 
+breakfast = ["Hot Spinach and Cheese Sandwich", "Hot Egg and Cheese Sandwich",
+			"Pastry Assortment", "Bagels and spread", "Yogurt Parfait"]
+
+breakfast.each do |b|
+	Item.create name: b, food_type: 'Entree', category: 'Breakfast', desc: b + ' plus more'
+end
+
+
+app_menu = Menu.create name: 'Sample Appetizer Menu', budget_per_person: 7, sample: true
+app_items = ["Vegetable Plate", "Sundried Tomato and Basil Tea Sandwiches",
+							"Chips and Salsa", "Stuffed Mushrooms", "Chicken and Shrimp Lumpia", "Tuna Cutlets"]
+app_items.each do |i|
+	app_menu.items << Item.find_by_name(i)
+end
+
+eight_menu = Menu.create name: 'Sample $8 Menu', budget_per_person: 8, sample: true
+eight_items = ["Roasted Chicken with Lemon Herb Sauce", "Vegetable Lasagna"]
+
+eight_items.each do |i|
+	eight_menu.items << Item.find_by_name(i)
+end
+
+twelve_menu = Menu.create name: 'Sample $12 Menu', budget_per_person: 12, sample: true
+twelve_items = ["Sweet and Sour Meatballs", "Stuffed Mushrooms", "Tuna Cutlets",
+							"Apricot Chicken", "Pumpkin Curry", "Cashew Beef Stir Fry",
+							"Toasted Almond Currant Rice Pilaf", "Spiced Green Beans", "Peach Cobbler"]
+
+twelve_items.each do |i|
+	twelve_menu.items << Item.find_by_name(i)
+end
+
+fifteen_menu = Menu.create name: 'Sample $15 Menu', budget_per_person: 15, sample: true
+fifteen_items = ["Fruit Plate", "Cheese Plate", "Smoked Salmon Tea Sandwiches",
+							"Asian Flank Steak", "Chicken Pastry Puff", "Eggplant Parmesan",
+							"Parsley and Garlic Fettuccine", "Roasted Root Vegetables",
+							"Cranberry Almond Salad", "Wild Rice with Mushrooms", "Lemon Bundt Cake",
+							"Peach Cobbler"]
+
+fifteen_items.each do |i|
+	fifteen_menu.items << Item.find_by_name(i)
+end
+
 User.destroy_all :email =~ /@saffron.test/
 User.create!(:email => 'testuser@saffron.test', :password => 'password', :password_confirmation => 'password')
 User.create!(:email => 'testadmin@saffron.test', :password => 'password', :password_confirmation => 'password', :admin => true)
-
-Menu.create!(:name => "Appetizer Galore", :budget_per_person => 7, :sample => true)
