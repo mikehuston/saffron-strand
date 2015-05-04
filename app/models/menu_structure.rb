@@ -28,7 +28,7 @@ class MenuStructure < ActiveRecord::Base
     item_types.each do |type|
       items = Item.where(food_type: type)
       # categories = items.categories.where name: event_type
-      items = items.select |item| do
+      items = items.select do |item|
         categories = item.categories
         categories.include? event_type
       end

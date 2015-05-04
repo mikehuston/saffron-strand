@@ -11,7 +11,7 @@ class Admin::MenuStructuresController < ApplicationController
 
 	def create
   		@menu_structure = MenuStructure.create(params[:menu_structure])
-  		@x = params[:menu_structure]
+
   		redirect_to admin_menu_structures_path
 	end
 
