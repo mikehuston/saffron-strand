@@ -20,6 +20,7 @@ class EventsController < ApplicationController
       @items = get_items_session_and_reset
     end
     @menu = Menu.new budget_per_person: session[:budget_per_person].to_i
+    @menu.menu_structure = MenuStructure.where(:event_type => session[:event][:event_type], :budget_per_person => session[:budget_per_person].to_i)
     @menu.items = Item.find(@items)
     if @menu.valid?
       @menu.save
@@ -61,11 +62,11 @@ class EventsController < ApplicationController
   end
 
   def show
-    # Should we change this logic? not restful
     @event = current_user.event
     if @event and @event.menu
       @menu = @event.menu
-      @item_types = Menu.get_item_types @menu.budget_per_person
+      menu_struct = @menu.menu_structure
+      @item_types = menu_struct.get_item_types
       @items_by_type = @menu.get_items_by_type
     end
   end
