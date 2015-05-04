@@ -6,9 +6,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(params[:item])
-    if @item.valid?
-      @item.save
+    item = Item.new(params[:item])
+    item_categories = params[:categories].select {|k,v| v == '1'}.map {|k,v| k}
+    item.categories = item_categories.map {|category| Category.create(:name => category)}
+    if item.valid?
+      item.save
       flash[:notice] = 'Item created'
       redirect_to admin_items_path
     else
@@ -34,7 +36,7 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    @checked_categories = @all_categories = ['Cocktail Party', 'Breakfast', 'Brunch', 'Lunch', 'Dinner']
+    @checked_categories = @all_categories = Category.names
     @checked_food_types = @all_food_types = %w{Appetizer Entree Sides Dessert}
     if params[:category]
       @checked_categories = params[:category].keys
