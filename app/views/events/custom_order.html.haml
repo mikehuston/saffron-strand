@@ -2,12 +2,6 @@
 
 %h2 Customized Order Page
 
-%p
-	- flash.each do |type, msg|
-		%div{:class => "alert alert-#{type.to_sym == :notice ? "success" : type} fadeout", "data-dismiss" => "alert"}
-			%button.close &times;
-			= msg if msg.is_a?(String)
-
 %row
 	.col-sm-6.col-md-6.col-lg-6
 		= form_tag('/events/save_order') do
