@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150504192557) do
+ActiveRecord::Schema.define(:version => 20150504191139) do
+
+  create_table "categories", :force => true do |t|
+    t.string  "name"
+    t.integer "item_id"
+  end
 
   create_table "events", :force => true do |t|
     t.string  "event_type"
@@ -79,6 +84,10 @@ ActiveRecord::Schema.define(:version => 20150504192557) do
     t.text     "address"
     t.boolean  "admin"
     t.string   "key"
+    t.boolean  "cocktail"
+    t.boolean  "brunch"
+    t.boolean  "lunch"
+    t.boolean  "dinner"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
