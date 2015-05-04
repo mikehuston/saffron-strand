@@ -3,6 +3,7 @@ class Menu < ActiveRecord::Base
   # has_one :event
   has_and_belongs_to_many :items
   has_one :event
+  has_one :menu_structure
 
   validate :item_counts
 

@@ -1,6 +1,9 @@
 class MenuStructure < ActiveRecord::Base
   attr_accessible :event_type, :budget_per_person, :num_appetizers, :num_sides, :num_entrees, :num_desserts
 
+  has_many :menus
+  
+
   def get_item_types
     item_types = []
     if num_appetizers > 0
