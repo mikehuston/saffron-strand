@@ -13,5 +13,21 @@
 					%tr
 						%td= item.name
 
-	= link_to "Submit Order", "/events/submit", :class => "btn btn-default"
+	= form_tag "/events/submit", :method => :post do
+		.col-md-7
+			.form-group
+				= label :event, :phone_availability, 'Preferred time for follow-up call'
+				= select :event, :event_type, @event_types.each {|t| t}, {}, { :class => 'form-control' }
+			.form-group
+				= label :event, :head_count, 'Head Count'
+				= number_field :event, 'head_count', :class => "form-control", :placeholder => "Enter head count"
+
+			.form-group
+				= label :event, :budget_per_person, 'Budget Per Person'
+				= select :event, :budget_per_person, ['7', '8', '12', '15'], {}, {:class => "form-control"}
+
+
+
+			= submit_tag 'Submit Order', :class => "btn btn-default"
+
 	= button_to "Cancel Order", event_path(@event), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-default"
