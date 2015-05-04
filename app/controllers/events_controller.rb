@@ -44,17 +44,16 @@ class EventsController < ApplicationController
 
   def submit
     @name = current_user.name
+    admins = []
+    User.all_admins.each do |admin|
+      admins.push({:email => admin.email, :name => admin.name, :type => "to"})
+    end
     mandrill = Mandrill::API.new ENV["MANDRILL_API_KEY"]
     message = {  
      :subject=> "Customer order",  
      :from_name=> "Saffron Strand",  
      :text=>email_body(current_user),  
-     :to=>[  
-       {  
-         :email=> current_user.email,  
-         :name=> current_user.name 
-       }  
-     ],    
+     :to=>admins,    
      :from_email=>"Saffron@saffronstrand.com"  
     }  
     sending = mandrill.messages.send message  
