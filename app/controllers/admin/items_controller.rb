@@ -33,7 +33,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
     @checked_categories = @all_categories = ['Cocktail Party', 'Breakfast', 'Brunch', 'Lunch', 'Dinner']
     @checked_food_types = @all_food_types = %w{Appetizer Entree Sides Dessert}
     if params[:category]
