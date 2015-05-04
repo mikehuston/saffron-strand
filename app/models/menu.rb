@@ -37,7 +37,7 @@ class Menu < ActiveRecord::Base
   # Only want to run validation for custom_menu menus
   def item_counts
     if not sample
-      correct_item_counts = Menu.get_item_counts budget_per_person
+      correct_item_counts = menu_structure.get_item_counts
       actual_item_counts = Hash.new 0
       items.each {|item| actual_item_counts[item.food_type] += 1}
       correct_item_counts.each do |name, count|
