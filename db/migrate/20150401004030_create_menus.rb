@@ -4,6 +4,7 @@ class CreateMenus < ActiveRecord::Migration
 			t.string :name
 			t.integer :budget_per_person
 			t.references :event
+			t.references :menu_structure
 		end
 	end
 end

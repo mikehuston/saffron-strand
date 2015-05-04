@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20150504192557) do
     t.string  "name"
     t.integer "budget_per_person"
     t.integer "event_id"
+    t.integer "menu_structure_id"
     t.boolean "sample"
   end
 
