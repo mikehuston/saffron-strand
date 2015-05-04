@@ -11,7 +11,7 @@ Saffron::Application.routes.draw do
   get "/admin/welcome", to: "admin/welcome#index"
 
   namespace :admin do
-    resources :items, :menus, :events
+    resources :items, :menus, :events, :menu_structures
   end
 
   devise_for :users
