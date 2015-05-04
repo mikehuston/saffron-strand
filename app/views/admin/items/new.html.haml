@@ -13,10 +13,6 @@
 		= text_field :item, 'desc', :class => "form-control"
 
 		.form-group
-		= label :item, :price, 'Price'
-		= number_field :item, 'price', :step => 0.01, :class => "form-control"
-
-		.form-group
 		= label :item, :category, 'Category'
 		= select :item, :category, ['Breakfast', 'Lunch', 'Dinner'], {}, {:class => "form-control"}
 
