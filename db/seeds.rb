@@ -10,13 +10,14 @@ User.destroy_all
 Event.destroy_all
 Menu.destroy_all
 Item.destroy_all
+MenuStructure.destroy_all
 
 def create_item_helper name, food_type, categories
 	item = Item.create name: name, food_type: food_type
 	fname = 'app/assets/images/' + name.downcase.gsub(' ', '_') + '.jpg'
 	begin
+		item.categories = categories.map {|e| Category.create name: e}
 		item.image = Rails.root.join(fname).open
-		item.categories = categories.map {|e| Category.create name: e.name}
 		item.save!
 	rescue Exception => e
 		puts e
@@ -130,7 +131,10 @@ fifteen_items.each do |i|
 	fifteen_menu.items << Item.find_by_name(i)
 end
 
-MenuStructure.create! event_type: 'Lunch', budget_per_person: 8, num_entrees: 2
+Category.names.each do |name|
+	MenuStructure.create! event_type: name, budget_per_person: 7, num_appetizers: 6
+	MenuStructure.create! event_type: name, budget_per_person: 8, num_entrees: 2
+end
 
 User.destroy_all :email =~ /@saffron.test/
 User.create!(:email => 'testuser@saffron.test', :password => 'password', :password_confirmation => 'password')

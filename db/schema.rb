@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(:version => 20150504192557) do
   create_table "menu_structures", :force => true do |t|
     t.string  "event_type"
     t.integer "budget_per_person"
-    t.integer "num_appetizers"
-    t.integer "num_sides"
-    t.integer "num_entrees"
-    t.integer "num_desserts"
+    t.integer "num_appetizers",    :default => 0
+    t.integer "num_sides",         :default => 0
+    t.integer "num_entrees",       :default => 0
+    t.integer "num_desserts",      :default => 0
     t.integer "user_id"
   end
 

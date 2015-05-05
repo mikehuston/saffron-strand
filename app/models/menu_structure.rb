@@ -2,9 +2,11 @@ class MenuStructure < ActiveRecord::Base
   attr_accessible :event_type, :budget_per_person, :num_appetizers, :num_sides, :num_entrees, :num_desserts
 
   has_many :menus
-  def self.find_menu_struct session
-    MenuStructure.where(:event_type => session[:event][:event_type], :budget_per_person => session[:budget_per_person].to_i).first
+
+  def self.find_menu_struct event_type, budget_per_person
+    MenuStructure.where(:event_type => event_type, :budget_per_person => budget_per_person.to_i).first
   end
+
   def self.get_budgets
     MenuStructure.all.map {|item| item.budget_per_person}.uniq
   end
@@ -18,11 +20,11 @@ class MenuStructure < ActiveRecord::Base
     if num_sides > 0
       item_types << "Side"
     end
-    if num_desserts > 0
-      item_types << "Dessert"
-    end
     if num_entrees > 0
       item_types << "Entree"
+    end
+    if num_desserts > 0
+      item_types << "Dessert"
     end
     item_types
 
@@ -33,10 +35,9 @@ class MenuStructure < ActiveRecord::Base
     item_options = {}
     item_types.each do |type|
       items = Item.where(food_type: type)
-      # categories = items.categories.where name: event_type
       items = items.select do |item|
-        categories = item.categories
-        categories.include? event_type
+        categories_names = item.categories.map {|e| e.name}
+        categories_names.include? event_type
       end
       item_options[type] = items
     end
@@ -49,12 +50,12 @@ class MenuStructure < ActiveRecord::Base
       item_types["Appetizer"] = num_appetizers
     end
     if num_sides > 0
-      item_types["Entree"] = num_entrees
-    end
-    if num_desserts > 0
       item_types["Side"] = num_sides
     end
     if num_entrees > 0
+      item_types["Entree"] = num_entrees
+    end
+    if num_desserts > 0
       item_types["Dessert"] = num_desserts
     end
     item_types

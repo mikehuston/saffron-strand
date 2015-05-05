@@ -20,7 +20,7 @@ class EventsController < ApplicationController
       @items = get_items_session_and_reset
     end
     @menu = Menu.new budget_per_person: session[:budget_per_person].to_i
-    @menu.menu_structure = MenuStructure.find_menu_struct session
+    @menu.menu_structure = MenuStructure.find_menu_struct session[:event][:event_type], session[:budget_per_person]
     @menu.items = Item.find(@items)
     if @menu.valid?
       @menu.save
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
     if session[:event].nil? or session[:budget_per_person].nil?
       redirect_to '/events/new'
     end
-    menu_struct = MenuStructure.find_menu_struct session
+    menu_struct = MenuStructure.find_menu_struct session[:event][:event_type], session[:budget_per_person]
     @item_types = menu_struct.get_item_types
     @item_counts = menu_struct.get_item_counts
     @item_options = menu_struct.get_item_options  
