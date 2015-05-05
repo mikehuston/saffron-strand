@@ -34,7 +34,7 @@ Background: items have been added to the database
 
   Given I am a user with email "user@test.com" and password "user1234"
   And I am on the New Event page
-  And I fill in "Name" with "Wedding"
+  And I select "Cocktail Party" from "Event Type"
   And I select "8" from "Budget Per Person"
   And I fill in "Head Count" with "100"
   And I press "Create Event"
@@ -75,7 +75,7 @@ Scenario: User selects too many items for a custom order
 
 Scenario: Should see only appetizers for $7 budget
   Given I am on the New Event page
-  And I fill in "Name" with "Party"
+  And I select "Cocktail Party" from "Event Type"
   And I select "7" from "Budget Per Person"
   And I fill in "Head Count" with "100"
   And I press "Create Event"
@@ -88,7 +88,7 @@ Scenario: Should see only appetizers for $7 budget
 
 Scenario: Should see only entrees for $8 budget
   Given I am on the New Event page
-  And I fill in "Name" with "Wedding"
+  And I select "Cocktail Party" from "Event Type"
   And I select "8" from "Budget Per Person"
   And I fill in "Head Count" with "100"
   And I press "Create Event"
@@ -100,7 +100,7 @@ Scenario: Should see only entrees for $8 budget
 
 Scenario: Should see sides, entrees, appetizers, and desserts for $12 budget
   Given I am on the New Event page
-  And I fill in "Name" with "Sweet Sixteen"
+  And I select "Cocktail Party" from "Event Type"
   And I select "12" from "Budget Per Person"
   And I fill in "Head Count" with "200"
   And I press "Create Event"
@@ -112,7 +112,7 @@ Scenario: Should see sides, entrees, appetizers, and desserts for $12 budget
 
 Scenario: Should see sides, entrees, appetizers, and desserts for $15 budget
   Given I am on the New Event page
-  And I fill in "Name" with "Bar Mitzvah"
+  And I select "Cocktail Party" from "Event Type"
   And I select "15" from "Budget Per Person"
   And I fill in "Head Count" with "250"
   And I press "Create Event"

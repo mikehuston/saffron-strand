@@ -16,20 +16,20 @@ Background:
 	  | Bob  | bob@email.com | password | password              |
 
 	Given the following events exist:
-	  | user                   | menu        |  name            | head_count |
-	  | bob@email.com          | Bob's Menu  |  Bob's Birthday  |     15     |
+	  | user                   | menu        |  event_type            | head_count |
+	  | bob@email.com          | Bob's Menu  |  Cocktail Party			  |     15     |
 
 Scenario: User sees a pop up if he/she tries to save an order when a saved order exists
 	Given I am a new, authenticated user
 	And I am on the custom order page
-	And I fill in "Name" with "Bob's Wedding"
+	And I select "Cocktail Party" from "Event Type"
 	And I select "8" from "Budget Per Person"
-  	And I fill in "Head Count" with "100"
-  	And I press "Create Event"
-  	Given I am on the Custom Order page
-  	When I check "Steak"
-  	And I check "Fish"
+	And I fill in "Head Count" with "100"
+	And I press "Create Event"
+	Given I am on the Custom Order page
+	When I check "Steak"
+	And I check "Fish"
  	When I press "Save Order"
  	And I go to the saved orders page
  	Then I should not see "Bob's Birthday"
- 	And I should see "Bob's Wedding"
+ 	And I should see "Cocktail Party"

@@ -1,9 +1,12 @@
+%h2 Sample Menus 
+%p Here are some sample menus to give you an idea of what kind of menus you can build!
+
 %div.col-sm-5.col-md-5.col-lg-5
 
 	- if not @sample_menus.nil?
 		- @sample_menus.each do |m|
 
-			%h4= "Name: #{m.name}"
+			%h3= "#{m.name}"
 			%h4= "Budget Per Person: #{m.budget_per_person}"
 			%table.table.sample_menu
 				%tr

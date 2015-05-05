@@ -17,7 +17,7 @@ Background: items have been added to the database
 Scenario: Go to the menu page and click on lunch menu
 	When I go to the home page
 	And I follow "Menu"
-	Then I should be on the menu page
+	Then I should be on the Breakfast Menu page
 	When I follow "Lunch"
 	Then I should see the recipe "Mac and Cheese"
 	And I should see the recipe "Deli Sandwich"
@@ -26,7 +26,7 @@ Scenario: Go to the menu page and click on lunch menu
 Scenario: Go to the menu page and click on dinner menu
 	When I go to the home page
 	And I follow "Menu"
-	Then I should be on the menu page
+	Then I should be on the Breakfast Menu page
 	When I follow "Dinner"
 	Then I should see the recipe "Steak"
 	And I should not see the recipe "Deli Sandwich"

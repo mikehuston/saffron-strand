@@ -21,6 +21,7 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
+gem 'mandrill-api'
 
 group :development, :test do  
   gem 'sqlite3'

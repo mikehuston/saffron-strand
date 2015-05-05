@@ -1,3 +1,5 @@
+require 'mandrill'
+
 class EventsController < ApplicationController
 
   before_filter :authenticate_user!, only: [:show]
@@ -36,10 +38,27 @@ class EventsController < ApplicationController
     @item_counts = Menu.get_item_counts @budget_per_person
   end
 
+  def email_body user
+    "Hi! \n \t #{user.name} has placed an order! Please go to saffronstrand.herokuapp.com/admin/events to view and process the order."
+  end
+
   def submit
     current_user.event.status = 'new'
     current_user.event.save!
     @name = current_user.name
+    admins = []
+    User.all_admins.each do |admin|
+      admins.push({:email => admin.email, :name => admin.name, :type => "to"})
+    end
+    mandrill = Mandrill::API.new ENV["MANDRILL_API_KEY"]
+    message = {  
+     :subject=> "Customer order",  
+     :from_name=> "Saffron Strand",  
+     :text=>email_body(current_user),  
+     :to=>admins,    
+     :from_email=>"Saffron@saffronstrand.com"  
+    }  
+    sending = mandrill.messages.send message  
   end
 
   def edit
@@ -56,76 +75,6 @@ class EventsController < ApplicationController
     @item_types = Menu.get_item_types @budget_per_person
     @item_counts = Menu.get_item_counts @budget_per_person
     @item_options = Menu.get_item_options @item_types
-
-    # flash[:message] = nil
-    # @event = current_user.event
-    # @items_appetizers = Item.where(food_type: 'Appetizer')
-    # @items_salb = Item.where(food_type: 'Salad/B')
-    # @items_entrees = Item.where(food_type: 'Entree')
-    # @items_meat = Item.where(food_type: 'Meat')
-    # @items_veg = Item.where(food_type: 'Veg')
-    # @items_sides = Item.where(food_type: 'Side')
-    # @items_desserts = Item.where(food_type: 'Dessert')
-    # @items_bev = Item.where(food_type: 'Beverage')
-    # @appetizers = 0
-    # @salb = 0
-    # @entrees = 0
-    # @meat = 0
-    # @veg = 0
-    # @sides = 0
-    # @desserts = 0
-    # @bev = 0
-    # if @event.menu.budget_per_person == 7
-    #   @appetizers = 6
-    #   @meat = 2
-    #   @veg = 4
-    # end
-    # if @event.menu.budget_per_person == 8
-    #   @salb = 1
-    #   @entrees = 2
-    #   @veg = 1
-    #   @meat = 1
-    # end
-    # if @event.menu.budget_per_person == 12
-    #   @appetizers = 2
-    #   @salb = 1
-    #   @entrees = 3
-    #   @meat = 1
-    #   @veg = 1
-    #   @sides = 2
-    #   @desserts = 1
-    #   @bev = 1
-    # end
-    # if @event.menu.budget_per_person == 15
-    #   @appetizers = 3
-    #   @salb = 1
-    #   @entrees = 4
-    #   @meat = 1
-    #   @veg = 1
-    #   @sides = 3
-    #   @desserts = 2
-    #   @bev = 1
-    # end
-    # if @event.menu.save
-    #   if @event.menu.items.where(food_type: 'Appetizer').count != @appetizers
-    #     flash[:message] = "Please select the correct number of Appetizers!"
-    #   end
-    #   if @event.menu.items.where(food_type: 'Entree').count != @entrees
-    #     flash[:message] = "Please select the correct number of Entrees!"
-    #   end
-    #   if @event.menu.items.where(food_type: 'Meat').count != @meat
-    #     flash[:message] = "Please select the correct number of Meats!"
-    #   end
-    #   if @event.menu.items.where(food_type: 'Veg').count != @veg
-    #     flash[:message] = "Please select the correct number of Vegs!"
-    #   end
-    #   if @event.menu.items.where(food_type: 'Side').count != @sides
-    #     flash[:message] = "Please select the correct number of Sides!"
-    #   end
-    #   if @event.menu.items.where(food_type: 'Dessert').count != @desserts
-    #     flash[:message] = "Please select the correct number of Desserts!"
-    #   end
-    # end
   end
 
   def show
