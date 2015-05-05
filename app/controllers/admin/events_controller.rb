@@ -44,6 +44,7 @@ class Admin::EventsController < ApplicationController
 
 	def finalize
 		@event = Event.find(params[:id])
+    @user = @event.user
 		@event.status = 'final'
 		@event.save!
 		mandrill = Mandrill::API.new ENV["MANDRILL_API_KEY"]
