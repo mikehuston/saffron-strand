@@ -14,20 +14,15 @@
 						%td= item.name
 
 	= form_tag "/events/submit", :method => :post do
-		.col-md-7
-			.form-group
-				= label :event, :phone_availability, 'Preferred time for follow-up call'
-				= select :event, :event_type, @event_types.each {|t| t}, {}, { :class => 'form-control' }
-			.form-group
-				= label :event, :head_count, 'Head Count'
-				= number_field :event, 'head_count', :class => "form-control", :placeholder => "Enter head count"
-
-			.form-group
-				= label :event, :budget_per_person, 'Budget Per Person'
-				= select :event, :budget_per_person, ['7', '8', '12', '15'], {}, {:class => "form-control"}
-
-
-
-			= submit_tag 'Submit Order', :class => "btn btn-default"
+		.form-group
+			= label :event, :phone_availability_start, 'Preferred time for follow-up call'
+			%br
+			Between
+			= time_select :event, :phone_availability_start, {:combined => true, :minute_interval => 60, :start_hour => 8, :end_hour => 20}, :class => 'form-control'
+			and
+			= time_select :event, :phone_availability_end, {:combined => true, :minute_interval => 60, :start_hour => 9, :end_hour => 20}, :class => 'form-control'
+			= label :event, :comments, 'Comments'
+			= text_area_tag :comment, "Comment Here", {:class => 'form-control input-lg', :size => "24x6"}
+		= submit_tag 'Submit Order', :class => "btn btn-default"
 
 	= button_to "Cancel Order", event_path(@event), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-default"
