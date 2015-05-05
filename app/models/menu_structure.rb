@@ -9,6 +9,7 @@ class MenuStructure < ActiveRecord::Base
     MenuStructure.all.map {|item| item.budget_per_person}.uniq
   end
 
+
   def get_item_types
     item_types = []
     if num_appetizers > 0

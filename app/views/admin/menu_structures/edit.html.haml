@@ -1,8 +1,9 @@
-%h2 Add A New Menu Structure
+%h2 Edit Menu Structure
 %br
+
 %div.col-sm-4.col-md-4.col-lg-4
 
-	= form_tag admin_menu_structures_path, :method => :post, :multipart => true do	
+	= form_tag admin_menu_structure_path(@menu_structure), :method => :put, :multipart => true do	
 		
 		.form-group
 			= label :menu_structure, :event_type, 'Event Type'
@@ -30,4 +31,4 @@
 			= number_field :menu_structure, :num_desserts, min: 0, :class => "form-control"
 
 		%br 
-		= submit_tag 'Create Menu Structure', :class => "btn btn-default"
+		= submit_tag 'Update Menu Structure', :class => "btn btn-default"

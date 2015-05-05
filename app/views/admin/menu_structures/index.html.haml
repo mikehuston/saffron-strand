@@ -1,7 +1,24 @@
 %h2 Menu Structure Settings
 
+%br
 = link_to '+ Add new menu structure', new_admin_menu_structure_path, :class => "btn btn-default"
+%br
 
--@menu_structures.each do |i|
-	%p 
-		=i.event_type
+%div.col-sm-4.col-md-4.col-lg-4
+	-@menu_structures.each do |i|
+		%br	
+		%br
+		.panel.panel-default
+			.panel-heading
+				%b= '$' + i.budget_per_person.to_s + ' ' + i.event_type
+			.panel-body
+				=i.num_appetizers.to_s + ' Appetizer(s)'
+				%div
+				=i.num_sides.to_s + ' Side(s)'
+				%div
+				=i.num_entrees.to_s + ' Entree(s)'
+				%div
+				=i.num_desserts.to_s + ' Dessert(s)'
+		= link_to "Edit", edit_admin_menu_structure_path(i), :class => "btn btn-default pull-left"
+		= button_to "Delete", admin_menu_structure_path(i), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-default pull-right"
+		%br
