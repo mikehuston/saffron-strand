@@ -10,8 +10,6 @@ var MenuPopup = {
   ,getMenuInfo: function() {
     var event_type = $('#event_event_type').val();
     var budget_per_person = $('#event_budget_per_person').val();
-    console.log(event_type);
-    console.log(budget_per_person);
     $.ajax({type: 'GET',
             url: '/events/structure/' + event_type + '/' + budget_per_person,
             timeout: 5000,
