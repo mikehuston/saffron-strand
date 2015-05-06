@@ -6,6 +6,15 @@ class EventsController < ApplicationController
 
   helper_method :parse_selected, :save_items_session, :get_items_session_and_reset, :assign_user_event
 
+  def structure
+    @event_type = params[:event_type]
+    @budgetpp = params[:budget_per_person].to_i
+    menu_struct = MenuStructure.find_menu_struct @event_type, @budgetpp
+    @item_types = menu_struct.get_item_types
+    @item_counts = menu_struct.get_item_counts
+    render(:partial => 'menu_structure', :locals => {event_type: @event_type, budgetpp: @budgetpp, item_types: @item_types, item_counts: @item_counts})
+  end
+
   def create
     session[:budget_per_person] = params[:event].delete :budget_per_person
     session[:event] = params[:event]
@@ -22,6 +31,7 @@ class EventsController < ApplicationController
       @items = get_items_session_and_reset
     end
     @menu = Menu.new budget_per_person: session[:budget_per_person].to_i
+    @menu.menu_structure = MenuStructure.find_menu_struct session[:event][:event_type], session[:budget_per_person]
     @menu.items = Item.find(@items)
     if @menu.valid?
       @menu.save
@@ -33,9 +43,6 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event_types = Event.get_event_types
-    @item_types = Menu.get_item_types @budget_per_person
-    @item_counts = Menu.get_item_counts @budget_per_person
   end
 
   def email_body user
@@ -77,18 +84,18 @@ class EventsController < ApplicationController
     if session[:event].nil? or session[:budget_per_person].nil?
       redirect_to '/events/new'
     end
-    @budget_per_person = session[:budget_per_person].to_i
-    @item_types = Menu.get_item_types @budget_per_person
-    @item_counts = Menu.get_item_counts @budget_per_person
-    @item_options = Menu.get_item_options @item_types
+    menu_struct = MenuStructure.find_menu_struct session[:event][:event_type], session[:budget_per_person]
+    @item_types = menu_struct.get_item_types
+    @item_counts = menu_struct.get_item_counts
+    @item_options = menu_struct.get_item_options  
   end
 
   def show
-    # Should we change this logic? not restful
     @event = current_user.event
     if @event and @event.menu
       @menu = @event.menu
-      @item_types = Menu.get_item_types @menu.budget_per_person
+      menu_struct = @menu.menu_structure
+      @item_types = menu_struct.get_item_types
       @items_by_type = @menu.get_items_by_type
     end
   end

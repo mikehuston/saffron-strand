@@ -16,5 +16,8 @@ class Item < ActiveRecord::Base
   def has_image?
     image and (image.url != '/images/original/missing.png')
   end
+  def show_categories
+    self.categories.map {|c| c.name}
+  end
   
 end

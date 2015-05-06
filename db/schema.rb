@@ -22,14 +22,10 @@ ActiveRecord::Schema.define(:version => 20150505230112) do
     t.string  "event_type"
     t.integer "head_count"
     t.integer "user_id"
-<<<<<<< HEAD
-    t.string  "status"
-=======
     t.time    "phone_availability_start", :limit => 255
     t.string  "status"
     t.time    "phone_availability_end"
     t.string  "comments"
->>>>>>> 4b6c4906fce4fb547e48421b65b7c33c86db5321
   end
 
   create_table "items", :force => true do |t|
@@ -55,10 +51,23 @@ ActiveRecord::Schema.define(:version => 20150505230112) do
   add_index "items_menus", ["item_id"], :name => "index_items_menus_on_item_id"
   add_index "items_menus", ["menu_id", "item_id"], :name => "index_items_menus_on_menu_id_and_item_id"
 
+  create_table "menu_structures", :force => true do |t|
+    t.string  "event_type"
+    t.integer "budget_per_person"
+    t.integer "num_appetizers",    :default => 0
+    t.integer "num_sides",         :default => 0
+    t.integer "num_entrees",       :default => 0
+    t.integer "num_desserts",      :default => 0
+    t.integer "user_id"
+  end
+
+  add_index "menu_structures", ["event_type", "budget_per_person"], :name => "index_menu_structures_on_event_type_and_budget_per_person", :unique => true
+
   create_table "menus", :force => true do |t|
     t.string  "name"
     t.integer "budget_per_person"
     t.integer "event_id"
+    t.integer "menu_structure_id"
     t.boolean "sample"
   end
 

@@ -2,19 +2,14 @@
 
 %h2 Customized Order Page
 
-%p
-	- flash.each do |type, msg|
-		%div{:class => "alert alert-#{type.to_sym == :notice ? "success" : type} fadeout", "data-dismiss" => "alert"}
-			%button.close &times;
-			= msg if msg.is_a?(String)
-
 %row
 	.col-sm-6.col-md-6.col-lg-6
 		= form_tag('/events/save_order') do
 
 			-@item_types.each do |item_type|
-
-				%h4= 'Please select ' + @item_counts[item_type].to_s + ' ' + item_type + '(s) from the following:'
+				%br
+				%h4= item_type + '(s)'
+				%p= 'Please select ' + @item_counts[item_type].to_s 
 				-@item_options[item_type].each do |item_option|
 					%div
 						.ck-button{style: 'display: inline-block; vertical-align: middle'}
@@ -26,6 +21,7 @@
 						.item{style: 'display: inline-block'}
 							=link_to '/items/' + item_option.id.to_s do
 								%span.glyphicon.glyphicon-zoom-in
+			%br
 			= submit_tag "Save Order", :data => (current_user and current_user.event ? {confirm: 'Are you sure?'} : nil), :class => "btn btn-default"
 	.col-sm-6.col-md-6.col-lg-6
 		#displayImage{style: 'position: fixed'}

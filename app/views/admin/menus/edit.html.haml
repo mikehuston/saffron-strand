@@ -2,10 +2,6 @@
 
 = form_tag admin_menu_path(@menu), :method => :put, :multipart => true do	
 
-	- unless flash[:message].nil?
-		%p 
-			%font{:color => "red"} 
-				=flash[:message]
 	%div.col-sm-4.col-md-4.col-lg-4
 
 		.form-group

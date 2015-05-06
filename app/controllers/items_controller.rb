@@ -13,15 +13,15 @@ class ItemsController < ApplicationController
 	end
 
 	def breakfast
-		@items = Item.where(category: 'Breakfast')
+		@items = Item.all.select {|e| e.categories.include? Category.find_by_name("Breakfast")}
 	end
 
 	def lunch
-		@items = Item.where(category: 'Lunch')
+		@items = Item.all.select {|e| e.categories.include? Category.find_by_name("Lunch")}
 	end
 
 	def dinner
-		@items = Item.where(category: 'Dinner')
+		@items = Item.all.select {|e| e.categories.include? Category.find_by_name("Dinner")}
 	end
 
 end

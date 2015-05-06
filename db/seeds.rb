@@ -10,11 +10,13 @@ User.destroy_all
 Event.destroy_all
 Menu.destroy_all
 Item.destroy_all
+MenuStructure.destroy_all
 
-def create_item_helper name, food_type, category
-	item = Item.create name: name, food_type: food_type, category: category
+def create_item_helper name, food_type, categories
+	item = Item.create name: name, food_type: food_type
 	fname = 'app/assets/images/' + name.downcase.gsub(' ', '_') + '.jpg'
 	begin
+		item.categories = categories.map {|e| Category.create name: e}
 		item.image = Rails.root.join(fname).open
 		item.save!
 	rescue Exception => e
@@ -35,7 +37,7 @@ appetizers = ["Vegetable Plate",
 			"Tuna Cutlets"]
 
 appetizers.each do |i|
-	create_item_helper i, 'Appetizer', 'Cocktail Party'
+	create_item_helper i, 'Appetizer', ['Cocktail Party', 'Lunch', 'Dinner']
 end
 
 entrees = ["Roasted Chicken with Lemon Herb Sauce",
@@ -53,7 +55,7 @@ entrees = ["Roasted Chicken with Lemon Herb Sauce",
 		"Parsley and Garlic Fettuccine"]
 
 entrees.each do |i|
-	create_item_helper i, 'Entree', 'Dinner'
+	create_item_helper i, 'Entree', ['Lunch', 'Dinner']
 end
 
 sides = ["Spiced Green Beans",
@@ -77,24 +79,23 @@ sides = ["Spiced Green Beans",
 		"Miso Cucumber Salad"]
 
 sides.each do |i|
-	create_item_helper i, 'Side', 'Lunch'
+	create_item_helper i, 'Side', ['Cocktail Party', 'Lunch', 'Dinner']
 end
 
 desserts = ["Blueberry Crumble",
 			"Peach Cobbler",
 			"Lemon Bundt Cake"]
 
-desserts.each do |d|
-	Item.create name: d, food_type: 'Dessert', category: 'Dinner'
+desserts.each do |i|
+	create_item_helper i, 'Dessert', ['Cocktail Party', 'Lunch', 'Dinner']
 end
 
 breakfast = ["Hot Spinach and Cheese Sandwich", "Hot Egg and Cheese Sandwich",
 			"Pastry Assortment", "Bagels and spread", "Yogurt Parfait"]
 
-breakfast.each do |b|
-	Item.create name: b, food_type: 'Entree', category: 'Breakfast', desc: b + ' plus more'
+breakfast.each do |i|
+	create_item_helper i, 'Entree', ['Brunch']
 end
-
 
 app_menu = Menu.create name: 'Sample Appetizer Menu', budget_per_person: 7, sample: true
 app_items = ["Vegetable Plate", "Sundried Tomato and Basil Tea Sandwiches",
@@ -128,6 +129,13 @@ fifteen_items = ["Fruit Plate", "Cheese Plate", "Smoked Salmon Tea Sandwiches",
 
 fifteen_items.each do |i|
 	fifteen_menu.items << Item.find_by_name(i)
+end
+
+Category.names.each do |name|
+	MenuStructure.create! event_type: name, budget_per_person: 7, num_appetizers: 6
+	MenuStructure.create! event_type: name, budget_per_person: 8, num_entrees: 2
+	MenuStructure.create! event_type: name, budget_per_person: 12, num_appetizers: 3, num_entrees: 3, num_sides: 2, num_desserts: 1
+	MenuStructure.create! event_type: name, budget_per_person: 15, num_appetizers: 3, num_entrees: 4, num_sides: 3, num_desserts: 2
 end
 
 User.destroy_all :email =~ /@saffron.test/

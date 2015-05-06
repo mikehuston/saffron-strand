@@ -1,0 +1,33 @@
+%h2 Add A New Menu Structure
+%br
+%div.col-sm-4.col-md-4.col-lg-4
+
+	= form_tag admin_menu_structures_path, :method => :post, :multipart => true do	
+		
+		.form-group
+			= label :menu_structure, :event_type, 'Event Type'
+			= select :menu_structure, :event_type, ['Cocktail Party', 'Brunch', 'Lunch', 'Dinner'], {}, {:class => "form-control"}
+
+
+		.form-group
+			= label :menu_structure, :budget_per_person, 'Budget Per Person'
+			= number_field :menu_structure, :budget_per_person, min: 1, :class => "form-control"
+
+		.form-group
+			= label :menu_structure, :num_appetizers, 'Number of Appetizers'
+			= number_field :menu_structure, :num_appetizers, min: 0,:class => "form-control"
+
+		.form-group
+			= label :menu_structure, :num_sides, 'Number of Sides'
+			= number_field :menu_structure, :num_sides, min: 0, :class => "form-control"
+
+		.form-group
+			= label :menu_structure, :num_entrees, 'Number of Entrees'
+			= number_field :menu_structure, :num_entrees, min: 0, :class => "form-control"
+
+		.form-group
+			= label :menu_structure, :num_desserts, 'Number of Desserts'
+			= number_field :menu_structure, :num_desserts, min: 0, :class => "form-control"
+
+		%br 
+		= submit_tag 'Create Menu Structure', :class => "btn btn-default"

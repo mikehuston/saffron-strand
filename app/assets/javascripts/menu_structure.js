@@ -3,12 +3,15 @@ var MenuPopup = {
     // add hidden 'div' to end of page to display popup:
     // var popupDiv = $('<div id="menuInfo" style="padding: 2ex; position: absolute; border: 2px double grey; backgroud: wheat;"></div>');
     // popupDiv.hide().appendTo($('body'));
+    $('#event_event_type').change(MenuPopup.getMenuInfo);
     $('#event_budget_per_person').change(MenuPopup.getMenuInfo);
     $('#event_budget_per_person').trigger('change');
   }
   ,getMenuInfo: function() {
+    var event_type = $('#event_event_type').val();
+    var budget_per_person = $('#event_budget_per_person').val();
     $.ajax({type: 'GET',
-            url: '/menus/structure/' + $(this).val(),
+            url: '/events/structure/' + event_type + '/' + budget_per_person,
             timeout: 5000,
             success: MenuPopup.showMenuInfo,
             error: function(xhrObj, textStatus, exception) { alert('Error!'); }

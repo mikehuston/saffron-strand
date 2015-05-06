@@ -2,7 +2,7 @@ Saffron::Application.routes.draw do
 
   get "admin/process"
 
-  get '/menus/structure/:budgetpp', to: 'menus#structure'
+  get '/events/structure/:event_type/:budget_per_person', to: 'events#structure'
 
   post "events/submit", to: "events#submit"
 
@@ -14,7 +14,7 @@ Saffron::Application.routes.draw do
   get "/admin/events/change/:id", to: "admin/events#change"
   get "/admin/events/finalize/:id", to: "admin/events#finalize"
   namespace :admin do
-    resources :items, :menus, :events
+    resources :items, :menus, :events, :menu_structures
   end
 
 
