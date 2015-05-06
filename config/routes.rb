@@ -4,8 +4,7 @@ Saffron::Application.routes.draw do
 
   get '/menus/structure/:budgetpp', to: 'menus#structure'
 
-  get "events/submit"
-  
+  post "events/submit", to: "events#submit"
 
   get "/events/custom_order", to: "events#custom_order"
   match "/events/save_order", to: "events#save_order"

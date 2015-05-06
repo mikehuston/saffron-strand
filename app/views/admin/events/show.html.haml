@@ -16,6 +16,13 @@
 %b Budget Per Person: 
 ="#{m.budget_per_person}"
 %br
+%b Preferred Time to Call
+%br
+="Between #{@event.phone_availability_start.strftime("%I:%M%p")} and #{@event.phone_availability_end.strftime("%I:%M%p")}"
+%br
+%b Customer Comments
+%br
+="#{@event.comments}"
 %br
 -if @event.status == 'new'
 	=link_to "Confirm this order and send invoice", "/admin/events/change/#{@event.id}", :class => "btn btn-default"

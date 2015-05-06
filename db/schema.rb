@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20150504191139) do
+ActiveRecord::Schema.define(:version => 20150505230112) do
 
   create_table "categories", :force => true do |t|
     t.string  "name"
@@ -23,7 +22,14 @@ ActiveRecord::Schema.define(:version => 20150504191139) do
     t.string  "event_type"
     t.integer "head_count"
     t.integer "user_id"
+<<<<<<< HEAD
     t.string  "status"
+=======
+    t.time    "phone_availability_start", :limit => 255
+    t.string  "status"
+    t.time    "phone_availability_end"
+    t.string  "comments"
+>>>>>>> 4b6c4906fce4fb547e48421b65b7c33c86db5321
   end
 
   create_table "items", :force => true do |t|
@@ -74,10 +80,6 @@ ActiveRecord::Schema.define(:version => 20150504191139) do
     t.text     "address"
     t.boolean  "admin"
     t.string   "key"
-    t.boolean  "cocktail"
-    t.boolean  "brunch"
-    t.boolean  "lunch"
-    t.boolean  "dinner"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

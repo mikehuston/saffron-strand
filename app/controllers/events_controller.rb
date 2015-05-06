@@ -59,6 +59,12 @@ class EventsController < ApplicationController
      :from_email=>"Saffron@saffronstrand.com"  
     }  
     sending = mandrill.messages.send message  
+    event = current_user.event
+    params[:event].parse_time_select! :phone_availability_start
+    params[:event].parse_time_select! :phone_availability_end
+    event.update_attributes!(params[:event])
+    event.comments = params[:comment]
+    event.save!
   end
 
   def edit

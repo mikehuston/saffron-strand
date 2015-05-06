@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :event_type, :head_count, :status
+  attr_accessible :event_type, :head_count, :phone_availability_start, :phone_availability_end, :comments
   has_one :menu, :dependent => :destroy
   belongs_to :user
 
