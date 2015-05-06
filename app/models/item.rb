@@ -16,8 +16,14 @@ class Item < ActiveRecord::Base
   def has_image?
     image and (image.url != '/images/original/missing.png')
   end
+
   def show_categories
-    self.categories.map {|c| c.name}
+    names = categories_names
+    names.join(', ')
+  end
+
+  def categories_names
+    categories.map {|e| e.name}
   end
   
 end

@@ -32,7 +32,7 @@
     -@items.each do |item|
       %tr
         %td= item.name 
-        %td= item.category
+        %td= item.show_categories
         %td= item.food_type
         %td= item.desc
         %td= link_to "Show", admin_item_path(item), :class => "btn btn-default"
