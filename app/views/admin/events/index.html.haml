@@ -1,9 +1,32 @@
-%h1 Pending Events
-%table.table-striped
-- @events.each do |e|
-	- if e.user
-		%h3= "Event Type: #{e.event_type}" 
-		%h5= "Head Count: #{e.head_count}"
-		%h5= "User Name: #{e.user.name}"
-		%h5= "User E-mail: #{e.user.email}"
-		=link_to "View #{e.user.name}'s Order Details", admin_event_path(e.id), :class => "btn btn-default"
+-if !(@eventsa.count == 0)
+	%h1 Pending Events
+	%table.table-striped
+	- @eventsa.each do |e|
+		- if e.user
+			%h3= "Event Type: #{e.event_type}" 
+			%h5= "Head Count: #{e.head_count}"
+			%h5= "User Name: #{e.user.name}"
+			%h5= "User E-mail: #{e.user.email}"
+			=link_to "View Order Details", admin_event_path(e.id), :class => "btn btn-default"
+
+-if !(@eventsb.count == 0)
+	%h1 Processing Events
+	%table.table-striped
+	- @eventsb.each do |e|
+		- if e.user
+			%h3= "Event Type: #{e.event_type}" 
+			%h5= "Head Count: #{e.head_count}"
+			%h5= "User Name: #{e.user.name}"
+			%h5= "User E-mail: #{e.user.email}"
+			=link_to "View Order Details", admin_event_path(e.id), :class => "btn btn-default"
+
+-if !(@eventsc.count == 0)
+	%h1 Completed Events
+	%table.table-striped
+	- @eventsc.each do |e|
+		- if e.user
+			%h3= "Event Type: #{e.event_type}" 
+			%h5= "Head Count: #{e.head_count}"
+			%h5= "User Name: #{e.user.name}"
+			%h5= "User E-mail: #{e.user.email}"
+			=link_to "View Order Details", admin_event_path(e.id), :class => "btn btn-default"

@@ -13,10 +13,14 @@
 ="#{@event.user.email}"
 %br
 -m = @event.menu
-%b= "Name: #{m.name}"
-%br
 %b Budget Per Person: 
 ="#{m.budget_per_person}"
+%br
+%br
+-if @event.status == 'new'
+	=link_to "Confirm this order and send invoice", "/admin/events/change/#{@event.id}", :class => "btn btn-default"
+-if @event.status == 'confirm'
+	=link_to "Finalize this order", "/admin/events/finalize/#{@event.id}", :class => "btn btn-default"
 %br
 %br
 

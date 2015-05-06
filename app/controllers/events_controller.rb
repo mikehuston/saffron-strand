@@ -1,3 +1,5 @@
+require 'mandrill'
+
 class EventsController < ApplicationController
 
   before_filter :authenticate_user!, only: [:show]
@@ -36,8 +38,27 @@ class EventsController < ApplicationController
     @item_counts = Menu.get_item_counts @budget_per_person
   end
 
+  def email_body user
+    "Hi! \n \t #{user.name} has placed an order! Please go to saffronstrand.herokuapp.com/admin/events to view and process the order."
+  end
+
   def submit
+    current_user.event.status = 'new'
+    current_user.event.save!
     @name = current_user.name
+    admins = []
+    User.all_admins.each do |admin|
+      admins.push({:email => admin.email, :name => admin.name, :type => "to"})
+    end
+    mandrill = Mandrill::API.new ENV["MANDRILL_API_KEY"]
+    message = {  
+     :subject=> "Customer order",  
+     :from_name=> "Saffron Strand",  
+     :text=>email_body(current_user),  
+     :to=>admins,    
+     :from_email=>"Saffron@saffronstrand.com"  
+    }  
+    sending = mandrill.messages.send message  
   end
 
   def edit

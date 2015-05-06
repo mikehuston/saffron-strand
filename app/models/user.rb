@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 
   has_one :event
 
+  def self.all_admins
+    User.where(:admin => true)
+  end
+
   def self.non_admin
     users = User.all
     users.reject { |e| e.admin? }
