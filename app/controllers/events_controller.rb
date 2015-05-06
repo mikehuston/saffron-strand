@@ -4,6 +4,15 @@ class EventsController < ApplicationController
 
   helper_method :parse_selected, :save_items_session, :get_items_session_and_reset, :assign_user_event
 
+  def structure
+    @event_type = params[:event_type]
+    @budgetpp = params[:budget_per_person].to_i
+    menu_struct = MenuStructure.find_menu_struct @event_type, @budgetpp
+    @item_types = menu_struct.get_item_types
+    @item_counts = menu_struct.get_item_counts
+    render(:partial => 'menu_structure', :locals => {event_type: @event_type, budgetpp: @budgetpp, item_types: @item_types, item_counts: @item_counts})
+  end
+
   def create
     session[:budget_per_person] = params[:event].delete :budget_per_person
     session[:event] = params[:event]

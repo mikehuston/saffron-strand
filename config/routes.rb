@@ -1,6 +1,6 @@
 Saffron::Application.routes.draw do
 
-  get '/menus/structure/:budgetpp', to: 'menus#structure'
+  get '/events/structure/:event_type/:budget_per_person', to: 'events#structure'
 
   get "events/submit"
 

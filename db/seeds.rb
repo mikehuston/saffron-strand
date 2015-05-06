@@ -134,6 +134,8 @@ end
 Category.names.each do |name|
 	MenuStructure.create! event_type: name, budget_per_person: 7, num_appetizers: 6
 	MenuStructure.create! event_type: name, budget_per_person: 8, num_entrees: 2
+	MenuStructure.create! event_type: name, budget_per_person: 12, num_appetizers: 3, num_entrees: 3, num_sides: 2, num_desserts: 1
+	MenuStructure.create! event_type: name, budget_per_person: 15, num_appetizers: 3, num_entrees: 4, num_sides: 3, num_desserts: 2
 end
 
 User.destroy_all :email =~ /@saffron.test/
