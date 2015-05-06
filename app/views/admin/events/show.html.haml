@@ -18,6 +18,13 @@
 %b Budget Per Person: 
 ="#{m.budget_per_person}"
 %br
+%b Preferred Time to Call
+%br
+="Between #{@event.phone_availability_start.strftime("%I:%M%p")} and #{@event.phone_availability_end.strftime("%I:%M%p")}"
+%br
+%b Customer Comments
+%br
+="#{@event.comments}"
 %br
 
 %div.col-sm-5.col-md-5.col-lg-5
