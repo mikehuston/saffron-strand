@@ -25,5 +25,14 @@ class Item < ActiveRecord::Base
   def categories_names
     categories.map {|e| e.name}
   end
+
+  def category_names_match? categories_names_list
+    categories_names_list.each do |category_name|
+      if categories_names.include? category_name
+        return true
+      end
+    end
+    false
+  end
   
 end
