@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
 	def index
-		redirect_to items_breakfast_path
+		redirect_to items_brunch_path
 	end
 
 	def show
@@ -12,16 +12,16 @@ class ItemsController < ApplicationController
 		redirect_to :back
 	end
 
-	def breakfast
-		@items = Item.all.select {|e| e.categories.include? Category.find_by_name("Breakfast")}
+	def brunch
+		@items = Item.all.select {|e| e.categories_names.include? "Brunch"}
 	end
 
 	def lunch
-		@items = Item.all.select {|e| e.categories.include? Category.find_by_name("Lunch")}
+		@items = Item.all.select {|e| e.categories_names.include? "Lunch"}
 	end
 
 	def dinner
-		@items = Item.all.select {|e| e.categories.include? Category.find_by_name("Dinner")}
+		@items = Item.all.select {|e| e.categories_names.include? "Dinner"}
 	end
 
 end
