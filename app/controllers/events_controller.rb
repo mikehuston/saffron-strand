@@ -67,6 +67,8 @@ class EventsController < ApplicationController
     }  
     sending = mandrill.messages.send message  
     event = current_user.event
+    current_user.phone = params[:user][:phone_number]
+    current_user.save!
     params[:event].parse_time_select! :phone_availability_start
     params[:event].parse_time_select! :phone_availability_end
     event.update_attributes!(params[:event])
