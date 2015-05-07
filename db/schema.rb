@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150505230112) do
+ActiveRecord::Schema.define(:version => 20150507011512) do
 
   create_table "categories", :force => true do |t|
     t.string  "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20150505230112) do
     t.time    "phone_availability_start", :limit => 255
     t.time    "phone_availability_end"
     t.string  "comments"
+    t.integer "addi"
   end
 
   create_table "items", :force => true do |t|

@@ -21,8 +21,10 @@
 			= time_select :event, :phone_availability_start, {:combined => true, :minute_interval => 60, :start_hour => 8, :end_hour => 20}, :class => 'form-control'
 			and
 			= time_select :event, :phone_availability_end, {:combined => true, :minute_interval => 60, :start_hour => 9, :end_hour => 20}, :class => 'form-control'
+			= label :user, :phone_number, 'Phone Number'
+			= telephone_field :user, :phone_number, :class => 'form-control'
 			= label :event, :comments, 'Comments'
-			= text_area_tag :comment, "Comment Here", {:class => 'form-control input-lg', :size => "24x6"}
+			= text_area_tag :comment, '', {:class => 'form-control input-lg', :size => "24x6"}
 		= submit_tag 'Submit Order', :class => "btn btn-default"
 
 	= button_to "Cancel Order", event_path(@event), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-default"

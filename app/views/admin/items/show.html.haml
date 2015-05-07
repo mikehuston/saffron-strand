@@ -5,11 +5,11 @@
 		%b Description:
 		= @item.desc
 	%li
-		%b Price:
-		= @item.price
-	%li
 		%b Categories:
-		= @item.show_categories
+		%ul
+			-@item.show_categories.each do |i|
+				%li
+					=i
 	%li
 		%b Type:
 		= @item.food_type
