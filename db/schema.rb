@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20150505230112) do
     t.string  "event_type"
     t.integer "head_count"
     t.integer "user_id"
-    t.time    "phone_availability_start", :limit => 255
     t.string  "status"
+    t.time    "phone_availability_start", :limit => 255
     t.time    "phone_availability_end"
     t.string  "comments"
   end
