@@ -9,15 +9,44 @@
 %b User Name: 
 ="#{@event.user.name}"
 %br
+%b Additional Charge for event: 
+="#{@event.addi}"
+%br
 %b User E-mail: 
 ="#{@event.user.email}"
+%br
+%b Price: 
+="#{@price}"
+%br
+%b Total Price: 
+="#{@total}"
+%br
+%b User Phone No: 
+="#{@event.user.phone}"
 %br
 -m = @event.menu
 %b Budget Per Person: 
 ="#{m.budget_per_person}"
 %br
-%br
 -if @event.status == 'new'
+	%br
+	%b Note: You can have Extraneous Event Costs be negative in order to accommodate discounts!
+	%br
+	%br
+
+
+	%div.col-sm-5.col-md-5.col-lg-5
+
+		= form_for(@event) do
+			.col-md-7
+				.form-group
+
+					= label :event, :addi, 'Extraneous Event Costs'
+					= number_field :event, 'addi', :class => "form-control", :placeholder => "Enter additional charges"
+
+				= submit_tag 'Submit Charge', :class => "btn btn-default"
+				%br
+	%br
 	=link_to "Confirm this order and send invoice", "/admin/events/change/#{@event.id}", :class => "btn btn-default"
 -if @event.status == 'confirm'
 	=link_to "Finalize this order", "/admin/events/finalize/#{@event.id}", :class => "btn btn-default"

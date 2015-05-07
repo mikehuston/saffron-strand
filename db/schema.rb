@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20150504191139) do
+ActiveRecord::Schema.define(:version => 20150506212108) do
 
   create_table "categories", :force => true do |t|
     t.string  "name"
@@ -24,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20150504191139) do
     t.integer "head_count"
     t.integer "user_id"
     t.string  "status"
+    t.integer "addi"
   end
 
   create_table "items", :force => true do |t|
@@ -49,10 +49,23 @@ ActiveRecord::Schema.define(:version => 20150504191139) do
   add_index "items_menus", ["item_id"], :name => "index_items_menus_on_item_id"
   add_index "items_menus", ["menu_id", "item_id"], :name => "index_items_menus_on_menu_id_and_item_id"
 
+  create_table "menu_structures", :force => true do |t|
+    t.string  "event_type"
+    t.integer "budget_per_person"
+    t.integer "num_appetizers"
+    t.integer "num_sides"
+    t.integer "num_entrees"
+    t.integer "num_desserts"
+    t.integer "user_id"
+  end
+
+  add_index "menu_structures", ["event_type", "budget_per_person"], :name => "index_menu_structures_on_event_type_and_budget_per_person", :unique => true
+
   create_table "menus", :force => true do |t|
     t.string  "name"
     t.integer "budget_per_person"
     t.integer "event_id"
+    t.integer "menu_structure_id"
     t.boolean "sample"
   end
 
@@ -74,10 +87,6 @@ ActiveRecord::Schema.define(:version => 20150504191139) do
     t.text     "address"
     t.boolean  "admin"
     t.string   "key"
-    t.boolean  "cocktail"
-    t.boolean  "brunch"
-    t.boolean  "lunch"
-    t.boolean  "dinner"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

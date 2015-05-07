@@ -18,6 +18,8 @@ class Admin::EventsController < ApplicationController
 		@event.status = 'confirm'
 		@event.save!
 		@price = @event.head_count * @event.menu.budget_per_person
+    @addo =  @event.addi
+    @price = @price + @addo
 		mandrill = Mandrill::API.new ENV["MANDRILL_API_KEY"]
     	message = {  
      	:subject=> "Order Confirmation",  
@@ -26,6 +28,7 @@ class Admin::EventsController < ApplicationController
      	<h4><%= @event.event_type %><br>
      	<%= @event.menu.budget_per_person %> Per Person <br>
      	<%= @event.head_count %>  People<br>
+      <%= @addo %> is your additional change for the event!<br> Items:</h4> <br>
      	<%= @price %> is your total cost!<br> Items:</h4> <br>
         <% @event.menu.items.each do |item| %>
         <%= item.name %> <br>
@@ -66,6 +69,8 @@ class Admin::EventsController < ApplicationController
 
 	def show
 		@event = Event.find(params[:id])
+    @price = @event.menu.budget_per_person * @event.head_count
+    @total = @price + @event.addi
 	end
 
 end
