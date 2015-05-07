@@ -115,8 +115,8 @@ class EventsController < ApplicationController
   end
 
   def update
-    
-    if current_user.event.status != 'new'
+    @event = Event.find(params[:id])
+    if @event != 'new'
       @menu = current_user.event.menu
       items = params[:items].select {|k,v| v == '1'}.map {|k,v| k}
       @menu.items = Item.find(items)
@@ -127,7 +127,7 @@ class EventsController < ApplicationController
        redirect_to events_custom_order_path
      end
    end
-   @event = Event.find(params[:id])
+   
    @event.addi = params[:event][:addi]
    @event.save!
    redirect_to admin_event_path
