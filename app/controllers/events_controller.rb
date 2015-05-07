@@ -115,8 +115,9 @@ class EventsController < ApplicationController
   end
 
   def update
-    @menu = current_user.event.menu
+    
     if current_user.event.status != 'new'
+      @menu = current_user.event.menu
       items = params[:items].select {|k,v| v == '1'}.map {|k,v| k}
       @menu.items = Item.find(items)
       @menu.update_attributes!(params[:menu])
