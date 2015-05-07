@@ -12,25 +12,28 @@ class Admin::EventsController < ApplicationController
     "Hi! \n \t #{user.name}! Thank you for your order. Payment has been received and it has been finalised."
  	end
 
-	def change
-		@event = Event.find(params[:id])
-		@user = @event.user
-		@event.status = 'confirm'
-		@event.save!
-		@price = @event.head_count * @event.menu.budget_per_person
-		mandrill = Mandrill::API.new ENV["MANDRILL_API_KEY"]
-    	message = {  
-     	:subject=> "Order Confirmation",  
-     	:from_name=> "Saffron Strand",  
-     	:html=> "<h3> Your order has been confirmed! Here is your invoice:</h3><br>
-     	<h4><%= @event.event_type %><br>
-     	<%= @event.menu.budget_per_person %> Per Person <br>
-     	<%= @event.head_count %>  People<br>
-     	<%= @price %> is your total cost!<br> Items:</h4> <br>
+  def change
+    @event = Event.find(params[:id])
+    @user = @event.user
+    @event.status = 'confirm'
+    @event.save!
+    @price = @event.head_count * @event.menu.budget_per_person
+    @addo =  @event.addi
+    @price = @price + @addo
+    mandrill = Mandrill::API.new ENV["MANDRILL_API_KEY"]
+      message = {  
+      :subject=> "Order Confirmation",  
+      :from_name=> "Saffron Strand",  
+      :html=> "<h3> Your order has been confirmed! Here is your invoice:</h3><br>
+      <h4><%= @event.event_type %><br>
+      <%= @event.menu.budget_per_person %> Per Person <br>
+      <%= @event.head_count %>  People<br>
+      <%= @addo %> is your additional change for the event!<br> Items:</h4> <br>
+      <%= @price %> is your total cost!<br> Items:</h4> <br>
         <% @event.menu.items.each do |item| %>
         <%= item.name %> <br>
-  		<% end %>",  
-     	:to=>[  
+      <% end %>",  
+      :to=>[   
        	{  
        	  :email=> @user.email,  
        	  :name=> @user.name 
@@ -66,6 +69,8 @@ class Admin::EventsController < ApplicationController
 
 	def show
 		@event = Event.find(params[:id])
+    @price = @event.menu.budget_per_person * @event.head_count
+    @total = @price + @event.addi
 	end
 
 end

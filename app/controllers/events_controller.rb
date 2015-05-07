@@ -50,7 +50,9 @@ class EventsController < ApplicationController
   end
 
   def submit
+
     current_user.event.status = 'new'
+    current_user.event.addi = 0
     current_user.event.save!
     @name = current_user.name
     admins = []
@@ -114,14 +116,20 @@ class EventsController < ApplicationController
 
   def update
     @menu = current_user.event.menu
-    items = params[:items].select {|k,v| v == '1'}.map {|k,v| k}
-    @menu.items = Item.find(items)
-    @menu.update_attributes!(params[:menu])
-    if flash[:message].nil?
-      redirect_to '/events/show'
-    else
-      redirect_to events_custom_order_path
-    end
+    if current_user.event.status != 'new'
+      items = params[:items].select {|k,v| v == '1'}.map {|k,v| k}
+      @menu.items = Item.find(items)
+      @menu.update_attributes!(params[:menu])
+      if flash[:message].nil?
+       redirect_to '/events/show'
+     else
+       redirect_to events_custom_order_path
+     end
+   end
+   @event = Event.find(params[:id])
+   @event.addi = params[:event][:addi]
+   @event.save!
+   redirect_to admin_event_path
   end
 
   private
