@@ -8,11 +8,7 @@ class Admin::ItemsController < ApplicationController
   def create
     item = Item.new(params[:item])
     item_categories = params[:categories].select {|k,v| v == '1'}.map {|k,v| k}
-    if Category.exists?(name: item_categories)
-      item.categories = Category.where(:name => item_categories)
-    else
-      item.categories = item_categories.map {|category| Category.create(:name => category)}
-    end
+    item.categories = item_categories.map {|category| Category.create(:name => category)}
     if item.valid?
       item.save
       flash[:notice] = 'Item created'
@@ -31,12 +27,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find params[:id]
     @item.update_attributes!(params[:item])
     item_categories = params[:categories].select {|k,v| v == '1'}.map {|k,v| k}
-    
-    if Category.exists?(name: item_categories)
-      @item.categories = Category.where(:name => item_categories)
-    else
-      @item.categories = item_categories.map {|category| Category.create(:name => category)}
-    end
+    @item.categories = item_categories.map {|category| Category.create(:name => category)}
     redirect_to admin_items_path
   end
 
